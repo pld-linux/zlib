@@ -1,3 +1,11 @@
+#
+# Conditional build:
+# _with_asmopt		- with assmbler optimization for i[56]86
+
+%ifnarch i586 i686
+define		_with_asmopt		0
+%endif
+
 Summary:	Library for compression and decompression
 Summary(de):	Library für die Komprimierung und Dekomprimierung 
 Summary(fr):	bibliothèque de compression et décompression
@@ -13,6 +21,7 @@ Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	ftp://ftp.cdrom.com/pub/infozip/zlib/%{name}-%{version}.tar.gz
 Patch0:		%{name}-sharedlib.patch
+%{?_with_asmopt:Patch1:		%{name}-asmopt.patch}
 URL:		http://www.cdrom.com/pub/infozip/zlib/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -147,9 +156,20 @@ wa³asnych programów wykorzystuj±cych zlib.
 %prep
 %setup -q
 %patch -p1
+%{?_with_asmopt:%patch1 -p1}
+
+%ifarch i686
+%{?_with_asmopt:cp contrib/asm586/match.S .}
+%else
+%ifarch i586
+%{?_with_asmopt:cp contrib/asm586/match.S .}
+%endif
+%endif
 
 %build
 CFLAGS="-D_REENTRANT -fPIC %{rpmcflags}" \
+%{?_with_asmopt:CFLAGS="$CFLAGS -O3 -DASMV"}
+
 ./configure \
 	--prefix=%{_prefix} \
 	--shared 
