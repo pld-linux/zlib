@@ -1,16 +1,18 @@
-Summary:     Library for compression and decompression
-Summary(de): Library für die Komprimierung und Dekomprimierung 
-Summary(fr): bibliothèque de compression et décompression
-Summary(pl): Biblioteka z podprogramami do kompresji i dekompresji
-Summary(tr): Sýkýþtýrma iþlemleri için kitaplýk
-Name:        zlib
-Version:     1.1.3
-Release:     4
-URL:         http://www.cdrom.com/pub/infozip/zlib/
-Source:      ftp://ftp.cdrom.com/pub/infozip/zlib/%{name}-%{version}.tar.gz
-Group:       Libraries
-Copyright:   BSD
-BuildRoot:   /tmp/%{name}-%{version}-root 
+Summary:	Library for compression and decompression
+Summary(de):	Library für die Komprimierung und Dekomprimierung 
+Summary(fr):	bibliothèque de compression et décompression
+Summary(pl):	Biblioteka z podprogramami do kompresji i dekompresji
+Summary(tr):	Sýkýþtýrma iþlemleri için kitaplýk
+Name:		zlib
+Version:	1.1.3
+Release:	5
+Copyright:	BSD
+Group:		Libraries
+Group(pl):	Biblioteki
+Source:		ftp://ftp.cdrom.com/pub/infozip/zlib/%{name}-%{version}.tar.gz
+URL:		http://www.cdrom.com/pub/infozip/zlib/
+BuildRoot:	/tmp/%{name}-%{version}-root 
+Conflicts:	glibc <= 2.0.7
 
 %description
 The 'zlib' compression library provides in-memory compression and
@@ -57,11 +59,12 @@ olasýlýðý vardýr. Bu kitaplýk bir dizi sistem yazýlýmý tarafýndan
 kullanýlmaktadýr.
 
 %package devel
-Summary:     header files and libraries for zlib development
-Summary(de): Headerdateien und Libraries für zlib-Entwicklung 
-Summary(pl): Pliki nag³owkowe i dokumentacja do zlib
-Group:       Development/Libraries
-Requires:    %{name} = %{version}
+Summary:	header files and libraries for zlib development
+Summary(de):	Headerdateien und Libraries für zlib-Entwicklung 
+Summary(pl):	Pliki nag³ówkowe i dokumentacja do zlib
+Group:		Development/Libraries
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
 
 %description devel
 The 'zlib' compression library provides in-memory compression and
@@ -95,8 +98,8 @@ au développement des programmes qui utilisent cette zlib.
 %description -l pl
 Biblioteka zlib udostêpnia podprogramy do kompresji i dekompresji w pamiêci
 operacyjnej w³±cznie ze sprawdzaniem sprawdzanie integralno¶ci w trakcie
-dekompresjii. Ta wersja biblioteki udostêpnia  tylko jedn± metodê kompresjii
-o nazwie deflation niemniej inne algirytmy mog± byæ dodawane udostêpniaj±c
+dekompresjii. Ta wersja biblioteki udostêpnia tylko jedn± metodê kompresjii
+o nazwie deflation niemniej inne algorytmy mog± byæ dodawane udostêpniaj±c
 taki sam interfejs funkcji operacj±cych na strumieniu danych.
 
 Pakiet ten zawiera pliki nag³owkowe i dokumentacjê potrzebn± przy tworzeniu
@@ -112,10 +115,11 @@ Bu paket, zlib kitaplýðýný kullanarak program geliþtirmek için gereken
 statik kitaplýklarý ve baþlýk dosyalarýný içerir.
 
 %package static
-Summary:     static library for zlib development
-Summary(pl): biblioteka statyczna do zlib
-Group:       Development/Libraries
-Requires:    %{name}-devel = %{version}
+Summary:	Static library for zlib development
+Summary(pl):	Biblioteka statyczna do zlib
+Group:		Development/Libraries
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name}-devel = %{version}
 
 %description static
 The 'zlib' compression library provides in-memory compression and
@@ -141,7 +145,11 @@ programów wykorzystuj±cych zlib.
 %setup -q
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" ./configure --shared --prefix=/usr
+CFLAGS="$RPM_OPT_FLAGS" \
+./configure \
+	--prefix=/usr \
+	--shared
+
 make
 make libz.a
 
@@ -156,6 +164,8 @@ make prefix=$RPM_BUILD_ROOT/usr install
 
 strip $RPM_BUILD_ROOT/usr/lib/lib*.so.*.*
 
+gzip -9nf $RPM_BUILD_ROOT/usr/man/man3/*
+
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
@@ -163,19 +173,27 @@ strip $RPM_BUILD_ROOT/usr/lib/lib*.so.*.*
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%attr(755, root, root) /usr/lib/lib*.so.*.*
+%attr(755,root,root) /usr/lib/lib*.so.*.*
 
 %files devel
 %defattr(644, root, root, 755)
 %doc README ChangeLog algorithm.txt FAQ example.c minigzip.c
 /usr/include/*
-/usr/lib/lib*.so
-%attr(644, root, man) /usr/man/man3/*
+%attr(755,root,root) /usr/lib/lib*.so
+/usr/man/man3/*
 
 %files static
 %attr(644, root, root) /usr/lib/lib*.a
 
 %changelog
+* Thu Mar  4 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.1.3-5]
+- added Group(pl),
+- added "Conflicts: glibc <= 2.0.7" for installing zlib in proper
+  enviroment,
+- changed permission on /usr/lib/lib*.so to 755,
+- removed man group from man pages.
+
 * Thu Aug  6 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.1.3-4]
 - Source Url changed to ftp protocol,
