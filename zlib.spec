@@ -1,14 +1,10 @@
 #
 # Conditional build:
-# _without_asmopt		- without assmbler optimization for i[56]86
-
+%bcond_without	asmopt	# without assmbler optimization for i586+
+#
 %ifnarch i586 i686 athlon
-%define				_asmopt		0
-%else
-%{?_without_asmopt:%define	_asmopt		0}
-%{!?_without_asmopt:%define	_asmopt		1}
+%undefine	with_asmopt
 %endif
-
 Summary:	Library for compression and decompression
 Summary(de):	Library f¸r die Komprimierung und Dekomprimierung
 Summary(es):	Biblioteca para compresiÛn y descompresiÛn
@@ -19,15 +15,15 @@ Summary(ru):	‚…¬Ã…œ‘≈À¡ ƒÃ— ÀœÕ–“≈””…… … ƒ≈ÀœÕ–“≈””……
 Summary(tr):	S˝k˝˛t˝rma i˛lemleri iÁin kitapl˝k
 Summary(uk):	‚¶¬Ã¶œ‘≈À¡ ƒÃ— ÀœÕ–“≈”¶ß ‘¡ ƒ≈ÀœÕ–“≈”¶ß
 Name:		zlib
-Version:	1.1.4
-Release:	7
+Version:	1.2.1
+Release:	0.1
 License:	BSD
 Group:		Libraries
 Source0:	http://www.gzip.org/%{name}/%{name}-%{version}.tar.gz
 # Source0-md5: abc405d0bdd3ee22782d7aa20e440f08
 Patch0:		%{name}-sharedlib.patch
 Patch1:		%{name}-asmopt.patch
-Patch2:		%{name}-gzprintf_sec.patch
+#Patch2:		%{name}-gzprintf_sec.patch
 URL:		http://www.zlib.org/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	zlib1
@@ -248,10 +244,9 @@ Bibliotecas est·ticas para desenvolvimento com a zlib.
 
 %prep
 %setup -q
-%patch0 -p1
-%{?_with_asmopt:%patch1 -p1}
+#%patch0 -p1
 
-%if %{_asmopt}
+%if %{with asmopt}
 %patch1 -p1
 %ifarch i686 athlon
 cp contrib/asm686/match.S .
@@ -260,16 +255,10 @@ cp contrib/asm686/match.S .
 cp contrib/asm586/match.S .
 %endif
 %endif
-%patch2 -p1
 
 %build
-
-CFLAGS="-D_REENTRANT -fPIC %{rpmcflags}"
-%if %{_asmopt}
-CFLAGS="$CFLAGS -O3 -DASMV"
-%endif
-export CFLAGS
-CC=%{__cc}; export CC
+CFLAGS="-D_REENTRANT -fPIC %{rpmcflags}%{?with_asmopt: -DASMV}" \
+CC="%{__cc}" \
 ./configure \
 	--prefix=%{_prefix} \
 	--shared
@@ -282,15 +271,14 @@ CC=%{__cc}; export CC
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{/lib,%{_includedir},%{_libdir},%{_mandir}/man3}
 
+%{__make} install \
+	prefix=$RPM_BUILD_ROOT%{_prefix}
+
 install libz.a $RPM_BUILD_ROOT%{_libdir}
 install zutil.h $RPM_BUILD_ROOT%{_includedir}
-install zlib.3 $RPM_BUILD_ROOT%{_mandir}/man3
 
-%{__make} prefix=$RPM_BUILD_ROOT%{_prefix} install
-
-mv $RPM_BUILD_ROOT%{_libdir}/libz.so.*.* $RPM_BUILD_ROOT/lib
-cd $RPM_BUILD_ROOT%{_libdir}
-ln -sf /lib/$(cd ../../lib && ls libz.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libz.so
+mv -f $RPM_BUILD_ROOT%{_libdir}/libz.so.*.* $RPM_BUILD_ROOT/lib
+ln -sf /lib/$(cd $RPM_BUILD_ROOT/lib && echo libz.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libz.so
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -300,13 +288,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc ChangeLog FAQ README algorithm.txt
 %attr(755,root,root) /lib/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%doc README ChangeLog algorithm.txt FAQ
 %attr(755,root,root) %{_libdir}/lib*.so
-
 %{_includedir}/*
 %{_mandir}/man3/*
 
