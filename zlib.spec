@@ -26,7 +26,6 @@ Group:		Libraries
 Source0:	http://www.zlib.net/%{name}-%{version}.tar.gz
 # Source0-md5:	68bd51aaa6558c3bc3fd4890e53413de
 Patch0:		%{name}-asmopt.patch
-Patch1:		%{name}-infsec.patch
 URL:		http://www.zlib.net/
 Obsoletes:	zlib1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -247,7 +246,6 @@ Bibliotecas estáticas para desenvolvimento com a zlib.
 
 %prep
 %setup -q
-%patch1 -p1
 
 %if %{with asmopt}
 %patch0 -p1
