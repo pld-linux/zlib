@@ -5,14 +5,13 @@ Summary(pl):	Biblioteka z podprogramami do kompresji i dekompresji
 Summary(tr):	Sýkýþtýrma iþlemleri için kitaplýk
 Name:		zlib
 Version:	1.1.3
-Release:	6
+Release:	7
 Copyright:	BSD
 Group:		Libraries
 Group(pl):	Biblioteki
 Source:		ftp://ftp.cdrom.com/pub/infozip/zlib/%{name}-%{version}.tar.gz
 URL:		http://www.cdrom.com/pub/infozip/zlib/
 BuildRoot:	/tmp/%{name}-%{version}-root 
-Conflicts:	glibc <= 2.0.7
 
 %description
 The 'zlib' compression library provides in-memory compression and
@@ -177,16 +176,21 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) /usr/lib/lib*.so.*.*
 
 %files devel
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 %doc {README,ChangeLog,algorithm.txt,FAQ,example.c,minigzip.c}.gz
 /usr/include/*
 %attr(755,root,root) /usr/lib/lib*.so
 /usr/man/man3/*
 
 %files static
-%attr(644, root, root) /usr/lib/lib*.a
+%attr(644,root,root) /usr/lib/lib*.a
 
 %changelog
+* Mon Apr 19 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.1.3-7]
+- removed Conflicts: glibc (not neccesary now),
+- recompiled on new rpm.
+
 * Sun Mar 14 1999 Micha³ Kuratczyk <kura@pld.org.pl>
   [1.1.3-6]
 - gzipping documentation
