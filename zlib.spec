@@ -38,6 +38,7 @@ BuildRequires:	uClibc-static
 %endif
 URL:		http://www.zlib.org/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	zlib1
 
 %define uclibc_prefix	/usr/%{_arch}-linux-uclibc
 %define embed_cc	%{_arch}-uclibc-cc
@@ -112,6 +113,7 @@ Group(pt_BR):	Desenvolvimento/Bibliotecas
 Group(ru):	Разработка/Библиотеки
 Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
+Obsoletes:	zlib1-devel
 
 %description devel
 The 'zlib' compression library provides in-memory compression and
