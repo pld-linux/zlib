@@ -146,7 +146,7 @@ programów wykorzystuj±cych zlib.
 %build
 CFLAGS="$RPM_OPT_FLAGS" \
 ./configure \
-	--prefix=/usr \
+	--prefix=%{_prefix} \
 	--shared
 
 make
@@ -186,75 +186,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(644,root,root) %{_libdir}/lib*.a
 
 %changelog
-* Mon May 10 1999 Piotr Czerwiñski <pius@pld.org.pl>
+* Fri May 21 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.1.3-8]
-- package is now FHS 2.0 compliant.
-
-* Mon Apr 19 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.1.3-7]
-- removed Conflicts: glibc (not neccesary now),
-- recompiled on new rpm.
-
-* Sun Mar 14 1999 Micha³ Kuratczyk <kura@pld.org.pl>
-  [1.1.3-6]
-- gzipping documentation
-- fixed pl translation
-
-* Thu Mar  4 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.1.3-5]
-- added Group(pl),
-- added "Conflicts: glibc <= 2.0.7" for installing zlib in proper
-  enviroment,
-- changed permission on %{_libdir}/lib*.so to 755,
-- removed man group from man pages.
-
-* Thu Aug  6 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.1.3-4]
-- Source Url changed to ftp protocol,
-- added pl translation,
-- added static subpackage.
-
-* Sat Aug  1 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.1.3-3]
-- added de, fr, tr translations from orginal RH spec,
-- added pl translation,
-- changet way of passing $RPM_OPT_FLAGS,
-- some cosmetic changes in %files nad %install,
-- changed permission on shared lib to 755 (now ldd output on this files is
-  correct).
-
-* Fri Jul 31 1998 Arne Coucheron <arneco@online.no>
-  [1.1.3-2]
-- moved over some changes from the 1.1.3-1 package
-- please guys, when updating the packages, do so using the contributed
-  source packages from the contrib area. otherwise you are wasting the time
-  and effort put in by a lot of people maintaining the packages.
-
-* Mon Jun 08 1998 Arne Coucheron <arneco@online.no>
-  [1.1.2-5]
-- added a patch
-
-* Sun May 31 1998 Arne Coucheron <arneco@online.no>
-  [1.1.2-4]
-- using %%{name} and %%{version} macros
-- using %defattr macro in %files
-- added -q parameter to %setup
-
-* Sun May 03 1998 Arne Coucheron <arneco@online.no>
-  [1.1.2-3]
-- added stripping of the libs
-- some minor changes to the spec file
-- removed some older changelogs
-
-* Fri Apr 17 1998 Arne Coucheron <arneco@online.no>
-  [1.1.2-2] 
-- added zlib manpage to devel package
-
-* Mon Apr 06 1998 Arne Coucheron <arneco@online.no>
-  [1.1.2-1]
-- corrected Source and URL tags
-
-* Sun Mar 01 1998 Arne Coucheron <arneco@online.no>
-  [1.1.1-1]
-- using buildroot
-- using %attr macros in filelist
+- spec based on RH version,
+- pl translation by me,
+- spec rewrited by Piotr Czerwiñski <pius@pld.org.pl>, Micha³ Kuratczyk
+  <kura@pld.org.pl> and me.
