@@ -28,10 +28,10 @@ Group(pl):	Biblioteki
 Group(pt_BR):	Bibliotecas
 Group(ru):	Библиотеки
 Group(uk):	Б╕бл╕отеки
-Source0:	ftp://ftp.cdrom.com/pub/infozip/zlib/%{name}-%{version}.tar.gz
+Source0:	http://www.zlib.org/%{name}.tar.gz
 Patch0:		%{name}-sharedlib.patch
 Patch1:		%{name}-asmopt.patch
-URL:		http://www.cdrom.com/pub/infozip/zlib/
+URL:		http://www.zlib.org/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
