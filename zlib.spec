@@ -15,7 +15,9 @@ Summary(es):	Biblioteca para compresiСn y descompresiСn
 Summary(fr):	bibliothХque de compression et dИcompression
 Summary(pl):	Biblioteka z podprogramami do kompresji i dekompresji
 Summary(pt_BR):	Biblioteca para compressЦo e descompressЦo
+Summary(ru):	Библиотека для компрессии и декомпрессии
 Summary(tr):	SЩkЩЧtЩrma iЧlemleri iГin kitaplЩk
+Summary(uk):	Б╕бл╕отека для компрес╕╖ та декомпрес╕╖
 Name:		zlib
 Version:	1.1.4
 Release:	1
@@ -75,6 +77,13 @@ de compressЦo (deflaГЦo) mas outros algoritmos podem ser adicionados
 mais tarde e terЦo a mesma interface. Essa biblioteca И usada por
 vАrios programas de sistema.
 
+%description -l ru
+Библиотека компрессии zlib содержит функции компрессии и декомпрессии
+в памяти, включаю проверку целостности декомпрессированных данных. Эта
+версия поддерживает только один метод компрессии (deflation), но
+впоследствии в нее могут быть добавлены и другие методы, и все они
+будут использовать тот же потоковый интерфейс.
+
 %description -l tr
 zlib sЩkЩЧtЩrma kitaplЩПЩ bellekte sЩkЩЧtЩrma ve aГma fonksiyonlarЩ
 iГermektedir. Bu sЭrЭm yalnЩzca 'deflation' yЖntemini
@@ -82,12 +91,21 @@ desteklemektedir. Ancak baЧka algoritmalarЩn aynЩ arabirimle
 eriЧilebilecek Чekilde eklenme olasЩlЩПЩ vardЩr. Bu kitaplЩk bir dizi
 sistem yazЩlЩmЩ tarafЩndan kullanЩlmaktadЩr.
 
+%description -l uk
+Б╕бл╕отека компрес╕╖ zlib м╕стить функц╕╖ компрес╕╖ та декомпрес╕╖ в
+пам'ят╕ з перев╕ркою ц╕лост╕ декомпресованих даних. Ця верс╕я
+п╕дтриму╓ т╕льки один метод компрес╕╖ (deflation), але в майбутньому в
+не╖ можуть бути додан╕ ╕ ╕нш╕ методи ╕ вс╕ вони будуть використовувати
+той же самий потоковий ╕нтерфейс.
+
 %package devel
 Summary:	header files and libraries for zlib development
 Summary(de):	Headerdateien und Libraries fЭr zlib-Entwicklung
 Summary(es):	Bibliotecas y archivos de inclusiСn para desarrollo zlib
 Summary(pl):	Pliki nagЁСwkowe i dokumentacja do zlib
 Summary(pt_BR):	Bibliotecas e arquivos de inclusЦo para desenvolvimento zlib
+Summary(ru):	Хедеры и библиотеки для программирования с zlib
+Summary(uk):	Хедери та б╕бл╕отеки для програмування з zlib
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
 Obsoletes:	zlib1-devel
@@ -152,6 +170,16 @@ adicionados no futuro e terЦo a mesma interface stream.
 Este pacote contИm os arquivos de inclusЦo e bibliotecas necessАrios
 ao desenvolvimento de programas que usam zlib.
 
+%description devel -l ru
+Библиотека компрессии zlib содержит функции компрессии и декомпрессии
+в памяти, включаю проверку целостности декомпрессированных данных. Эта
+версия поддерживает только один метод компрессии (deflation), но
+впоследствии в нее могут быть добавлены и другие методы, и все они
+будут использовать тот же потоковый интерфейс.
+
+Этот пакет содержит хедеры и библиотеки, необходимые для написания
+программ, использующих zlib.
+
 %description devel -l tr
 zlib sЩkЩЧtЩrma kitaplЩПЩ bellekte sЩkЩЧtЩrma ve aГma fonksiyonlarЩ
 iГermektedir. Bu sЭrЭm yalnЩzca 'deflation' yЖntemini
@@ -161,11 +189,23 @@ eriЧilebilecek Чekilde eklenme olasЩlЩПЩ vardЩr.
 Bu paket, zlib kitaplЩПЩnЩ kullanarak program geliЧtirmek iГin gereken
 statik kitaplЩklarЩ ve baЧlЩk dosyalarЩnЩ iГerir.
 
+%description devel -l uk
+Б╕бл╕отека компрес╕╖ zlib м╕стить функц╕╖ компрес╕╖ та декомпрес╕╖ в
+пам'ят╕ з перев╕ркою ц╕лост╕ декомпресованих даних. Ця верс╕я
+п╕дтриму╓ т╕льки один метод компрес╕╖ (deflation), але в майбутньому в
+не╖ можуть бути додан╕ ╕ ╕нш╕ методи ╕ вс╕ вони будуть використовувати
+той же самий потоковий ╕нтерфейс.
+
+Цей пакет м╕стить хедери та б╕бл╕отеки, необх╕дн╕ для написання
+програм, що використовують zlib.
+
 %package static
 Summary:	Static library for zlib development
 Summary(es):	Static libraries for zlib development
 Summary(pl):	Biblioteka statyczna do zlib
 Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com a zlib
+Summary(ru):	Статическая библиотека для программирования с zlib
+Summary(uk):	Статична б╕бл╕отека для програмування з zlib
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}
 
@@ -195,6 +235,14 @@ Static libraries for zlib development.
 
 %description static -l pt_BR
 Bibliotecas estАticas para desenvolvimento com a zlib.
+
+%description static -l ru
+Этот пакет содержит статическую библиотеку, необходимую для написания
+программ, использующих zlib.
+
+%description static -l uk
+Цей пакет м╕стить статичну б╕бл╕отеку, необх╕дну для написання
+програм, що використовують zlib.
 
 %prep
 %setup -q
