@@ -156,12 +156,12 @@ make libz.a
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/usr/{include,lib,share/man/man3}
 
-install libz.a $RPM_BUILD_ROOT/usr/lib
+install libz.a $RPM_BUILD_ROOT%{_libdir}
 install zutil.h $RPM_BUILD_ROOT/usr/include
 install zlib.3 $RPM_BUILD_ROOT%{_mandir}/man3
 make prefix=$RPM_BUILD_ROOT/usr install
 
-strip $RPM_BUILD_ROOT/usr/lib/lib*.so.*.*
+strip $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man3/* \
 	README ChangeLog algorithm.txt FAQ example.c minigzip.c
@@ -173,17 +173,17 @@ gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man3/* \
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%attr(755,root,root) /usr/lib/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
 %doc {README,ChangeLog,algorithm.txt,FAQ,example.c,minigzip.c}.gz
 /usr/include/*
-%attr(755,root,root) /usr/lib/lib*.so
+%attr(755,root,root) %{_libdir}/lib*.so
 %{_mandir}/man3/*
 
 %files static
-%attr(644,root,root) /usr/lib/lib*.a
+%attr(644,root,root) %{_libdir}/lib*.a
 
 %changelog
 * Mon May 10 1999 Piotr Czerwiñski <pius@pld.org.pl>
@@ -205,7 +205,7 @@ rm -rf $RPM_BUILD_ROOT
 - added Group(pl),
 - added "Conflicts: glibc <= 2.0.7" for installing zlib in proper
   enviroment,
-- changed permission on /usr/lib/lib*.so to 755,
+- changed permission on %{_libdir}/lib*.so to 755,
 - removed man group from man pages.
 
 * Thu Aug  6 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
