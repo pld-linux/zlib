@@ -255,7 +255,7 @@ cp contrib/asm586/match.S .
 %endif
 
 %build
-CFLAGS="%{rpmcflags} -O3 %{?with_asmopt:-DASMV}"; export CFLAGS="$CFLAGS"
+CFLAGS="%{rpmcflags} -O3 %{?with_asmopt:-DASMV}" \
 ./configure \
 	--prefix=%{_prefix} \
 	--shared
