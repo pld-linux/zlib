@@ -3,7 +3,7 @@
 # _without_asmopt		- without assmbler optimization for i[56]86
 # _without_embed		- don't build uClibc version
 
-%ifnarch i586 i686
+%ifnarch i586 i686 athlon
 %define				_asmopt		0
 %else
 %{?_without_asmopt:%define	_asmopt		0}
@@ -19,7 +19,7 @@ Summary(pt_BR):	Biblioteca para compressão e descompressão
 Summary(tr):	Sýkýþtýrma iþlemleri için kitaplýk
 Name:		zlib
 Version:	1.1.3
-Release:	27
+Release:	28
 License:	BSD
 Group:		Libraries
 Group(de):	Libraries
@@ -266,7 +266,7 @@ aplikacji wbudowanych.
 
 %if %{_asmopt}
 %patch1 -p1
-%ifarch i686
+%ifarch i686 athlon
 cp contrib/asm686/match.S .
 %endif
 %ifarch i586
