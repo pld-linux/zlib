@@ -157,7 +157,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/usr/{include,lib,share/man/man3}
 
 install libz.a $RPM_BUILD_ROOT%{_libdir}
-install zutil.h $RPM_BUILD_ROOT/usr/include
+install zutil.h $RPM_BUILD_ROOT%{_includedir}
 install zlib.3 $RPM_BUILD_ROOT%{_mandir}/man3
 make prefix=$RPM_BUILD_ROOT/usr install
 
@@ -178,7 +178,7 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %doc {README,ChangeLog,algorithm.txt,FAQ,example.c,minigzip.c}.gz
-/usr/include/*
+%{_includedir}/*
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_mandir}/man3/*
 
