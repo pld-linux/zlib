@@ -229,7 +229,7 @@ dodawane udostêpniaj±c taki sam interfejs funkcji operuj±cych na
 strumieniu danych.
 
 Pakiet ten zawiera bibliotekê statyczn± potrzebn± przy tworzeniu
-wa³asnych programów wykorzystuj±cych zlib.
+w³asnych programów wykorzystuj±cych zlib.
 
 %description static -l es
 Static libraries for zlib development.
