@@ -5,7 +5,7 @@ Summary(pl): Biblioteka z podprogramami do kompresji i dekompresji
 Summary(tr): Sýkýþtýrma iþlemleri için kitaplýk
 Name:        zlib
 Version:     1.1.3
-Release:     3
+Release:     4
 URL:         http://www.cdrom.com/pub/infozip/zlib/
 Source:      http://www.cdrom.com/pub/infozip/zlib/%{name}-%{version}.tar.gz
 Group:       Libraries
@@ -41,7 +41,7 @@ même interface.
 Cette bibliothèque est utilisée par de nombreux programmes système.
 
 %description -l pl
-Biblioteka zli udostêpnia podprogramy do kompresji i dekompresji w pamiêci
+Biblioteka zlib udostêpnia podprogramy do kompresji i dekompresji w pamiêci
 operacyjnej w³±cznie ze sprawdzaniem sprawdzanie integralno¶ci w trakcie
 dekompresjii. Ta wersja biblioteki udostêpnia  tylko jedn± metodê kompresjii
 o nazwie deflation niemniej inne algirytmy mog± byæ dodawane udostêpniaj±c
@@ -59,9 +59,7 @@ kullanýlmaktadýr.
 %package devel
 Summary:     header files and libraries for zlib development
 Summary(de): Headerdateien und Libraries für zlib-Entwicklung 
-Summary(fr): Fichiers en-têtes et bibliothèques pour le développement zlib
-Summary(pl): Pliki nag³owkowe, biblioteki statyczne i dokumentacja do zlib
-Summary(tr): zlib ile geliþtirme için gereken baþlýk dosyalarý ve kitaplýklar
+Summary(pl): Pliki nag³owkowe i dokumentacja do zlib
 Group:       Development/Libraries
 Requires:    %{name} = %{version}
 
@@ -72,8 +70,8 @@ data.  This version of the library supports only one compression method
 (deflation) but other algorithms may be added later and will have the same
 stream interface.
 
-This package contains the header files and libraries needed to develop 
-programs that use these zlib.
+This package contains the header files needed to develop programs that use
+these zlib.
 
 %description -l de devel
 Die zlip-Komprimierungs-Library bietet speicherinterne Komprimierungs- und
@@ -95,14 +93,14 @@ Ce paquetage contient les fichiers en-têtes et les bibliothèques nécessaires
 au développement des programmes qui utilisent cette zlib.
 
 %description -l pl
-Biblioteka zli udostêpnia podprogramy do kompresji i dekompresji w pamiêci
+Biblioteka zlib udostêpnia podprogramy do kompresji i dekompresji w pamiêci
 operacyjnej w³±cznie ze sprawdzaniem sprawdzanie integralno¶ci w trakcie
 dekompresjii. Ta wersja biblioteki udostêpnia  tylko jedn± metodê kompresjii
 o nazwie deflation niemniej inne algirytmy mog± byæ dodawane udostêpniaj±c
 taki sam interfejs funkcji operacj±cych na strumieniu danych.
 
-Pakiet ten zawiera pliki nag³owkowe, bibliotekê statyczn± i dokumentacjê
-potrzebn± przy tworzeniu wa³asnych programów wykorzystuj±cych zlib.
+Pakiet ten zawiera pliki nag³owkowe i dokumentacjê potrzebn± przy tworzeniu
+w³asnych programów wykorzystuj±cych zlib.
 
 %description -l tr devel
 zlib sýkýþtýrma kitaplýðý bellekte sýkýþtýrma ve açma fonksiyonlarý
@@ -112,6 +110,32 @@ olasýlýðý vardýr.
 
 Bu paket, zlib kitaplýðýný kullanarak program geliþtirmek için gereken
 statik kitaplýklarý ve baþlýk dosyalarýný içerir.
+
+%package static
+Summary:     static library for zlib development
+Summary(pl): biblioteka statyczna do zlib
+Group:       Development/Libraries
+Requires:    %{name}-devel = %{version}
+
+%description static
+The 'zlib' compression library provides in-memory compression and
+decompression functions, including integrity checks of the uncompressed
+data.  This version of the library supports only one compression method
+(deflation) but other algorithms may be added later and will have the same
+stream interface.
+
+This package contains the header files and libraries needed to develop 
+programs that use these zlib.
+
+%description -l pl static
+Biblioteka zlib udostêpnia podprogramy do kompresji i dekompresji w pamiêci
+operacyjnej w³±cznie ze sprawdzaniem sprawdzanie integralno¶ci w trakcie
+dekompresjii. Ta wersja biblioteki udostêpnia  tylko jedn± metodê kompresjii
+o nazwie deflation niemniej inne algirytmy mog± byæ dodawane udostêpniaj±c
+taki sam interfejs funkcji operacj±cych na strumieniu danych.
+
+Pakiet ten zawiera bibliotekê statyczn± potrzebn± przy tworzeniu wa³asnych
+programów wykorzystuj±cych zlib.
 
 %prep
 %setup -q
@@ -145,11 +169,18 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644, root, root, 755)
 %doc README ChangeLog algorithm.txt FAQ example.c minigzip.c
 /usr/include/*
-/usr/lib/lib*.a
-%attr(  -, root, root)/usr/lib/lib*.so
-%attr(644, root, man) /usr/man/man3/zlib.3
+/usr/lib/lib*.so
+%attr(644, root, man) /usr/man/man3/*
+
+%files static
+%attr(644, root, root) /usr/lib/lib*.a
 
 %changelog
+* Thu Aug  6 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.1.3-4]
+- added pl translation,
+- added static subpackage.
+
 * Sat Aug  1 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.1.3-3]
 - added de, fr, tr translations from orginal RH spec,
