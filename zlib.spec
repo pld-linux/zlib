@@ -149,7 +149,7 @@ wa³asnych programów wykorzystuj±cych zlib.
 %patch -p1
 
 %build
-CFLAGS="-D_REENTRANT -fPIC %{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS}" \
+CFLAGS="-D_REENTRANT -fPIC %{rpmcflags}" \
 ./configure \
 	--prefix=%{_prefix} \
 	--shared 
