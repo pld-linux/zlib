@@ -5,9 +5,10 @@ Summary(pl):	Biblioteka z podprogramami do kompresji i dekompresji
 Summary(tr):	Sýkýþtýrma iþlemleri için kitaplýk
 Name:		zlib
 Version:	1.1.3
-Release:	11
+Release:	13
 License:	BSD
 Group:		Libraries
+Group(de):	Libraries
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	ftp://ftp.cdrom.com/pub/infozip/zlib/%{name}-%{version}.tar.gz
@@ -58,6 +59,7 @@ Summary:	header files and libraries for zlib development
 Summary(de):	Headerdateien und Libraries für zlib-Entwicklung 
 Summary(pl):	Pliki nag³ówkowe i dokumentacja do zlib
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
@@ -116,6 +118,7 @@ statik kitaplýklarý ve baþlýk dosyalarýný içerir.
 Summary:	Static library for zlib development
 Summary(pl):	Biblioteka statyczna do zlib
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
@@ -150,7 +153,7 @@ wa³asnych programów wykorzystuj±cych zlib.
 	--prefix=%{_prefix} \
 	--shared 
 
-%{__make} OPTIMIZE="$RPM_OPT_FLAGS"
+%{__make} OPTIMIZE="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O -g}"
 
 %{__make} libz.a
 
@@ -164,10 +167,7 @@ install zlib.3 $RPM_BUILD_ROOT%{_mandir}/man3
 
 %{__make} prefix=$RPM_BUILD_ROOT%{_prefix} install
 
-strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
-
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man3/* \
-	README ChangeLog algorithm.txt FAQ
+gzip -9nf README ChangeLog algorithm.txt FAQ
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
