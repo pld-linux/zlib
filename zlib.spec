@@ -19,7 +19,7 @@ Summary(pt_BR):	Biblioteca para compressão e descompressão
 Summary(tr):	Sýkýþtýrma iþlemleri için kitaplýk
 Name:		zlib
 Version:	1.1.3
-Release:	26
+Release:	27
 License:	BSD
 Group:		Libraries
 Group(de):	Libraries
@@ -265,7 +265,7 @@ aplikacji wbudowanych.
 %if %{_asmopt}
 %patch1 -p1
 %ifarch i686
-cp contrib/asm586/match.S .
+cp contrib/asm686/match.S .
 %endif
 %ifarch i586
 cp contrib/asm586/match.S .
