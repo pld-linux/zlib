@@ -16,7 +16,7 @@ Summary(pl):	Biblioteka z podprogramami do kompresji i dekompresji
 Summary(tr):	Sýkýþtýrma iþlemleri için kitaplýk
 Name:		zlib
 Version:	1.1.3
-Release:	24
+Release:	25
 License:	BSD
 Group:		Libraries
 Group(de):	Libraries
