@@ -1,6 +1,7 @@
 #
 # Conditional build:
 # _without_asmopt		- without assmbler optimization for i[56]86
+# _without_embed		- don't build uClibc version
 
 %ifnarch i586 i686
 %define				_asmopt		0
@@ -18,7 +19,7 @@ Summary(pt_BR):	Biblioteca para compress„o e descompress„o
 Summary(tr):	S˝k˝˛t˝rma i˛lemleri iÁin kitapl˝k
 Name:		zlib
 Version:	1.1.3
-Release:	25
+Release:	26
 License:	BSD
 Group:		Libraries
 Group(de):	Libraries
@@ -28,11 +29,19 @@ Group(pl):	Biblioteki
 Group(pt_BR):	Bibliotecas
 Group(ru):	‚…¬Ã…œ‘≈À…
 Group(uk):	‚¶¬Ã¶œ‘≈À…
-Source0:	http://www.gzip.org/%{name}/%{name}.tar.gz
+Source0:	http://www.gzip.org/%{name}/%{name}-%{version}.tar.gz
 Patch0:		%{name}-sharedlib.patch
 Patch1:		%{name}-asmopt.patch
+%if %{!?_without_embed:1}%{?_without_embed:0}
+BuildRequires:	uClibc-devel
+BuildRequires:	uClibc-static
+%endif
 URL:		http://www.zlib.org/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define uclibc_prefix	/usr/%{_arch}-linux-uclibc
+%define embed_cc	%{_arch}-uclibc-cc
+%define embed_cflags	%{rpmcflags} -Os
 
 %description
 The 'zlib' compression library provides in-memory compression and
@@ -215,6 +224,20 @@ Static libraries for zlib development.
 %description -l pt_BR static
 Bibliotecas est·ticas para desenvolvimento com a zlib.
 
+%package devel-embed
+Summary:	Embedded library for zlib development
+Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	Ú¡⁄“¡¬œ‘À¡/‚…¬Ã…œ‘≈À…
+Group(uk):	Úœ⁄“œ¬À¡/‚¶¬Ã¶œ‘≈À…
+
+%description devel-embed
+Zlib - embed.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -231,6 +254,15 @@ cp contrib/asm586/match.S .
 %endif
 
 %build
+%if %{!?_without_embed:1}%{?_without_embed:0}
+CFLAGS="-D_REENTRANT %{embed_cflags}" \
+CC=%{embed_cc} ./configure \
+	--prefix=%{_prefix}
+%{__make} libz.a
+mv -f libz.a libz.a-embed
+%{__make} distclean
+%endif
+
 CFLAGS="-D_REENTRANT -fPIC %{rpmcflags}"
 %if %{_asmopt}
 CFLAGS="$CFLAGS -O3 -DASMV"
@@ -260,6 +292,12 @@ cd $RPM_BUILD_ROOT%{_libdir}
 ln -sf ../../lib/libz.so.*.* $RPM_BUILD_ROOT%{_libdir}/libz.so
 cd -
 
+%if %{!?_without_embed:1}%{?_without_embed:0}
+install -d $RPM_BUILD_ROOT%{uclibc_prefix}/{lib,include}
+install libz.a-embed $RPM_BUILD_ROOT%{uclibc_prefix}/lib/libz.a
+cp $RPM_BUILD_ROOT%{_includedir}/* $RPM_BUILD_ROOT%{uclibc_prefix}/include
+%endif
+
 gzip -9nf README ChangeLog algorithm.txt FAQ
 
 %post   -p /sbin/ldconfig
@@ -283,3 +321,10 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+
+%if %{!?_without_embed:1}%{?_without_embed:0}
+%files devel-embed
+%defattr(644,root,root,755)
+%{uclibc_prefix}/lib/*
+%{uclibc_prefix}/include/*
+%endif
