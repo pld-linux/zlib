@@ -19,17 +19,15 @@ Summary(ru):	Библиотека для компрессии и декомпрессии
 Summary(tr):	SЩkЩЧtЩrma iЧlemleri iГin kitaplЩk
 Summary(uk):	Б╕бл╕отека для компрес╕╖ та декомпрес╕╖
 Name:		zlib
-Version:	1.2.1.1
-Release:	3
-Epoch:		0
+Version:	1.2.2
+Release:	1
 License:	BSD
 Group:		Libraries
-#Source0:	http://www.gzip.org/zlib/%{name}-%{version}.tar.gz
-Source0:	http://devel.santafelinux.com/source/%{name}-%{version}/upstream/tarballs/%{name}-%{version}.tar.gz
-# Source0-md5:	e30f85eed4ecb32841cafe12673c6590
+Source0:	http://www.zlib.net/%{name}-%{version}.tar.gz
+# Source0-md5:	68bd51aaa6558c3bc3fd4890e53413de
 Patch0:		%{name}-asmopt.patch
 Patch1:		%{name}-infsec.patch
-URL:		http://www.zlib.org/
+URL:		http://www.zlib.net/
 Obsoletes:	zlib1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -297,11 +295,11 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog FAQ README algorithm.txt
-%attr(755,root,root) /%{_lib}/lib*.so.*.*
+%attr(755,root,root) /%{_lib}/libz.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/libz.so
 %{_includedir}/*
 %{_mandir}/man3/*
 
