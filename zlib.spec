@@ -5,7 +5,7 @@ Summary(pl):	Biblioteka z podprogramami do kompresji i dekompresji
 Summary(tr):	Sýkýþtýrma iþlemleri için kitaplýk
 Name:		zlib
 Version:	1.1.3
-Release:	5
+Release:	6
 Copyright:	BSD
 Group:		Libraries
 Group(pl):	Biblioteki
@@ -44,12 +44,12 @@ Cette bibliothèque est utilisée par de nombreux programmes système.
 
 %description -l pl
 Biblioteka zlib udostêpnia podprogramy do kompresji i dekompresji w pamiêci
-operacyjnej w³±cznie ze sprawdzaniem sprawdzanie integralno¶ci w trakcie
-dekompresjii. Ta wersja biblioteki udostêpnia  tylko jedn± metodê kompresjii
-o nazwie deflation niemniej inne algirytmy mog± byæ dodawane udostêpniaj±c
-taki sam interfejs funkcji operacj±cych na strumieniu danych.
+operacyjnej w³±cznie ze sprawdzaniem integralno¶ci w trakcie dekompresjii.
+Ta wersja biblioteki udostêpnia tylko jedn± metodê kompresjii o nazwie
+deflation niemniej inne algorytmy mog± byæ dodawane udostêpniaj±c taki sam
+interfejs funkcji operuj±cych na strumieniu danych.
 
-Ta biblioteka jest u¿ywana min. przez ró¿ne programy systemowe.
+Ta biblioteka jest u¿ywana m.in. przez ró¿ne programy systemowe.
 
 %description -l tr
 zlib sýkýþtýrma kitaplýðý bellekte sýkýþtýrma ve açma fonksiyonlarý
@@ -97,10 +97,10 @@ au développement des programmes qui utilisent cette zlib.
 
 %description -l pl
 Biblioteka zlib udostêpnia podprogramy do kompresji i dekompresji w pamiêci
-operacyjnej w³±cznie ze sprawdzaniem sprawdzanie integralno¶ci w trakcie
-dekompresjii. Ta wersja biblioteki udostêpnia tylko jedn± metodê kompresjii
-o nazwie deflation niemniej inne algorytmy mog± byæ dodawane udostêpniaj±c
-taki sam interfejs funkcji operacj±cych na strumieniu danych.
+operacyjnej w³±cznie ze sprawdzaniem integralno¶ci w trakcie dekompresjii.
+Ta wersja biblioteki udostêpnia tylko jedn± metodê kompresjii o nazwie
+deflation niemniej inne algorytmy mog± byæ dodawane udostêpniaj±c taki sam
+interfejs funkcji operuj±cych na strumieniu danych.
 
 Pakiet ten zawiera pliki nag³owkowe i dokumentacjê potrzebn± przy tworzeniu
 w³asnych programów wykorzystuj±cych zlib.
@@ -133,10 +133,10 @@ programs that use these zlib.
 
 %description -l pl static
 Biblioteka zlib udostêpnia podprogramy do kompresji i dekompresji w pamiêci
-operacyjnej w³±cznie ze sprawdzaniem sprawdzanie integralno¶ci w trakcie
-dekompresjii. Ta wersja biblioteki udostêpnia  tylko jedn± metodê kompresjii
-o nazwie deflation niemniej inne algirytmy mog± byæ dodawane udostêpniaj±c
-taki sam interfejs funkcji operacj±cych na strumieniu danych.
+operacyjnej w³±cznie ze sprawdzaniem integralno¶ci w trakcie dekompresjii.
+Ta wersja biblioteki udostêpnia  tylko jedn± metodê kompresjii o nazwie
+deflation niemniej inne algirytmy mog± byæ dodawane udostêpniaj±c taki sam
+interfejs funkcji operuj±cych na strumieniu danych.
 
 Pakiet ten zawiera bibliotekê statyczn± potrzebn± przy tworzeniu wa³asnych
 programów wykorzystuj±cych zlib.
@@ -155,8 +155,8 @@ make libz.a
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT/usr/{include,lib,man/man3}
+
 install libz.a $RPM_BUILD_ROOT/usr/lib
 install zutil.h $RPM_BUILD_ROOT/usr/include
 install zlib.3 $RPM_BUILD_ROOT/usr/man/man3
@@ -165,6 +165,7 @@ make prefix=$RPM_BUILD_ROOT/usr install
 strip $RPM_BUILD_ROOT/usr/lib/lib*.so.*.*
 
 gzip -9nf $RPM_BUILD_ROOT/usr/man/man3/*
+gzip -9nf README ChangeLog algorithm.txt FAQ example.c minigzip.c
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -177,7 +178,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644, root, root, 755)
-%doc README ChangeLog algorithm.txt FAQ example.c minigzip.c
+%doc {README,ChangeLog,algorithm.txt,FAQ,example.c,minigzip.c}.gz
 /usr/include/*
 %attr(755,root,root) /usr/lib/lib*.so
 /usr/man/man3/*
@@ -186,6 +187,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(644, root, root) /usr/lib/lib*.a
 
 %changelog
+* Sun Mar 14 1999 Micha³ Kuratczyk <kura@pld.org.pl>
+  [1.1.3-6]
+- gzipping documentation
+- fixed pl translation
+
 * Thu Mar  4 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.1.3-5]
 - added Group(pl),
