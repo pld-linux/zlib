@@ -158,9 +158,9 @@ wa³asnych programów wykorzystuj±cych zlib.
 	--prefix=%{_prefix} \
 	--shared 
 
-make OPTIMIZE="$RPM_OPT_FLAGS"
+%{__make} OPTIMIZE="$RPM_OPT_FLAGS"
 
-make libz.a
+%{__make} libz.a
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -171,7 +171,7 @@ install libz.a $RPM_BUILD_ROOT%{_libdir}
 install zutil.h $RPM_BUILD_ROOT%{_includedir}
 install zlib.3 $RPM_BUILD_ROOT%{_mandir}/man3
 
-make prefix=$RPM_BUILD_ROOT%{_prefix} install
+%{__make} prefix=$RPM_BUILD_ROOT%{_prefix} install
 
 strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
 
