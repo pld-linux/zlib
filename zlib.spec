@@ -7,7 +7,7 @@ Name:        zlib
 Version:     1.1.3
 Release:     4
 URL:         http://www.cdrom.com/pub/infozip/zlib/
-Source:      http://www.cdrom.com/pub/infozip/zlib/%{name}-%{version}.tar.gz
+Source:      ftp://ftp.cdrom.com/pub/infozip/zlib/%{name}-%{version}.tar.gz
 Group:       Libraries
 Copyright:   BSD
 BuildRoot:   /tmp/%{name}-%{version}-root 
@@ -178,6 +178,7 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Thu Aug  6 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.1.3-4]
+- Source Url changed to ftp protocol,
 - added pl translation,
 - added static subpackage.
 
