@@ -226,6 +226,7 @@ Bibliotecas estáticas para desenvolvimento com a zlib.
 
 %package devel-embed
 Summary:	Embedded library for zlib development
+Summary(pl):	Wbudowana biblioteka zlib
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
 Group(es):	Desarrollo/Bibliotecas
@@ -236,7 +237,25 @@ Group(ru):	òÁÚÒÁÂÏÔËÁ/âÉÂÌÉÏÔÅËÉ
 Group(uk):	òÏÚÒÏÂËÁ/â¦ÂÌ¦ÏÔÅËÉ
 
 %description devel-embed
-Zlib - embed.
+The 'zlib' compression library provides in-memory compression and
+decompression functions, including integrity checks of the
+uncompressed data. This version of the library supports only one
+compression method (deflation) but other algorithms may be added later
+and will have the same stream interface.
+
+This package contains libraries and headers needed for embedded applications
+development.
+
+%description -l pl devel-embed
+Biblioteka zlib udostêpnia podprogramy do kompresji i dekompresji w
+pamiêci operacyjnej w³±cznie ze sprawdzaniem integralno¶ci w trakcie
+dekompresjii. Ta wersja biblioteki udostêpnia tylko jedn± metodê
+kompresjii o nazwie deflation niemniej inne algirytmy mog± byæ
+dodawane udostêpniaj±c taki sam interfejs funkcji operuj±cych na
+strumieniu danych.
+
+Pakiet ten zawiera bibliotekê i pliki nag³ówkowe potrzebne do tworzenia
+aplikacji wbudowanych.
 
 %prep
 %setup -q
