@@ -95,7 +95,7 @@ ajoutés plus tard et auront la même interface.
 Ce paquetage contient les fichiers en-têtes et les bibliothèques nécessaires
 au développement des programmes qui utilisent cette zlib.
 
-%description -l pl
+%description -l pl devel
 Biblioteka zlib udostêpnia podprogramy do kompresji i dekompresji w pamiêci
 operacyjnej w³±cznie ze sprawdzaniem integralno¶ci w trakcie dekompresjii.
 Ta wersja biblioteki udostêpnia tylko jedn± metodê kompresjii o nazwie
