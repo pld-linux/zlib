@@ -58,7 +58,7 @@ Ancak baþka algoritmalarýn ayný arabirimle eriþilebilecek þekilde eklenme
 olasýlýðý vardýr. Bu kitaplýk bir dizi sistem yazýlýmý tarafýndan
 kullanýlmaktadýr.
 
-%package	devel
+%package devel
 Summary:	header files and libraries for zlib development
 Summary(de):	Headerdateien und Libraries für zlib-Entwicklung 
 Summary(pl):	Pliki nag³ówkowe i dokumentacja do zlib
@@ -114,7 +114,7 @@ olasýlýðý vardýr.
 Bu paket, zlib kitaplýðýný kullanarak program geliþtirmek için gereken
 statik kitaplýklarý ve baþlýk dosyalarýný içerir.
 
-%package	static
+%package static
 Summary:	Static library for zlib development
 Summary(pl):	Biblioteka statyczna do zlib
 Group:		Development/Libraries
@@ -178,22 +178,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(755,root,root,755)
-
-%{_libdir}/lib*.so.*
+%{_libdir}/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
 %doc {README,ChangeLog,algorithm.txt,FAQ}.gz
-
-%{_includedir}/*
-
 %attr(755,root,root) %{_libdir}/lib*.so
 
+%{_includedir}/*
 %{_mandir}/man3/*
 
 %files static
 %defattr(644,root,root,755)
-
 %{_libdir}/lib*.a
 
 %changelog
