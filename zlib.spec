@@ -266,7 +266,7 @@ CFLAGS="-D_REENTRANT -fPIC %{rpmcflags}"
 CFLAGS="$CFLAGS -O3 -DASMV"
 %endif
 export CFLAGS
-
+CC=%{__cc}; export CC
 ./configure \
 	--prefix=%{_prefix} \
 	--shared
