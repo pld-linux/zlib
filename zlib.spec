@@ -17,14 +17,13 @@ Summary(pl):	Biblioteka z podprogramami do kompresji i dekompresji
 Summary(pt_BR):	Biblioteca para compressão e descompressão
 Summary(tr):	Sýkýþtýrma iþlemleri için kitaplýk
 Name:		zlib
-Version:	1.1.3
-Release:	30
+Version:	1.1.4
+Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://www.gzip.org/%{name}/%{name}-%{version}.tar.gz
 Patch0:		%{name}-sharedlib.patch
 Patch1:		%{name}-asmopt.patch
-Patch2:		%{name}-sec.patch
 URL:		http://www.zlib.org/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	zlib1
@@ -201,7 +200,6 @@ Bibliotecas estáticas para desenvolvimento com a zlib.
 %setup -q
 %patch0 -p1
 %{?_with_asmopt:%patch1 -p1}
-%patch2 -p1
 
 %if %{_asmopt}
 %patch1 -p1
