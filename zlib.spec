@@ -20,17 +20,18 @@ Summary(tr):	Sıkıştırma işlemleri için kitaplık
 Summary(uk):	â¦ÂÌ¦ÏÔÅËÁ ÄÌÑ ËÏÍĞÒÅÓ¦§ ÔÁ ÄÅËÏÍĞÒÅÓ¦§
 Name:		zlib
 Version:	1.2.1.1
-Release:	1
+Release:	2
 Epoch:		0
 License:	BSD
 Group:		Libraries
-#Source0:	http://www.gzip.org/%{name}/%{name}-%{version}.tar.gz
+#Source0:	http://www.gzip.org/zlib/%{name}-%{version}.tar.gz
 Source0:	http://devel.santafelinux.com/source/%{name}-%{version}/upstream/tarballs/%{name}-%{version}.tar.gz
 # Source0-md5:	e30f85eed4ecb32841cafe12673c6590
 Patch0:		%{name}-asmopt.patch
+Patch1:		%{name}-infsec.patch
 URL:		http://www.zlib.org/
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	zlib1
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 The 'zlib' compression library provides in-memory compression and
@@ -248,6 +249,7 @@ Bibliotecas estáticas para desenvolvimento com a zlib.
 
 %prep
 %setup -q
+%patch1 -p1
 
 %if %{with asmopt}
 %patch0 -p1
