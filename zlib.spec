@@ -166,9 +166,9 @@ install libz.a $RPM_BUILD_ROOT%{_libdir}
 install zutil.h $RPM_BUILD_ROOT%{_includedir}
 install zlib.3 $RPM_BUILD_ROOT%{_mandir}/man3
 
-mv $RPM_BUILD_ROOT%{_libdir}/libz.so.*.* $RPM_BUILD_ROOT/lib
-
 %{__make} prefix=$RPM_BUILD_ROOT%{_prefix} install
+
+mv $RPM_BUILD_ROOT%{_libdir}/libz.so.*.* $RPM_BUILD_ROOT/lib
 
 gzip -9nf README ChangeLog algorithm.txt FAQ
 
