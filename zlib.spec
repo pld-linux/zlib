@@ -20,7 +20,7 @@ Summary(tr):	SЩkЩЧtЩrma iЧlemleri iГin kitaplЩk
 Summary(uk):	Б╕бл╕отека для компрес╕╖ та декомпрес╕╖
 Name:		zlib
 Version:	1.1.4
-Release:	2
+Release:	4
 License:	BSD
 Group:		Libraries
 Source0:	http://www.gzip.org/%{name}/%{name}-%{version}.tar.gz
@@ -290,8 +290,6 @@ cd $RPM_BUILD_ROOT%{_libdir}
 ln -sf ../../lib/libz.so.*.* $RPM_BUILD_ROOT%{_libdir}/libz.so
 cd -
 
-gzip -9nf README ChangeLog algorithm.txt FAQ
-
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
@@ -304,7 +302,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc {README,ChangeLog,algorithm.txt,FAQ}.gz
+%doc README ChangeLog algorithm.txt FAQ
 %attr(755,root,root) %{_libdir}/lib*.so
 
 %{_includedir}/*
