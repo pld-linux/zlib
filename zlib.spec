@@ -266,16 +266,20 @@ CC="%{__cc}" \
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{/lib,%{_includedir},%{_libdir},%{_mandir}/man3}
+install -d $RPM_BUILD_ROOT{/%{_lib},%{_includedir},%{_libdir},%{_mandir}/man3}
 
 %{__make} install \
 	prefix=$RPM_BUILD_ROOT%{_prefix}
 
+%ifarch amd64
+mv $RPM_BUILD_ROOT{%{_prefix}/lib/*,%{_libdir}}
+%endif
+
 install libz.a $RPM_BUILD_ROOT%{_libdir}
 install zutil.h $RPM_BUILD_ROOT%{_includedir}
 
-mv -f $RPM_BUILD_ROOT%{_libdir}/libz.so.*.* $RPM_BUILD_ROOT/lib
-ln -sf /lib/$(cd $RPM_BUILD_ROOT/lib && echo libz.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libz.so
+mv -f $RPM_BUILD_ROOT%{_libdir}/libz.so.*.* $RPM_BUILD_ROOT/%{_lib}
+ln -sf /%{_lib}/$(cd $RPM_BUILD_ROOT/%{_lib} && echo libz.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libz.so
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -286,7 +290,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog FAQ README algorithm.txt
-%attr(755,root,root) /lib/lib*.so.*.*
+%attr(755,root,root) /%{_lib}/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
