@@ -5,11 +5,12 @@ Summary(pl):	Biblioteka z podprogramami do kompresji i dekompresji
 Summary(tr):	Sýkýþtýrma iþlemleri için kitaplýk
 Name:		zlib
 Version:	1.1.3
-Release:	8
+Release:	9
 Copyright:	BSD
 Group:		Libraries
 Group(pl):	Biblioteki
 Source:		ftp://ftp.cdrom.com/pub/infozip/zlib/%{name}-%{version}.tar.gz
+Patch0:		%{name}-sharedlib.patch
 URL:		http://www.cdrom.com/pub/infozip/zlib/
 BuildRoot:	/tmp/%{name}-%{version}-root 
 
@@ -57,7 +58,7 @@ Ancak baþka algoritmalarýn ayný arabirimle eriþilebilecek þekilde eklenme
 olasýlýðý vardýr. Bu kitaplýk bir dizi sistem yazýlýmý tarafýndan
 kullanýlmaktadýr.
 
-%package devel
+%package	devel
 Summary:	header files and libraries for zlib development
 Summary(de):	Headerdateien und Libraries für zlib-Entwicklung 
 Summary(pl):	Pliki nag³ówkowe i dokumentacja do zlib
@@ -113,7 +114,7 @@ olasýlýðý vardýr.
 Bu paket, zlib kitaplýðýný kullanarak program geliþtirmek için gereken
 statik kitaplýklarý ve baþlýk dosyalarýný içerir.
 
-%package static
+%package	static
 Summary:	Static library for zlib development
 Summary(pl):	Biblioteka statyczna do zlib
 Group:		Development/Libraries
@@ -142,29 +143,32 @@ programów wykorzystuj±cych zlib.
 
 %prep
 %setup -q
+%patch -p1
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" \
 ./configure \
 	--prefix=%{_prefix} \
-	--shared
+	--shared 
 
-make
+make OPTIMIZE="$RPM_OPT_FLAGS"
+
 make libz.a
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 install -d $RPM_BUILD_ROOT{%{_includedir},%{_libdir},%{_mandir}/man3}
 
 install libz.a $RPM_BUILD_ROOT%{_libdir}
 install zutil.h $RPM_BUILD_ROOT%{_includedir}
 install zlib.3 $RPM_BUILD_ROOT%{_mandir}/man3
-make prefix=$RPM_BUILD_ROOT/usr install
+
+make prefix=$RPM_BUILD_ROOT%{_prefix} install
 
 strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man3/* \
-	README ChangeLog algorithm.txt FAQ example.c minigzip.c
+	README ChangeLog algorithm.txt FAQ
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -173,17 +177,23 @@ gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man3/* \
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%defattr(755,root,root,755)
+
+%{_libdir}/lib*.so.*
 
 %files devel
 %defattr(644,root,root,755)
-%doc {README,ChangeLog,algorithm.txt,FAQ,example.c,minigzip.c}.gz
+%doc {README,ChangeLog,algorithm.txt,FAQ}.gz
+
 %{_includedir}/*
+
 %attr(755,root,root) %{_libdir}/lib*.so
+
 %{_mandir}/man3/*
 
 %files static
 %defattr(644,root,root,755)
+
 %{_libdir}/lib*.a
 
 %changelog
