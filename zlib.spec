@@ -6,10 +6,11 @@ Summary(tr):	Sýkýþtýrma iþlemleri için kitaplýk
 Name:		zlib
 Version:	1.1.3
 Release:	10
-Copyright:	BSD
+License:	BSD
 Group:		Libraries
+Group(fr):	Librairies
 Group(pl):	Biblioteki
-Source:		ftp://ftp.cdrom.com/pub/infozip/zlib/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.cdrom.com/pub/infozip/zlib/%{name}-%{version}.tar.gz
 Patch0:		%{name}-sharedlib.patch
 URL:		http://www.cdrom.com/pub/infozip/zlib/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -17,28 +18,27 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 The 'zlib' compression library provides in-memory compression and
 decompression functions, including integrity checks of the uncompressed
-data.  This version of the library supports only one compression method
+data. This version of the library supports only one compression method
 (deflation) but other algorithms may be added later and will have the same
 stream interface.
 
 This library is used by a number of different system programs.
 
 %description -l de
-Die zlib-Komprimierungs-Library bietet speicherinterne Komprimierungs- 
-und Dekomprimierungsfunktionen, einschließlich Integritätsprüfungen 
-der unkomprimierten Daten. Diese Version der Library unterstützt nur 
-eine Komprimierungsmethode (Deflation), doch können weitere Algorithmen 
-nachträglich eingefügt werden und haben dann dieselbe Oberfläche. 
+Die zlib-Komprimierungs-Library bietet speicherinterne Komprimierungs- und
+Dekomprimierungsfunktionen, einschließlich Integritätsprüfungen der
+unkomprimierten Daten. Diese Version der Library unterstützt nur eine
+Komprimierungsmethode (Deflation), doch können weitere Algorithmen
+nachträglich eingefügt werden und haben dann dieselbe Oberfläche.
 
-Diese Library wird von verschiedenen Systemprogrammen genutzt. 
+Diese Library wird von verschiedenen Systemprogrammen genutzt.
 
 %description -l fr
-La bibliothèque de compression « zlib » offre des fonctions de
-compression et de décompression en mémoire, ainsi qu'une vérification
-de l'intégrité des données décompressées. La version de cette
-bibliothèque ne gère qu'une méthode de compression (deflation), mais
-d'autres algorithmes peuvent être ajoutés plus tard et auront la
-même interface.
+La bibliothèque de compression « zlib » offre des fonctions de compression
+et de décompression en mémoire, ainsi qu'une vérification de l'intégrité
+des données décompressées. La version de cette bibliothèque ne gère qu'une
+méthode de compression (deflation), mais d'autres algorithmes peuvent être
+ajoutés plus tard et auront la même interface.
 
 Cette bibliothèque est utilisée par de nombreux programmes système.
 
@@ -63,13 +63,14 @@ Summary:	header files and libraries for zlib development
 Summary(de):	Headerdateien und Libraries für zlib-Entwicklung 
 Summary(pl):	Pliki nag³ówkowe i dokumentacja do zlib
 Group:		Development/Libraries
+Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
 %description devel
 The 'zlib' compression library provides in-memory compression and
 decompression functions, including integrity checks of the uncompressed
-data.  This version of the library supports only one compression method
+data. This version of the library supports only one compression method
 (deflation) but other algorithms may be added later and will have the same
 stream interface.
 
@@ -87,13 +88,13 @@ werden, die diese zlib einsetzen.
 
 %description -l fr devel
 La bibliothèque de compression « zlib » offre des fonctions de compression
-et de décompression en mémoire, ainsi qu'une vérification de l'intégrité des
-données décompressées. La version de cette bibliothèque ne gère qu'une
+et de décompression en mémoire, ainsi qu'une vérification de l'intégrité
+des données décompressées. La version de cette bibliothèque ne gère qu'une
 méthode de compression (deflation), mais d'autres algorithmes peuvent être
 ajoutés plus tard et auront la même interface.
 
-Ce paquetage contient les fichiers en-têtes et les bibliothèques nécessaires
-au développement des programmes qui utilisent cette zlib.
+Ce paquetage contient les fichiers en-têtes et les bibliothèques
+nécessaires au développement des programmes qui utilisent cette zlib.
 
 %description -l pl devel
 Biblioteka zlib udostêpnia podprogramy do kompresji i dekompresji w pamiêci
@@ -118,23 +119,24 @@ statik kitaplýklarý ve baþlýk dosyalarýný içerir.
 Summary:	Static library for zlib development
 Summary(pl):	Biblioteka statyczna do zlib
 Group:		Development/Libraries
+Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
 
 %description static
 The 'zlib' compression library provides in-memory compression and
 decompression functions, including integrity checks of the uncompressed
-data.  This version of the library supports only one compression method
+data. This version of the library supports only one compression method
 (deflation) but other algorithms may be added later and will have the same
 stream interface.
 
-This package contains the header files and libraries needed to develop 
+This package contains the header files and libraries needed to develop
 programs that use these zlib.
 
 %description -l pl static
 Biblioteka zlib udostêpnia podprogramy do kompresji i dekompresji w pamiêci
 operacyjnej w³±cznie ze sprawdzaniem integralno¶ci w trakcie dekompresjii.
-Ta wersja biblioteki udostêpnia  tylko jedn± metodê kompresjii o nazwie
+Ta wersja biblioteki udostêpnia tylko jedn± metodê kompresjii o nazwie
 deflation niemniej inne algirytmy mog± byæ dodawane udostêpniaj±c taki sam
 interfejs funkcji operuj±cych na strumieniu danych.
 
@@ -177,8 +179,7 @@ gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man3/* \
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(755,root,root,755)
-%{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
