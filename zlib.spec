@@ -255,7 +255,8 @@ cp contrib/asm586/match.S .
 %endif
 
 %build
-CFLAGS="%{rpmcflags} -O3 %{?with_asmopt:-DASMV}" \
+CFLAGS="-D_REENTRANT -fPIC %{rpmcflags} %{?with_asmopt:-DASMV}" \
+CC="%{__cc}" \
 ./configure \
 	--prefix=%{_prefix} \
 	--shared
