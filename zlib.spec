@@ -12,7 +12,7 @@ Group(pl):	Biblioteki
 Source:		ftp://ftp.cdrom.com/pub/infozip/zlib/%{name}-%{version}.tar.gz
 Patch0:		%{name}-sharedlib.patch
 URL:		http://www.cdrom.com/pub/infozip/zlib/
-BuildRoot:	/tmp/%{name}-%{version}-root 
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 The 'zlib' compression library provides in-memory compression and
