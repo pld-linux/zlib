@@ -20,10 +20,8 @@ Release:	0.1
 License:	BSD
 Group:		Libraries
 Source0:	http://www.gzip.org/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5: abc405d0bdd3ee22782d7aa20e440f08
-Patch0:		%{name}-sharedlib.patch
-Patch1:		%{name}-asmopt.patch
-#Patch2:		%{name}-gzprintf_sec.patch
+# Source0-md5:	ef1cb003448b4a53517b8f25adb12452
+Patch0:		%{name}-asmopt.patch
 URL:		http://www.zlib.org/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	zlib1
@@ -244,10 +242,9 @@ Bibliotecas estáticas para desenvolvimento com a zlib.
 
 %prep
 %setup -q
-#%patch0 -p1
 
 %if %{with asmopt}
-%patch1 -p1
+%patch0 -p1
 %ifarch i686 athlon
 cp contrib/asm686/match.S .
 %endif
