@@ -169,7 +169,7 @@ install zlib.3 $RPM_BUILD_ROOT%{_mandir}/man3
 %{__make} prefix=$RPM_BUILD_ROOT%{_prefix} install
 
 mv $RPM_BUILD_ROOT%{_libdir}/libz.so.*.* $RPM_BUILD_ROOT/lib
-cd %{_libdir}
+cd $RPM_BUILD_ROOT%{_libdir}
 ln -sf ../../lib/libz.so.*.* $RPM_BUILD_ROOT%{_libdir}/libz.so
 cd -
 
