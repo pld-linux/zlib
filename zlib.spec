@@ -210,7 +210,7 @@ rm -rf $RPM_BUILD_ROOT
 
 * Sun May 03 1998 Arne Coucheron <arneco@online.no>
   [1.1.2-3]
-- added striping of the libs
+- added stripping of the libs
 - some minor changes to the spec file
 - removed some older changelogs
 
