@@ -20,7 +20,7 @@ Summary(tr):	SЩkЩЧtЩrma iЧlemleri iГin kitaplЩk
 Summary(uk):	Б╕бл╕отека для компрес╕╖ та декомпрес╕╖
 Name:		zlib
 Version:	1.2.1.1
-Release:	2
+Release:	3
 Epoch:		0
 License:	BSD
 Group:		Libraries
