@@ -12,7 +12,7 @@
 Summary:	Library for compression and decompression
 Summary(de):	Library für die Komprimierung und Dekomprimierung
 Summary(es):	Biblioteca para compresión y descompresión
-Summary(fr):	bibliothèque de compression et décompression
+Summary(fr):	Bibliothèque de compression et décompression
 Summary(pl):	Biblioteka z podprogramami do kompresji i dekompresji
 Summary(pt_BR):	Biblioteca para compressão e descompressão
 Summary(ru):	âÉÂÌÉÏÔÅËÁ ÄÌÑ ËÏÍĞÒÅÓÓÉÉ É ÄÅËÏÍĞÒÅÓÓÉÉ
@@ -101,7 +101,7 @@ sistem yazılımı tarafından kullanılmaktadır.
 ÔÏÊ ÖÅ ÓÁÍÉÊ ĞÏÔÏËÏ×ÉÊ ¦ÎÔÅÒÆÅÊÓ.
 
 %package devel
-Summary:	header files and libraries for zlib development
+Summary:	Header files and libraries for zlib development
 Summary(de):	Headerdateien und Libraries für zlib-Entwicklung
 Summary(es):	Bibliotecas y archivos de inclusión para desarrollo zlib
 Summary(pl):	Pliki nag³ówkowe i dokumentacja do zlib
