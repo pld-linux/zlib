@@ -20,12 +20,13 @@ Summary(tr):	SЩkЩЧtЩrma iЧlemleri iГin kitaplЩk
 Summary(uk):	Б╕бл╕отека для компрес╕╖ та декомпрес╕╖
 Name:		zlib
 Version:	1.1.4
-Release:	5
+Release:	6
 License:	BSD
 Group:		Libraries
 Source0:	http://www.gzip.org/%{name}/%{name}-%{version}.tar.gz
 Patch0:		%{name}-sharedlib.patch
 Patch1:		%{name}-asmopt.patch
+Patch2:		%{name}-gzprintf_sec.patch
 URL:		http://www.zlib.org/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	zlib1
@@ -258,6 +259,7 @@ cp contrib/asm686/match.S .
 cp contrib/asm586/match.S .
 %endif
 %endif
+%patch2 -p1
 
 %build
 
