@@ -158,12 +158,12 @@ install -d $RPM_BUILD_ROOT/usr/{include,lib,share/man/man3}
 
 install libz.a $RPM_BUILD_ROOT/usr/lib
 install zutil.h $RPM_BUILD_ROOT/usr/include
-install zlib.3 $RPM_BUILD_ROOT/usr/share/man/man3
+install zlib.3 $RPM_BUILD_ROOT%{_mandir}/man3
 make prefix=$RPM_BUILD_ROOT/usr install
 
 strip $RPM_BUILD_ROOT/usr/lib/lib*.so.*.*
 
-gzip -9nf $RPM_BUILD_ROOT/usr/share/man/man3/* \
+gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man3/* \
 	README ChangeLog algorithm.txt FAQ example.c minigzip.c
 
 %post   -p /sbin/ldconfig
@@ -180,7 +180,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc {README,ChangeLog,algorithm.txt,FAQ,example.c,minigzip.c}.gz
 /usr/include/*
 %attr(755,root,root) /usr/lib/lib*.so
-/usr/share/man/man3/*
+%{_mandir}/man3/*
 
 %files static
 %attr(644,root,root) /usr/lib/lib*.a
