@@ -1,7 +1,6 @@
 #
 # Conditional build:
 # _without_asmopt		- without assmbler optimization for i[56]86
-# _without_embed		- don't build uClibc version
 
 %ifnarch i586 i686 athlon
 %define				_asmopt		0
@@ -19,23 +18,15 @@ Summary(pt_BR):	Biblioteca para compressão e descompressão
 Summary(tr):	Sýkýþtýrma iþlemleri için kitaplýk
 Name:		zlib
 Version:	1.1.3
-Release:	28
+Release:	29
 License:	BSD
 Group:		Libraries
 Source0:	http://www.gzip.org/%{name}/%{name}-%{version}.tar.gz
 Patch0:		%{name}-sharedlib.patch
 Patch1:		%{name}-asmopt.patch
-%if %{!?_without_embed:1}%{?_without_embed:0}
-BuildRequires:	uClibc-devel
-BuildRequires:	uClibc-static
-%endif
 URL:		http://www.zlib.org/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	zlib1
-
-%define uclibc_prefix	/usr/%{_arch}-linux-uclibc
-%define embed_cc	%{_arch}-uclibc-cc
-%define embed_cflags	%{rpmcflags} -Os
 
 %description
 The 'zlib' compression library provides in-memory compression and
@@ -205,32 +196,6 @@ Static libraries for zlib development.
 %description static -l pt_BR
 Bibliotecas estáticas para desenvolvimento com a zlib.
 
-%package devel-embed
-Summary:	Embedded library for zlib development
-Summary(pl):	Wbudowana biblioteka zlib
-Group:		Development/Libraries
-
-%description devel-embed
-The 'zlib' compression library provides in-memory compression and
-decompression functions, including integrity checks of the
-uncompressed data. This version of the library supports only one
-compression method (deflation) but other algorithms may be added later
-and will have the same stream interface.
-
-This package contains libraries and headers needed for embedded
-applications development.
-
-%description devel-embed -l pl
-Biblioteka zlib udostêpnia podprogramy do kompresji i dekompresji w
-pamiêci operacyjnej w³±cznie ze sprawdzaniem integralno¶ci w trakcie
-dekompresjii. Ta wersja biblioteki udostêpnia tylko jedn± metodê
-kompresjii o nazwie deflation niemniej inne algirytmy mog± byæ
-dodawane udostêpniaj±c taki sam interfejs funkcji operuj±cych na
-strumieniu danych.
-
-Pakiet ten zawiera bibliotekê i pliki nag³ówkowe potrzebne do
-tworzenia aplikacji wbudowanych.
-
 %prep
 %setup -q
 %patch0 -p1
@@ -247,14 +212,6 @@ cp contrib/asm586/match.S .
 %endif
 
 %build
-%if %{!?_without_embed:1}%{?_without_embed:0}
-CFLAGS="-D_REENTRANT %{embed_cflags}" \
-CC=%{embed_cc} ./configure \
-	--prefix=%{_prefix}
-%{__make} libz.a
-mv -f libz.a libz.a-embed
-%{__make} distclean
-%endif
 
 CFLAGS="-D_REENTRANT -fPIC %{rpmcflags}"
 %if %{_asmopt}
@@ -285,12 +242,6 @@ cd $RPM_BUILD_ROOT%{_libdir}
 ln -sf ../../lib/libz.so.*.* $RPM_BUILD_ROOT%{_libdir}/libz.so
 cd -
 
-%if %{!?_without_embed:1}%{?_without_embed:0}
-install -d $RPM_BUILD_ROOT%{uclibc_prefix}/{lib,include}
-install libz.a-embed $RPM_BUILD_ROOT%{uclibc_prefix}/lib/libz.a
-cp $RPM_BUILD_ROOT%{_includedir}/* $RPM_BUILD_ROOT%{uclibc_prefix}/include
-%endif
-
 gzip -9nf README ChangeLog algorithm.txt FAQ
 
 %post   -p /sbin/ldconfig
@@ -314,10 +265,3 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
-
-%if %{!?_without_embed:1}%{?_without_embed:0}
-%files devel-embed
-%defattr(644,root,root,755)
-%{uclibc_prefix}/lib/*
-%{uclibc_prefix}/include/*
-%endif
