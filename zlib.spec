@@ -5,7 +5,7 @@ Summary(pl):	Biblioteka z podprogramami do kompresji i dekompresji
 Summary(tr):	Sýkýþtýrma iþlemleri için kitaplýk
 Name:		zlib
 Version:	1.1.3
-Release:	15
+Release:	16
 License:	BSD
 Group:		Libraries
 Group(de):	Libraries
@@ -149,21 +149,24 @@ wa³asnych programów wykorzystuj±cych zlib.
 %patch -p1
 
 %build
+CFLAGS="-D_REENTRANT -fPIC %{!?debug:$RPM_OPT_FLAGS}%{?debug:-O -g}" \
 ./configure \
 	--prefix=%{_prefix} \
 	--shared 
 
-%{__make} OPTIMIZE="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O -g}"
+%{__make}
 
 %{__make} libz.a
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_includedir},%{_libdir},%{_mandir}/man3}
+install -d $RPM_BUILD_ROOT{/lib,%{_includedir},%{_libdir},%{_mandir}/man3}
 
 install libz.a $RPM_BUILD_ROOT%{_libdir}
 install zutil.h $RPM_BUILD_ROOT%{_includedir}
 install zlib.3 $RPM_BUILD_ROOT%{_mandir}/man3
+
+mv $RPM_BUILD_ROOT%{_libdir}/libz.so.*.* $RPM_BUILD_ROOT/lib
 
 %{__make} prefix=$RPM_BUILD_ROOT%{_prefix} install
 
@@ -177,7 +180,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) /lib/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
