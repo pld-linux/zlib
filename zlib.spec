@@ -5,7 +5,7 @@ Summary(pl):	Biblioteka z podprogramami do kompresji i dekompresji
 Summary(tr):	Sýkýþtýrma iþlemleri için kitaplýk
 Name:		zlib
 Version:	1.1.3
-Release:	10
+Release:	11
 License:	BSD
 Group:		Libraries
 Group(fr):	Librairies
@@ -22,8 +22,6 @@ uncompressed data. This version of the library supports only one
 compression method (deflation) but other algorithms may be added later
 and will have the same stream interface.
 
-This library is used by a number of different system programs.
-
 %description -l de
 Die zlib-Komprimierungs-Library bietet speicherinterne Komprimierungs-
 und Dekomprimierungsfunktionen, einschließlich Integritätsprüfungen
@@ -31,8 +29,6 @@ der unkomprimierten Daten. Diese Version der Library unterstützt nur
 eine Komprimierungsmethode (Deflation), doch können weitere
 Algorithmen nachträglich eingefügt werden und haben dann dieselbe
 Oberfläche.
-
-Diese Library wird von verschiedenen Systemprogrammen genutzt.
 
 %description -l fr
 La bibliothèque de compression « zlib » offre des fonctions de
@@ -42,8 +38,6 @@ bibliothèque ne gère qu'une méthode de compression (deflation), mais
 d'autres algorithmes peuvent être ajoutés plus tard et auront la même
 interface.
 
-Cette bibliothèque est utilisée par de nombreux programmes système.
-
 %description -l pl
 Biblioteka zlib udostêpnia podprogramy do kompresji i dekompresji w
 pamiêci operacyjnej w³±cznie ze sprawdzaniem integralno¶ci w trakcie
@@ -51,8 +45,6 @@ dekompresjii. Ta wersja biblioteki udostêpnia tylko jedn± metodê
 kompresjii o nazwie deflation niemniej inne algorytmy mog± byæ
 dodawane udostêpniaj±c taki sam interfejs funkcji operuj±cych na
 strumieniu danych.
-
-Ta biblioteka jest u¿ywana m.in. przez ró¿ne programy systemowe.
 
 %description -l tr
 zlib sýkýþtýrma kitaplýðý bellekte sýkýþtýrma ve açma fonksiyonlarý
@@ -164,7 +156,6 @@ wa³asnych programów wykorzystuj±cych zlib.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT{%{_includedir},%{_libdir},%{_mandir}/man3}
 
 install libz.a $RPM_BUILD_ROOT%{_libdir}
