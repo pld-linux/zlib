@@ -154,16 +154,16 @@ make libz.a
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/usr/{include,lib,man/man3}
+install -d $RPM_BUILD_ROOT/usr/{include,lib,share/man/man3}
 
 install libz.a $RPM_BUILD_ROOT/usr/lib
 install zutil.h $RPM_BUILD_ROOT/usr/include
-install zlib.3 $RPM_BUILD_ROOT/usr/man/man3
+install zlib.3 $RPM_BUILD_ROOT/usr/share/man/man3
 make prefix=$RPM_BUILD_ROOT/usr install
 
 strip $RPM_BUILD_ROOT/usr/lib/lib*.so.*.*
 
-gzip -9nf $RPM_BUILD_ROOT/usr/man/man3/* \
+gzip -9nf $RPM_BUILD_ROOT/usr/share/man/man3/* \
 	README ChangeLog algorithm.txt FAQ example.c minigzip.c
 
 %post   -p /sbin/ldconfig
@@ -180,12 +180,16 @@ rm -rf $RPM_BUILD_ROOT
 %doc {README,ChangeLog,algorithm.txt,FAQ,example.c,minigzip.c}.gz
 /usr/include/*
 %attr(755,root,root) /usr/lib/lib*.so
-/usr/man/man3/*
+/usr/share/man/man3/*
 
 %files static
 %attr(644,root,root) /usr/lib/lib*.a
 
 %changelog
+* Mon May 10 1999 Piotr Czerwiñski <pius@pld.org.pl>
+  [1.1.3-8]
+- package is now FHS 2.0 compliant.
+
 * Mon Apr 19 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.1.3-7]
 - removed Conflicts: glibc (not neccesary now),
