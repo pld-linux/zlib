@@ -1,9 +1,12 @@
 #
 # Conditional build:
-# _with_asmopt		- with assmbler optimization for i[56]86
+# _without_asmopt		- without assmbler optimization for i[56]86
 
 %ifnarch i586 i686
-define		_with_asmopt		0
+%define				_asmopt		0
+%else
+%{?_without_asmopt:%define	_asmopt		0}
+%{!?_without_asmopt:%define	_asmopt		1}
 %endif
 
 Summary:	Library for compression and decompression
@@ -170,17 +173,22 @@ wa³asnych programów wykorzystuj±cych zlib.
 %patch0 -p1
 %{?_with_asmopt:%patch1 -p1}
 
+%if %{_asmopt}
+%patch1 -p1
 %ifarch i686
-%{?_with_asmopt:cp contrib/asm586/match.S .}
-%else
+cp contrib/asm586/match.S .
+%endif
 %ifarch i586
-%{?_with_asmopt:cp contrib/asm586/match.S .}
+cp contrib/asm586/match.S .
 %endif
 %endif
 
 %build
-CFLAGS="-D_REENTRANT -fPIC %{rpmcflags}" \
-%{?_with_asmopt:CFLAGS="$CFLAGS -O3 -DASMV"}
+CFLAGS="-D_REENTRANT -fPIC %{rpmcflags}"
+%if %{_asmopt}
+CFLAGS="$CFLAGS -O3 -DASMV"
+%endif
+export CFLAGS
 
 ./configure \
 	--prefix=%{_prefix} \
