@@ -145,7 +145,7 @@ programów wykorzystuj±cych zlib.
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" \
-./configure \
+./configure %{_target} \
 	--prefix=/usr \
 	--shared
 
