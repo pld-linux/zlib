@@ -64,8 +64,8 @@ interface.
 %description -l pl
 Biblioteka zlib udostêpnia podprogramy do kompresji i dekompresji w
 pamiêci operacyjnej w³±cznie ze sprawdzaniem integralno¶ci w trakcie
-dekompresjii. Ta wersja biblioteki udostêpnia tylko jedn± metodê
-kompresjii o nazwie deflation niemniej inne algorytmy mog± byæ
+dekompresji. Ta wersja biblioteki udostêpnia tylko jedn± metodê
+kompresji o nazwie deflation niemniej inne algorytmy mog± byæ
 dodawane udostêpniaj±c taki sam interfejs funkcji operuj±cych na
 strumieniu danych.
 
