@@ -5,7 +5,7 @@ Summary(pl):	Biblioteka z podprogramami do kompresji i dekompresji
 Summary(tr):	Sýkýþtýrma iþlemleri için kitaplýk
 Name:		zlib
 Version:	1.1.3
-Release:	16
+Release:	17
 License:	BSD
 Group:		Libraries
 Group(de):	Libraries
@@ -169,6 +169,7 @@ install zlib.3 $RPM_BUILD_ROOT%{_mandir}/man3
 %{__make} prefix=$RPM_BUILD_ROOT%{_prefix} install
 
 mv $RPM_BUILD_ROOT%{_libdir}/libz.so.*.* $RPM_BUILD_ROOT/lib
+ln -sf ../../lib/libz.so.*.* $RPM_BUILD_ROOT%{_libdir}/libz.so
 
 gzip -9nf README ChangeLog algorithm.txt FAQ
 
