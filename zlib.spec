@@ -11,8 +11,10 @@
 
 Summary:	Library for compression and decompression
 Summary(de):	Library für die Komprimierung und Dekomprimierung 
+Summary(es):	Biblioteca para compresión y descompresión
 Summary(fr):	bibliothèque de compression et décompression
 Summary(pl):	Biblioteka z podprogramami do kompresji i dekompresji
+Summary(pt_BR):	Biblioteca para compressão e descompressão
 Summary(tr):	Sýkýþtýrma iþlemleri için kitaplýk
 Name:		zlib
 Version:	1.1.3
@@ -47,6 +49,14 @@ eine Komprimierungsmethode (Deflation), doch können weitere
 Algorithmen nachträglich eingefügt werden und haben dann dieselbe
 Oberfläche.
 
+%description -l es
+La biblioteca de compresión 'zlib' nos ofrece funciones de compresión
+y descompresión en memoria, incluyendo chequeo de la integridad de
+datos no comprimidos. Esta versión de la biblioteca soporta solamente
+un método de compresión (deflación) pero otros algoritmos pueden ser
+añadidos más tarde y tendrán la misma interface. Esta biblioteca se
+usa por varios programas de sistema.
+
 %description -l fr
 La bibliothèque de compression « zlib » offre des fonctions de
 compression et de décompression en mémoire, ainsi qu'une vérification
@@ -63,6 +73,14 @@ kompresjii o nazwie deflation niemniej inne algorytmy mog± byæ
 dodawane udostêpniaj±c taki sam interfejs funkcji operuj±cych na
 strumieniu danych.
 
+%description -l pt_BR
+A biblioteca de compressão 'zlib' oferece funções de compressão e
+descompressão em memória, incluindo checagem da integridade de dados
+não comprimidos. Essa versão da biblioteca suporta somente um método
+de compressão (deflação) mas outros algoritmos podem ser adicionados
+mais tarde e terão a mesma interface. Essa biblioteca é usada por
+vários programas de sistema.
+
 %description -l tr
 zlib sýkýþtýrma kitaplýðý bellekte sýkýþtýrma ve açma fonksiyonlarý
 içermektedir. Bu sürüm yalnýzca 'deflation' yöntemini
@@ -73,7 +91,9 @@ sistem yazýlýmý tarafýndan kullanýlmaktadýr.
 %package devel
 Summary:	header files and libraries for zlib development
 Summary(de):	Headerdateien und Libraries für zlib-Entwicklung 
+Summary(es):	Bibliotecas y archivos de inclusión para desarrollo zlib
 Summary(pl):	Pliki nag³ówkowe i dokumentacja do zlib
+Summary(pt_BR):	Bibliotecas e arquivos de inclusão para desenvolvimento zlib
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
 Group(es):	Desarrollo/Bibliotecas
@@ -103,6 +123,15 @@ geplant, die dieselbe Art Oberfläche besitzen werden. Dieses Paket
 enthält die Header-Dateien und Libraries, die zur Entwicklung von
 Programmen benötigt werden, die diese zlib einsetzen.
 
+%description -l es devel
+La biblioteca de compresión zlib provee funciones de compresión y
+descompresión en memoria, incluye chequeos de integridad para los
+datos descomprimidos. Esta versión de la biblioteca soporta solamente
+un método de compresión (deflation) pero otros algoritmos pueden ser
+añadidos en el futuro y tendrán la misma interface stream. Este
+paquete contiene los archivos de inclusión y bibliotecas necesarios al
+desarrollo de programas que usan zlib.
+
 %description -l fr devel
 La bibliothèque de compression « zlib » offre des fonctions de
 compression et de décompression en mémoire, ainsi qu'une vérification
@@ -125,6 +154,16 @@ strumieniu danych.
 Pakiet ten zawiera pliki nag³owkowe i dokumentacjê potrzebn± przy
 tworzeniu w³asnych programów wykorzystuj±cych zlib.
 
+%description -l pt_BR devel
+A biblioteca de compressão zlib provê funções de compressão e
+descompressão em memória, incluindo checagens de integridade para os
+dados descomprimidos. Esta versão da biblioteca suporta somente um
+método de compressão (deflation) mas outros algoritmos podem ser
+adicionados no futuro e terão a mesma interface stream.
+
+Este pacote contém os arquivos de inclusão e bibliotecas necessários
+ao desenvolvimento de programas que usam zlib.
+
 %description -l tr devel
 zlib sýkýþtýrma kitaplýðý bellekte sýkýþtýrma ve açma fonksiyonlarý
 içermektedir. Bu sürüm yalnýzca 'deflation' yöntemini
@@ -136,7 +175,9 @@ statik kitaplýklarý ve baþlýk dosyalarýný içerir.
 
 %package static
 Summary:	Static library for zlib development
+Summary(es):	Static libraries for zlib development
 Summary(pl):	Biblioteka statyczna do zlib
+Summary(pt_BR):	Bibliotecas estáticas para desenvolvimento com a zlib
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
 Group(es):	Desarrollo/Bibliotecas
@@ -167,6 +208,12 @@ strumieniu danych.
 
 Pakiet ten zawiera bibliotekê statyczn± potrzebn± przy tworzeniu
 wa³asnych programów wykorzystuj±cych zlib.
+
+%description -l es static
+Static libraries for zlib development.
+
+%description -l pt_BR static
+Bibliotecas estáticas para desenvolvimento com a zlib.
 
 %prep
 %setup -q
