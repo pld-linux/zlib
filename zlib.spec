@@ -2,7 +2,7 @@
 # Conditional build:
 %bcond_without	asmopt	# without assmbler optimization for i586+
 #
-%ifnarch i586 i686 athlon
+%ifnarch i586 i686 pentium3 athlon
 %undefine	with_asmopt
 %endif
 Summary:	Library for compression and decompression
@@ -17,6 +17,7 @@ Summary(uk):	Б╕бл╕отека для компрес╕╖ та декомпрес╕╖
 Name:		zlib
 Version:	1.2.1
 Release:	2
+Epoch:		0
 License:	BSD
 Group:		Libraries
 Source0:	http://www.gzip.org/%{name}/%{name}-%{version}.tar.gz
@@ -103,7 +104,7 @@ Summary(pt_BR):	Bibliotecas e arquivos de inclusЦo para desenvolvimento zlib
 Summary(ru):	Хедеры и библиотеки для программирования с zlib
 Summary(uk):	Хедери та б╕бл╕отеки для програмування з zlib
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	zlib1-devel
 
 %description devel
@@ -203,7 +204,7 @@ Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com a zlib
 Summary(ru):	Статическая библиотека для программирования с zlib
 Summary(uk):	Статична б╕бл╕отека для програмування з zlib
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description static
 The 'zlib' compression library provides in-memory compression and
@@ -245,7 +246,7 @@ Bibliotecas estАticas para desenvolvimento com a zlib.
 
 %if %{with asmopt}
 %patch0 -p1
-%ifarch i686 athlon
+%ifarch i686 pentium3 athlon
 cp contrib/asm686/match.S .
 %endif
 %ifarch i586
@@ -261,7 +262,6 @@ CC="%{__cc}" \
 	--shared
 
 %{__make}
-
 %{__make} libz.a
 
 %install
