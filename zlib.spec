@@ -22,13 +22,6 @@ Version:	1.1.3
 Release:	28
 License:	BSD
 Group:		Libraries
-Group(de):	Libraries
-Group(es):	Bibliotecas
-Group(fr):	Librairies
-Group(pl):	Biblioteki
-Group(pt_BR):	Bibliotecas
-Group(ru):	Библиотеки
-Group(uk):	Б╕бл╕отеки
 Source0:	http://www.gzip.org/%{name}/%{name}-%{version}.tar.gz
 Patch0:		%{name}-sharedlib.patch
 Patch1:		%{name}-asmopt.patch
@@ -105,13 +98,6 @@ Summary(es):	Bibliotecas y archivos de inclusiСn para desarrollo zlib
 Summary(pl):	Pliki nagЁСwkowe i dokumentacja do zlib
 Summary(pt_BR):	Bibliotecas e arquivos de inclusЦo para desenvolvimento zlib
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 Obsoletes:	zlib1-devel
 
@@ -190,13 +176,6 @@ Summary(es):	Static libraries for zlib development
 Summary(pl):	Biblioteka statyczna do zlib
 Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com a zlib
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static
@@ -230,13 +209,6 @@ Bibliotecas estАticas para desenvolvimento com a zlib.
 Summary:	Embedded library for zlib development
 Summary(pl):	Wbudowana biblioteka zlib
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 
 %description devel-embed
 The 'zlib' compression library provides in-memory compression and
