@@ -24,6 +24,7 @@ Release:	6
 License:	BSD
 Group:		Libraries
 Source0:	http://www.gzip.org/%{name}/%{name}-%{version}.tar.gz
+# Source0-md5:	abc405d0bdd3ee22782d7aa20e440f08
 Patch0:		%{name}-sharedlib.patch
 Patch1:		%{name}-asmopt.patch
 Patch2:		%{name}-gzprintf_sec.patch
