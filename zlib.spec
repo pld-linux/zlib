@@ -1,8 +1,12 @@
 #
 # Conditional build:
-%bcond_without	asmopt	# without assmbler optimization for i586+
+%bcond_without	asmopt	# without assembler optimization for i586+
+%bcond_with	pax
 #
 %ifnarch i586 i686 pentium3 athlon
+%undefine	with_asmopt
+%endif
+%if %{with pax} && %{with asmopt}
 %undefine	with_asmopt
 %endif
 Summary:	Library for compression and decompression
