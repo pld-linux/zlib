@@ -1,4 +1,7 @@
 #
+# TODO:
+#		- SECURITY: http://bugs.debian.org/252253
+#
 # Conditional build:
 %bcond_without	asmopt	# without assembler optimization for i586+
 %bcond_with	pax
@@ -19,13 +22,14 @@ Summary(ru):	Библиотека для компрессии и декомпрессии
 Summary(tr):	SЩkЩЧtЩrma iЧlemleri iГin kitaplЩk
 Summary(uk):	Б╕бл╕отека для компрес╕╖ та декомпрес╕╖
 Name:		zlib
-Version:	1.2.1
-Release:	2
+Version:	1.2.1.1
+Release:	1
 Epoch:		0
 License:	BSD
 Group:		Libraries
-Source0:	http://www.gzip.org/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	ef1cb003448b4a53517b8f25adb12452
+#Source0:	http://www.gzip.org/%{name}/%{name}-%{version}.tar.gz
+Source0:	http://devel.santafelinux.com/source/%{name}-%{version}/upstream/tarballs/%{name}-%{version}.tar.gz
+# Source0-md5:	e30f85eed4ecb32841cafe12673c6590
 Patch0:		%{name}-asmopt.patch
 URL:		http://www.zlib.org/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
