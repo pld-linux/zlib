@@ -164,8 +164,8 @@ make prefix=$RPM_BUILD_ROOT/usr install
 
 strip $RPM_BUILD_ROOT/usr/lib/lib*.so.*.*
 
-gzip -9nf $RPM_BUILD_ROOT/usr/man/man3/*
-gzip -9nf README ChangeLog algorithm.txt FAQ example.c minigzip.c
+gzip -9nf $RPM_BUILD_ROOT/usr/man/man3/* \
+	README ChangeLog algorithm.txt FAQ example.c minigzip.c
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
