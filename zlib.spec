@@ -20,7 +20,7 @@ Summary(tr):	SЩkЩЧtЩrma iЧlemleri iГin kitaplЩk
 Summary(uk):	Б╕бл╕отека для компрес╕╖ та декомпрес╕╖
 Name:		zlib
 Version:	1.1.4
-Release:	4
+Release:	5
 License:	BSD
 Group:		Libraries
 Source0:	http://www.gzip.org/%{name}/%{name}-%{version}.tar.gz
@@ -287,14 +287,13 @@ install zlib.3 $RPM_BUILD_ROOT%{_mandir}/man3
 
 mv $RPM_BUILD_ROOT%{_libdir}/libz.so.*.* $RPM_BUILD_ROOT/lib
 cd $RPM_BUILD_ROOT%{_libdir}
-ln -sf ../../lib/libz.so.*.* $RPM_BUILD_ROOT%{_libdir}/libz.so
-cd -
-
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+ln -sf /lib/$(cd ../../lib && ls libz.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libz.so
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
