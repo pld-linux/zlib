@@ -11,7 +11,7 @@
 %endif
 
 Summary:	Library for compression and decompression
-Summary(de):	Library für die Komprimierung und Dekomprimierung 
+Summary(de):	Library für die Komprimierung und Dekomprimierung
 Summary(es):	Biblioteca para compresión y descompresión
 Summary(fr):	bibliothèque de compression et décompression
 Summary(pl):	Biblioteka z podprogramami do kompresji i dekompresji
@@ -93,7 +93,7 @@ sistem yazýlýmý tarafýndan kullanýlmaktadýr.
 
 %package devel
 Summary:	header files and libraries for zlib development
-Summary(de):	Headerdateien und Libraries für zlib-Entwicklung 
+Summary(de):	Headerdateien und Libraries für zlib-Entwicklung
 Summary(es):	Bibliotecas y archivos de inclusión para desarrollo zlib
 Summary(pl):	Pliki nag³ówkowe i dokumentacja do zlib
 Summary(pt_BR):	Bibliotecas e arquivos de inclusão para desenvolvimento zlib
@@ -111,7 +111,7 @@ and will have the same stream interface.
 This package contains the header files needed to develop programs that
 use these zlib.
 
-%description -l de devel
+%description devel -l de
 Die zlip-Komprimierungs-Library bietet speicherinterne Komprimierungs-
 und Dekomprimierungsfunktionen, einschließlich Integritätsprüfungen
 der dekomprimierten Daten. Diese Version der Library unterstützt nur
@@ -120,7 +120,7 @@ geplant, die dieselbe Art Oberfläche besitzen werden. Dieses Paket
 enthält die Header-Dateien und Libraries, die zur Entwicklung von
 Programmen benötigt werden, die diese zlib einsetzen.
 
-%description -l es devel
+%description devel -l es
 La biblioteca de compresión zlib provee funciones de compresión y
 descompresión en memoria, incluye chequeos de integridad para los
 datos descomprimidos. Esta versión de la biblioteca soporta solamente
@@ -129,7 +129,7 @@ añadidos en el futuro y tendrán la misma interface stream. Este
 paquete contiene los archivos de inclusión y bibliotecas necesarios al
 desarrollo de programas que usan zlib.
 
-%description -l fr devel
+%description devel -l fr
 La bibliothèque de compression « zlib » offre des fonctions de
 compression et de décompression en mémoire, ainsi qu'une vérification
 de l'intégrité des données décompressées. La version de cette
@@ -140,7 +140,7 @@ interface.
 Ce paquetage contient les fichiers en-têtes et les bibliothèques
 nécessaires au développement des programmes qui utilisent cette zlib.
 
-%description -l pl devel
+%description devel -l pl
 Biblioteka zlib udostêpnia podprogramy do kompresji i dekompresji w
 pamiêci operacyjnej w³±cznie ze sprawdzaniem integralno¶ci w trakcie
 dekompresjii. Ta wersja biblioteki udostêpnia tylko jedn± metodê
@@ -151,7 +151,7 @@ strumieniu danych.
 Pakiet ten zawiera pliki nag³owkowe i dokumentacjê potrzebn± przy
 tworzeniu w³asnych programów wykorzystuj±cych zlib.
 
-%description -l pt_BR devel
+%description devel -l pt_BR
 A biblioteca de compressão zlib provê funções de compressão e
 descompressão em memória, incluindo checagens de integridade para os
 dados descomprimidos. Esta versão da biblioteca suporta somente um
@@ -161,7 +161,7 @@ adicionados no futuro e terão a mesma interface stream.
 Este pacote contém os arquivos de inclusão e bibliotecas necessários
 ao desenvolvimento de programas que usam zlib.
 
-%description -l tr devel
+%description devel -l tr
 zlib sýkýþtýrma kitaplýðý bellekte sýkýþtýrma ve açma fonksiyonlarý
 içermektedir. Bu sürüm yalnýzca 'deflation' yöntemini
 desteklemektedir. Ancak baþka algoritmalarýn ayný arabirimle
@@ -188,7 +188,7 @@ and will have the same stream interface.
 This package contains the header files and libraries needed to develop
 programs that use these zlib.
 
-%description -l pl static
+%description static -l pl
 Biblioteka zlib udostêpnia podprogramy do kompresji i dekompresji w
 pamiêci operacyjnej w³±cznie ze sprawdzaniem integralno¶ci w trakcie
 dekompresjii. Ta wersja biblioteki udostêpnia tylko jedn± metodê
@@ -199,10 +199,10 @@ strumieniu danych.
 Pakiet ten zawiera bibliotekê statyczn± potrzebn± przy tworzeniu
 wa³asnych programów wykorzystuj±cych zlib.
 
-%description -l es static
+%description static -l es
 Static libraries for zlib development.
 
-%description -l pt_BR static
+%description static -l pt_BR
 Bibliotecas estáticas para desenvolvimento com a zlib.
 
 %package devel-embed
@@ -217,10 +217,10 @@ uncompressed data. This version of the library supports only one
 compression method (deflation) but other algorithms may be added later
 and will have the same stream interface.
 
-This package contains libraries and headers needed for embedded applications
-development.
+This package contains libraries and headers needed for embedded
+applications development.
 
-%description -l pl devel-embed
+%description devel-embed -l pl
 Biblioteka zlib udostêpnia podprogramy do kompresji i dekompresji w
 pamiêci operacyjnej w³±cznie ze sprawdzaniem integralno¶ci w trakcie
 dekompresjii. Ta wersja biblioteki udostêpnia tylko jedn± metodê
@@ -228,8 +228,8 @@ kompresjii o nazwie deflation niemniej inne algirytmy mog± byæ
 dodawane udostêpniaj±c taki sam interfejs funkcji operuj±cych na
 strumieniu danych.
 
-Pakiet ten zawiera bibliotekê i pliki nag³ówkowe potrzebne do tworzenia
-aplikacji wbudowanych.
+Pakiet ten zawiera bibliotekê i pliki nag³ówkowe potrzebne do
+tworzenia aplikacji wbudowanych.
 
 %prep
 %setup -q
@@ -264,7 +264,7 @@ export CFLAGS
 
 ./configure \
 	--prefix=%{_prefix} \
-	--shared 
+	--shared
 
 %{__make}
 
