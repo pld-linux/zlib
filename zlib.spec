@@ -154,14 +154,14 @@ make libz.a
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/usr/{include,lib,share/man/man3}
+install -d $RPM_BUILD_ROOT{%{_includedir},%{_libdir},%{_mandir}/man3}
 
 install libz.a $RPM_BUILD_ROOT%{_libdir}
 install zutil.h $RPM_BUILD_ROOT%{_includedir}
 install zlib.3 $RPM_BUILD_ROOT%{_mandir}/man3
 make prefix=$RPM_BUILD_ROOT/usr install
 
-strip $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
+strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man3/* \
 	README ChangeLog algorithm.txt FAQ example.c minigzip.c
@@ -183,7 +183,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/*
 
 %files static
-%attr(644,root,root) %{_libdir}/lib*.a
+%defattr(644,root,root,755)
+%{_libdir}/lib*.a
 
 %changelog
 * Fri May 21 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
