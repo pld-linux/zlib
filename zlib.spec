@@ -17,11 +17,15 @@ Release:	24
 License:	BSD
 Group:		Libraries
 Group(de):	Libraries
+Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
+Group(pt_BR):	Bibliotecas
+Group(ru):	Библиотеки
+Group(uk):	Б╕бл╕отеки
 Source0:	ftp://ftp.cdrom.com/pub/infozip/zlib/%{name}-%{version}.tar.gz
 Patch0:		%{name}-sharedlib.patch
-%{?_with_asmopt:Patch1:		%{name}-asmopt.patch}
+Patch1:		%{name}-asmopt.patch
 URL:		http://www.cdrom.com/pub/infozip/zlib/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -69,8 +73,12 @@ Summary(de):	Headerdateien und Libraries fЭr zlib-Entwicklung
 Summary(pl):	Pliki nagЁСwkowe i dokumentacja do zlib
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	Разработка/Библиотеки
+Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description devel
@@ -128,8 +136,12 @@ Summary:	Static library for zlib development
 Summary(pl):	Biblioteka statyczna do zlib
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	Разработка/Библиотеки
+Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static
@@ -155,7 +167,7 @@ waЁasnych programСw wykorzystuj╠cych zlib.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 %{?_with_asmopt:%patch1 -p1}
 
 %ifarch i686
