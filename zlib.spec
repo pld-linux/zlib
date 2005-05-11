@@ -274,7 +274,7 @@ install -d $RPM_BUILD_ROOT{/%{_lib},%{_includedir},%{_libdir},%{_mandir}/man3}
 %{__make} install \
 	prefix=$RPM_BUILD_ROOT%{_prefix}
 
-%ifarch amd64 sparc64
+%if "%{_libdir}" != "%{_prefix}/lib"
 mv $RPM_BUILD_ROOT{%{_prefix}/lib/*,%{_libdir}}
 %endif
 
