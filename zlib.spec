@@ -1,6 +1,3 @@
-# TODO
-# - security http://security.gentoo.org/glsa/glsa-200507-05.xml
-#
 # Conditional build:
 %bcond_without	asmopt	# without assembler optimization for i586+
 %bcond_with	pax
@@ -28,6 +25,7 @@ Group:		Libraries
 Source0:	http://www.zlib.net/%{name}-%{version}.tar.gz
 # Source0-md5:	68bd51aaa6558c3bc3fd4890e53413de
 Patch0:		%{name}-asmopt.patch
+Patch1:		%{name}-inftrees.patch
 URL:		http://www.zlib.net/
 Obsoletes:	zlib1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -251,6 +249,8 @@ Bibliotecas estáticas para desenvolvimento com a zlib.
 
 %if %{with asmopt}
 %patch0 -p1
+%patch1 -p0
+
 %ifarch i686 pentium3 athlon
 cp contrib/asm686/match.S .
 %endif
