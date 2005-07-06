@@ -1,0 +1,4 @@
+- PaX bcond. It turns off asm (i586+) optimizations when the kernel
+             uses PaX because asm opt. requires executable stack.
+  (more info about PaX:
+   http://www.linux-magazine.com/issue/40/PaX_Memory_Protection.pdf)
