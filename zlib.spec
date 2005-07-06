@@ -1,3 +1,5 @@
+# TODO
+# - security http://security.gentoo.org/glsa/glsa-200507-05.xml
 #
 # Conditional build:
 %bcond_without	asmopt	# without assembler optimization for i586+
