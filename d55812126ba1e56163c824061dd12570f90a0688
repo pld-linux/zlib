@@ -1,0 +1,3 @@
+- make Patch1: unconditional (builder -g wouldn't fetch it). Don't worry,
+  it's applied on _with_asmopt condition
+- adapterized
