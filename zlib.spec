@@ -1,3 +1,4 @@
+#
 # Conditional build:
 %bcond_without	asmopt	# without assembler optimization for i586+
 %bcond_with	pax
