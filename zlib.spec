@@ -2,7 +2,7 @@
 %bcond_without	asmopt	# without assembler optimization for i586+
 %bcond_with	pax
 #
-%ifnarch i586 i686 pentium3 athlon
+%ifnarch i586 i686 pentium3 pentium4 athlon
 %undefine	with_asmopt
 %endif
 %if %{with pax} && %{with asmopt}
@@ -19,7 +19,7 @@ Summary(tr):	Sıkıştırma işlemleri için kitaplık
 Summary(uk):	â¦ÂÌ¦ÏÔÅËÁ ÄÌÑ ËÏÍĞÒÅÓ¦§ ÔÁ ÄÅËÏÍĞÒÅÓ¦§
 Name:		zlib
 Version:	1.2.2
-Release:	2
+Release:	3
 License:	BSD
 Group:		Libraries
 Source0:	http://www.zlib.net/%{name}-%{version}.tar.gz
@@ -246,12 +246,12 @@ Bibliotecas estáticas para desenvolvimento com a zlib.
 
 %prep
 %setup -q
+%patch1 -p0
 
 %if %{with asmopt}
 %patch0 -p1
-%patch1 -p0
 
-%ifarch i686 pentium3 athlon
+%ifarch i686 pentium3 pentium4 athlon
 cp contrib/asm686/match.S .
 %endif
 %ifarch i586
