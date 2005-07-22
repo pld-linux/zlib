@@ -19,14 +19,13 @@ Summary(ru):	Библиотека для компрессии и декомпрессии
 Summary(tr):	SЩkЩЧtЩrma iЧlemleri iГin kitaplЩk
 Summary(uk):	Б╕бл╕отека для компрес╕╖ та декомпрес╕╖
 Name:		zlib
-Version:	1.2.2
-Release:	4
+Version:	1.2.3
+Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://www.zlib.net/%{name}-%{version}.tar.gz
-# Source0-md5:	68bd51aaa6558c3bc3fd4890e53413de
+# Source0-md5:	debc62758716a169df9f62e6ab2bc634
 Patch0:		%{name}-asmopt.patch
-Patch1:		%{name}-inftrees.patch
 URL:		http://www.zlib.net/
 Obsoletes:	zlib1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -247,7 +246,6 @@ Bibliotecas estАticas para desenvolvimento com a zlib.
 
 %prep
 %setup -q
-%patch1 -p0
 
 %if %{with asmopt}
 %patch0 -p1
