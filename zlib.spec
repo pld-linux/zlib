@@ -1,36 +1,35 @@
 #
 # Conditional build:
-# _without_asmopt		- without assmbler optimization for i[56]86
-
-%ifnarch i586 i686 athlon
-%define				_asmopt		0
-%else
-%{?_without_asmopt:%define	_asmopt		0}
-%{!?_without_asmopt:%define	_asmopt		1}
+%bcond_without	asmopt	# without assembler optimization for i586+
+%bcond_with	pax
+#
+%ifnarch i586 i686 pentium3 pentium4 athlon
+%undefine	with_asmopt
 %endif
-
+%if %{with pax} && %{with asmopt}
+%undefine	with_asmopt
+%endif
 Summary:	Library for compression and decompression
 Summary(de):	Library für die Komprimierung und Dekomprimierung
 Summary(es):	Biblioteca para compresión y descompresión
-Summary(fr):	bibliothèque de compression et décompression
+Summary(fr):	Bibliothèque de compression et décompression
 Summary(pl):	Biblioteka z podprogramami do kompresji i dekompresji
 Summary(pt_BR):	Biblioteca para compressão e descompressão
 Summary(ru):	âÉÂÌÉÏÔÅËÁ ÄÌÑ ËÏÍĞÒÅÓÓÉÉ É ÄÅËÏÍĞÒÅÓÓÉÉ
 Summary(tr):	Sıkıştırma işlemleri için kitaplık
 Summary(uk):	â¦ÂÌ¦ÏÔÅËÁ ÄÌÑ ËÏÍĞÒÅÓ¦§ ÔÁ ÄÅËÏÍĞÒÅÓ¦§
 Name:		zlib
-Version:	1.1.4
-Release:	6
+Version:	1.2.3
+Release:	2
+Epoch:		0
 License:	BSD
 Group:		Libraries
-Source0:	http://www.gzip.org/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	abc405d0bdd3ee22782d7aa20e440f08
-Patch0:		%{name}-sharedlib.patch
-Patch1:		%{name}-asmopt.patch
-Patch2:		%{name}-gzprintf_sec.patch
-URL:		http://www.zlib.org/
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Source0:	http://www.zlib.net/%{name}-%{version}.tar.gz
+# Source0-md5:	debc62758716a169df9f62e6ab2bc634
+Patch0:		%{name}-asmopt.patch
+URL:		http://www.zlib.net/
 Obsoletes:	zlib1
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 The 'zlib' compression library provides in-memory compression and
@@ -101,7 +100,7 @@ sistem yazılımı tarafından kullanılmaktadır.
 ÔÏÊ ÖÅ ÓÁÍÉÊ ĞÏÔÏËÏ×ÉÊ ¦ÎÔÅÒÆÅÊÓ.
 
 %package devel
-Summary:	header files and libraries for zlib development
+Summary:	Header files and libraries for zlib development
 Summary(de):	Headerdateien und Libraries für zlib-Entwicklung
 Summary(es):	Bibliotecas y archivos de inclusión para desarrollo zlib
 Summary(pl):	Pliki nag³ówkowe i dokumentacja do zlib
@@ -109,7 +108,7 @@ Summary(pt_BR):	Bibliotecas e arquivos de inclusão para desenvolvimento zlib
 Summary(ru):	èÅÄÅÒÙ É ÂÉÂÌÉÏÔÅËÉ ÄÌÑ ĞÒÏÇÒÁÍÍÉÒÏ×ÁÎÉÑ Ó zlib
 Summary(uk):	èÅÄÅÒÉ ÔÁ Â¦ÂÌ¦ÏÔÅËÉ ÄÌÑ ĞÒÏÇÒÁÍÕ×ÁÎÎÑ Ú zlib
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	zlib1-devel
 
 %description devel
@@ -209,7 +208,7 @@ Summary(pt_BR):	Bibliotecas estáticas para desenvolvimento com a zlib
 Summary(ru):	óÔÁÔÉŞÅÓËÁÑ ÂÉÂÌÉÏÔÅËÁ ÄÌÑ ĞÒÏÇÒÁÍÍÉÒÏ×ÁÎÉÑ Ó zlib
 Summary(uk):	óÔÁÔÉŞÎÁ Â¦ÂÌ¦ÏÔÅËÁ ÄÌÑ ĞÒÏÇÒÁÍÕ×ÁÎÎÑ Ú zlib
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description static
 The 'zlib' compression library provides in-memory compression and
@@ -230,7 +229,7 @@ dodawane udostêpniaj±c taki sam interfejs funkcji operuj±cych na
 strumieniu danych.
 
 Pakiet ten zawiera bibliotekê statyczn± potrzebn± przy tworzeniu
-wa³asnych programów wykorzystuj±cych zlib.
+w³asnych programów wykorzystuj±cych zlib.
 
 %description static -l es
 Static libraries for zlib development.
@@ -248,65 +247,59 @@ Bibliotecas estáticas para desenvolvimento com a zlib.
 
 %prep
 %setup -q
-%patch0 -p1
-%{?_with_asmopt:%patch1 -p1}
 
-%if %{_asmopt}
-%patch1 -p1
-%ifarch i686 athlon
+%if %{with asmopt}
+%patch0 -p1
+
+%ifarch i686 pentium3 pentium4 athlon
 cp contrib/asm686/match.S .
 %endif
 %ifarch i586
 cp contrib/asm586/match.S .
 %endif
 %endif
-%patch2 -p1
 
 %build
-
-CFLAGS="-D_REENTRANT -fPIC %{rpmcflags}"
-%if %{_asmopt}
-CFLAGS="$CFLAGS -O3 -DASMV"
-%endif
-export CFLAGS
-CC=%{__cc}; export CC
+CFLAGS="-D_REENTRANT -fPIC %{rpmcflags} %{?with_asmopt:-DASMV}" \
+CC="%{__cc}" \
 ./configure \
 	--prefix=%{_prefix} \
 	--shared
 
 %{__make}
-
 %{__make} libz.a
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{/lib,%{_includedir},%{_libdir},%{_mandir}/man3}
+install -d $RPM_BUILD_ROOT{/%{_lib},%{_includedir},%{_libdir},%{_mandir}/man3}
+
+%{__make} install \
+	prefix=$RPM_BUILD_ROOT%{_prefix}
+
+%if "%{_libdir}" != "%{_prefix}/lib"
+mv $RPM_BUILD_ROOT{%{_prefix}/lib/*,%{_libdir}}
+%endif
 
 install libz.a $RPM_BUILD_ROOT%{_libdir}
 install zutil.h $RPM_BUILD_ROOT%{_includedir}
-install zlib.3 $RPM_BUILD_ROOT%{_mandir}/man3
 
-%{__make} prefix=$RPM_BUILD_ROOT%{_prefix} install
-
-mv $RPM_BUILD_ROOT%{_libdir}/libz.so.*.* $RPM_BUILD_ROOT/lib
-cd $RPM_BUILD_ROOT%{_libdir}
-ln -sf /lib/$(cd ../../lib && ls libz.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libz.so
+mv -f $RPM_BUILD_ROOT%{_libdir}/libz.so.*.* $RPM_BUILD_ROOT/%{_lib}
+ln -sf /%{_lib}/$(cd $RPM_BUILD_ROOT/%{_lib} && echo libz.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libz.so
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) /lib/lib*.so.*.*
+%doc ChangeLog FAQ README algorithm.txt
+%attr(755,root,root) /%{_lib}/libz.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%doc README ChangeLog algorithm.txt FAQ
-%attr(755,root,root) %{_libdir}/lib*.so
-
+%attr(755,root,root) %{_libdir}/libz.so
 %{_includedir}/*
 %{_mandir}/man3/*
 
