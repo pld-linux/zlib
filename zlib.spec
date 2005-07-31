@@ -3,7 +3,7 @@
 %bcond_without	asmopt	# without assembler optimization for i586+
 %bcond_with	pax
 #
-%ifnarch i586 i686 pentium3 athlon
+%ifnarch i586 i686 pentium3 pentium4 athlon
 %undefine	with_asmopt
 %endif
 %if %{with pax} && %{with asmopt}
@@ -19,18 +19,16 @@ Summary(ru):	Библиотека для компрессии и декомпрессии
 Summary(tr):	SЩkЩЧtЩrma iЧlemleri iГin kitaplЩk
 Summary(uk):	Б╕бл╕отека для компрес╕╖ та декомпрес╕╖
 Name:		zlib
-Version:	1.2.1.1
-Release:	1
-Epoch:		0
+Version:	1.2.3
+Release:	3
 License:	BSD
 Group:		Libraries
-#Source0:	http://www.gzip.org/%{name}/%{name}-%{version}.tar.gz
-Source0:	http://devel.santafelinux.com/source/%{name}-%{version}/upstream/tarballs/%{name}-%{version}.tar.gz
-# Source0-md5:	e30f85eed4ecb32841cafe12673c6590
+Source0:	http://www.zlib.net/%{name}-%{version}.tar.gz
+# Source0-md5:	debc62758716a169df9f62e6ab2bc634
 Patch0:		%{name}-asmopt.patch
-URL:		http://www.zlib.org/
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+URL:		http://www.zlib.net/
 Obsoletes:	zlib1
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 The 'zlib' compression library provides in-memory compression and
@@ -251,7 +249,8 @@ Bibliotecas estАticas para desenvolvimento com a zlib.
 
 %if %{with asmopt}
 %patch0 -p1
-%ifarch i686 pentium3 athlon
+
+%ifarch i686 pentium3 pentium4 athlon
 cp contrib/asm686/match.S .
 %endif
 %ifarch i586
@@ -276,7 +275,7 @@ install -d $RPM_BUILD_ROOT{/%{_lib},%{_includedir},%{_libdir},%{_mandir}/man3}
 %{__make} install \
 	prefix=$RPM_BUILD_ROOT%{_prefix}
 
-%ifarch amd64 sparc64
+%if "%{_libdir}" != "%{_prefix}/lib"
 mv $RPM_BUILD_ROOT{%{_prefix}/lib/*,%{_libdir}}
 %endif
 
@@ -289,17 +288,17 @@ ln -sf /%{_lib}/$(cd $RPM_BUILD_ROOT/%{_lib} && echo libz.so.*.*) $RPM_BUILD_ROO
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog FAQ README algorithm.txt
-%attr(755,root,root) /%{_lib}/lib*.so.*.*
+%attr(755,root,root) /%{_lib}/libz.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/libz.so
 %{_includedir}/*
 %{_mandir}/man3/*
 
