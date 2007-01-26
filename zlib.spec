@@ -260,6 +260,7 @@ cp contrib/asm586/match.S .
 
 %build
 CFLAGS="-D_REENTRANT -fPIC %{rpmcflags} %{?with_asmopt:-DASMV}" \
+LDSHARED="%{__cc} $CFLAGS -shared -Wl,-soname,libz.so.1" \
 CC="%{__cc}" \
 ./configure \
 	--prefix=%{_prefix} \
