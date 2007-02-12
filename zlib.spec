@@ -10,14 +10,14 @@
 %undefine	with_asmopt
 %endif
 Summary:	Library for compression and decompression
-Summary(de.UTF-8):   Library für die Komprimierung und Dekomprimierung
-Summary(es.UTF-8):   Biblioteca para compresión y descompresión
-Summary(fr.UTF-8):   Bibliothèque de compression et décompression
-Summary(pl.UTF-8):   Biblioteka z podprogramami do kompresji i dekompresji
-Summary(pt_BR.UTF-8):   Biblioteca para compressão e descompressão
-Summary(ru.UTF-8):   Библиотека для компрессии и декомпрессии
-Summary(tr.UTF-8):   Sıkıştırma işlemleri için kitaplık
-Summary(uk.UTF-8):   Бібліотека для компресії та декомпресії
+Summary(de.UTF-8):	Library für die Komprimierung und Dekomprimierung
+Summary(es.UTF-8):	Biblioteca para compresión y descompresión
+Summary(fr.UTF-8):	Bibliothèque de compression et décompression
+Summary(pl.UTF-8):	Biblioteka z podprogramami do kompresji i dekompresji
+Summary(pt_BR.UTF-8):	Biblioteca para compressão e descompressão
+Summary(ru.UTF-8):	Библиотека для компрессии и декомпрессии
+Summary(tr.UTF-8):	Sıkıştırma işlemleri için kitaplık
+Summary(uk.UTF-8):	Бібліотека для компресії та декомпресії
 Name:		zlib
 Version:	1.2.3
 Release:	4
@@ -100,12 +100,12 @@ sistem yazılımı tarafından kullanılmaktadır.
 
 %package devel
 Summary:	Header files and libraries for zlib development
-Summary(de.UTF-8):   Headerdateien und Libraries für zlib-Entwicklung
-Summary(es.UTF-8):   Bibliotecas y archivos de inclusión para desarrollo zlib
-Summary(pl.UTF-8):   Pliki nagłówkowe i dokumentacja do zlib
-Summary(pt_BR.UTF-8):   Bibliotecas e arquivos de inclusão para desenvolvimento zlib
-Summary(ru.UTF-8):   Хедеры и библиотеки для программирования с zlib
-Summary(uk.UTF-8):   Хедери та бібліотеки для програмування з zlib
+Summary(de.UTF-8):	Headerdateien und Libraries für zlib-Entwicklung
+Summary(es.UTF-8):	Bibliotecas y archivos de inclusión para desarrollo zlib
+Summary(pl.UTF-8):	Pliki nagłówkowe i dokumentacja do zlib
+Summary(pt_BR.UTF-8):	Bibliotecas e arquivos de inclusão para desenvolvimento zlib
+Summary(ru.UTF-8):	Хедеры и библиотеки для программирования с zlib
+Summary(uk.UTF-8):	Хедери та бібліотеки для програмування з zlib
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	zlib1-devel
@@ -201,11 +201,11 @@ statik kitaplıkları ve başlık dosyalarını içerir.
 
 %package static
 Summary:	Static library for zlib development
-Summary(es.UTF-8):   Static libraries for zlib development
-Summary(pl.UTF-8):   Biblioteka statyczna do zlib
-Summary(pt_BR.UTF-8):   Bibliotecas estáticas para desenvolvimento com a zlib
-Summary(ru.UTF-8):   Статическая библиотека для программирования с zlib
-Summary(uk.UTF-8):   Статична бібліотека для програмування з zlib
+Summary(es.UTF-8):	Static libraries for zlib development
+Summary(pl.UTF-8):	Biblioteka statyczna do zlib
+Summary(pt_BR.UTF-8):	Bibliotecas estáticas para desenvolvimento com a zlib
+Summary(ru.UTF-8):	Статическая библиотека для программирования с zlib
+Summary(uk.UTF-8):	Статична бібліотека для програмування з zlib
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
