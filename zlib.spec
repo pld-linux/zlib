@@ -10,14 +10,14 @@
 %undefine	with_asmopt
 %endif
 Summary:	Library for compression and decompression
-Summary(de):	Library fЭr die Komprimierung und Dekomprimierung
-Summary(es):	Biblioteca para compresiСn y descompresiСn
-Summary(fr):	BibliothХque de compression et dИcompression
-Summary(pl):	Biblioteka z podprogramami do kompresji i dekompresji
-Summary(pt_BR):	Biblioteca para compressЦo e descompressЦo
-Summary(ru):	Библиотека для компрессии и декомпрессии
-Summary(tr):	SЩkЩЧtЩrma iЧlemleri iГin kitaplЩk
-Summary(uk):	Б╕бл╕отека для компрес╕╖ та декомпрес╕╖
+Summary(de.UTF-8):   Library fц╪r die Komprimierung und Dekomprimierung
+Summary(es.UTF-8):   Biblioteca para compresiцЁn y descompresiцЁn
+Summary(fr.UTF-8):   Bibliothц╗que de compression et dц╘compression
+Summary(pl.UTF-8):   Biblioteka z podprogramami do kompresji i dekompresji
+Summary(pt_BR.UTF-8):   Biblioteca para compressцёo e descompressцёo
+Summary(ru.UTF-8):   п▒п╦п╠п╩п╦п╬я┌п╣п╨п╟ п╢п╩я▐ п╨п╬п╪п©я─п╣я│я│п╦п╦ п╦ п╢п╣п╨п╬п╪п©я─п╣я│я│п╦п╦
+Summary(tr.UTF-8):   Sд╠kд╠е÷tд╠rma iе÷lemleri iц╖in kitaplд╠k
+Summary(uk.UTF-8):   п▒я√п╠п╩я√п╬я┌п╣п╨п╟ п╢п╩я▐ п╨п╬п╪п©я─п╣я│я√я≈ я┌п╟ п╢п╣п╨п╬п╪п©я─п╣я│я√я≈
 Name:		zlib
 Version:	1.2.3
 Release:	4
@@ -37,75 +37,75 @@ uncompressed data. This version of the library supports only one
 compression method (deflation) but other algorithms may be added later
 and will have the same stream interface.
 
-%description -l de
+%description -l de.UTF-8
 Die zlib-Komprimierungs-Library bietet speicherinterne Komprimierungs-
-und Dekomprimierungsfunktionen, einschlieъlich IntegritДtsprЭfungen
-der unkomprimierten Daten. Diese Version der Library unterstЭtzt nur
-eine Komprimierungsmethode (Deflation), doch kЖnnen weitere
-Algorithmen nachtrДglich eingefЭgt werden und haben dann dieselbe
-OberflДche.
+und Dekomprimierungsfunktionen, einschlieц÷lich Integritц╓tsprц╪fungen
+der unkomprimierten Daten. Diese Version der Library unterstц╪tzt nur
+eine Komprimierungsmethode (Deflation), doch kц╤nnen weitere
+Algorithmen nachtrц╓glich eingefц╪gt werden und haben dann dieselbe
+Oberflц╓che.
 
-%description -l es
-La biblioteca de compresiСn 'zlib' nos ofrece funciones de compresiСn
-y descompresiСn en memoria, incluyendo chequeo de la integridad de
-datos no comprimidos. Esta versiСn de la biblioteca soporta solamente
-un mИtodo de compresiСn (deflaciСn) pero otros algoritmos pueden ser
-aЯadidos mАs tarde y tendrАn la misma interface. Esta biblioteca se
+%description -l es.UTF-8
+La biblioteca de compresiцЁn 'zlib' nos ofrece funciones de compresiцЁn
+y descompresiцЁn en memoria, incluyendo chequeo de la integridad de
+datos no comprimidos. Esta versiцЁn de la biblioteca soporta solamente
+un mц╘todo de compresiцЁn (deflaciцЁn) pero otros algoritmos pueden ser
+aц╠adidos mц║s tarde y tendrц║n la misma interface. Esta biblioteca se
 usa por varios programas de sistema.
 
-%description -l fr
-La bibliothХque de compression ╚ zlib ╩ offre des fonctions de
-compression et de dИcompression en mИmoire, ainsi qu'une vИrification
-de l'intИgritИ des donnИes dИcompressИes. La version de cette
-bibliothХque ne gХre qu'une mИthode de compression (deflation), mais
-d'autres algorithmes peuvent Йtre ajoutИs plus tard et auront la mЙme
+%description -l fr.UTF-8
+La bibliothц╗que de compression б╚ zlib б╩ offre des fonctions de
+compression et de dц╘compression en mц╘moire, ainsi qu'une vц╘rification
+de l'intц╘gritц╘ des donnц╘es dц╘compressц╘es. La version de cette
+bibliothц╗que ne gц╗re qu'une mц╘thode de compression (deflation), mais
+d'autres algorithmes peuvent ц╙tre ajoutц╘s plus tard et auront la mц╙me
 interface.
 
-%description -l pl
-Biblioteka zlib udostЙpnia podprogramy do kompresji i dekompresji w
-pamiЙci operacyjnej wЁ╠cznie ze sprawdzaniem integralno╤ci w trakcie
-dekompresji. Ta wersja biblioteki udostЙpnia tylko jedn╠ metodЙ
-kompresji o nazwie deflation niemniej inne algorytmy mog╠ byФ
-dodawane udostЙpniaj╠c taki sam interfejs funkcji operuj╠cych na
+%description -l pl.UTF-8
+Biblioteka zlib udostд≥pnia podprogramy do kompresji i dekompresji w
+pamiд≥ci operacyjnej wе┌д┘cznie ze sprawdzaniem integralnoе⌡ci w trakcie
+dekompresji. Ta wersja biblioteki udostд≥pnia tylko jednд┘ metodд≥
+kompresji o nazwie deflation niemniej inne algorytmy mogд┘ byд┤
+dodawane udostд≥pniajд┘c taki sam interfejs funkcji operujд┘cych na
 strumieniu danych.
 
-%description -l pt_BR
-A biblioteca de compressЦo 'zlib' oferece funГУes de compressЦo e
-descompressЦo em memСria, incluindo checagem da integridade de dados
-nЦo comprimidos. Essa versЦo da biblioteca suporta somente um mИtodo
-de compressЦo (deflaГЦo) mas outros algoritmos podem ser adicionados
-mais tarde e terЦo a mesma interface. Essa biblioteca И usada por
-vАrios programas de sistema.
+%description -l pt_BR.UTF-8
+A biblioteca de compressцёo 'zlib' oferece funц╖ц╣es de compressцёo e
+descompressцёo em memцЁria, incluindo checagem da integridade de dados
+nцёo comprimidos. Essa versцёo da biblioteca suporta somente um mц╘todo
+de compressцёo (deflaц╖цёo) mas outros algoritmos podem ser adicionados
+mais tarde e terцёo a mesma interface. Essa biblioteca ц╘ usada por
+vц║rios programas de sistema.
 
-%description -l ru
-Библиотека компрессии zlib содержит функции компрессии и декомпрессии
-в памяти, включаю проверку целостности декомпрессированных данных. Эта
-версия поддерживает только один метод компрессии (deflation), но
-впоследствии в нее могут быть добавлены и другие методы, и все они
-будут использовать тот же потоковый интерфейс.
+%description -l ru.UTF-8
+п▒п╦п╠п╩п╦п╬я┌п╣п╨п╟ п╨п╬п╪п©я─п╣я│я│п╦п╦ zlib я│п╬п╢п╣я─п╤п╦я┌ я└я┐п╫п╨я├п╦п╦ п╨п╬п╪п©я─п╣я│я│п╦п╦ п╦ п╢п╣п╨п╬п╪п©я─п╣я│я│п╦п╦
+п╡ п©п╟п╪я▐я┌п╦, п╡п╨п╩я▌я┤п╟я▌ п©я─п╬п╡п╣я─п╨я┐ я├п╣п╩п╬я│я┌п╫п╬я│я┌п╦ п╢п╣п╨п╬п╪п©я─п╣я│я│п╦я─п╬п╡п╟п╫п╫я▀я┘ п╢п╟п╫п╫я▀я┘. п╜я┌п╟
+п╡п╣я─я│п╦я▐ п©п╬п╢п╢п╣я─п╤п╦п╡п╟п╣я┌ я┌п╬п╩я▄п╨п╬ п╬п╢п╦п╫ п╪п╣я┌п╬п╢ п╨п╬п╪п©я─п╣я│я│п╦п╦ (deflation), п╫п╬
+п╡п©п╬я│п╩п╣п╢я│я┌п╡п╦п╦ п╡ п╫п╣п╣ п╪п╬пЁя┐я┌ п╠я▀я┌я▄ п╢п╬п╠п╟п╡п╩п╣п╫я▀ п╦ п╢я─я┐пЁп╦п╣ п╪п╣я┌п╬п╢я▀, п╦ п╡я│п╣ п╬п╫п╦
+п╠я┐п╢я┐я┌ п╦я│п©п╬п╩я▄п╥п╬п╡п╟я┌я▄ я┌п╬я┌ п╤п╣ п©п╬я┌п╬п╨п╬п╡я▀п╧ п╦п╫я┌п╣я─я└п╣п╧я│.
 
-%description -l tr
-zlib sЩkЩЧtЩrma kitaplЩПЩ bellekte sЩkЩЧtЩrma ve aГma fonksiyonlarЩ
-iГermektedir. Bu sЭrЭm yalnЩzca 'deflation' yЖntemini
-desteklemektedir. Ancak baЧka algoritmalarЩn aynЩ arabirimle
-eriЧilebilecek Чekilde eklenme olasЩlЩПЩ vardЩr. Bu kitaplЩk bir dizi
-sistem yazЩlЩmЩ tarafЩndan kullanЩlmaktadЩr.
+%description -l tr.UTF-8
+zlib sд╠kд╠е÷tд╠rma kitaplд╠д÷д╠ bellekte sд╠kд╠е÷tд╠rma ve aц╖ma fonksiyonlarд╠
+iц╖ermektedir. Bu sц╪rц╪m yalnд╠zca 'deflation' yц╤ntemini
+desteklemektedir. Ancak baе÷ka algoritmalarд╠n aynд╠ arabirimle
+eriе÷ilebilecek е÷ekilde eklenme olasд╠lд╠д÷д╠ vardд╠r. Bu kitaplд╠k bir dizi
+sistem yazд╠lд╠mд╠ tarafд╠ndan kullanд╠lmaktadд╠r.
 
-%description -l uk
-Б╕бл╕отека компрес╕╖ zlib м╕стить функц╕╖ компрес╕╖ та декомпрес╕╖ в
-пам'ят╕ з перев╕ркою ц╕лост╕ декомпресованих даних. Ця верс╕я
-п╕дтриму╓ т╕льки один метод компрес╕╖ (deflation), але в майбутньому в
-не╖ можуть бути додан╕ ╕ ╕нш╕ методи ╕ вс╕ вони будуть використовувати
-той же самий потоковий ╕нтерфейс.
+%description -l uk.UTF-8
+п▒я√п╠п╩я√п╬я┌п╣п╨п╟ п╨п╬п╪п©я─п╣я│я√я≈ zlib п╪я√я│я┌п╦я┌я▄ я└я┐п╫п╨я├я√я≈ п╨п╬п╪п©я─п╣я│я√я≈ я┌п╟ п╢п╣п╨п╬п╪п©я─п╣я│я√я≈ п╡
+п©п╟п╪'я▐я┌я√ п╥ п©п╣я─п╣п╡я√я─п╨п╬я▌ я├я√п╩п╬я│я┌я√ п╢п╣п╨п╬п╪п©я─п╣я│п╬п╡п╟п╫п╦я┘ п╢п╟п╫п╦я┘. п╕я▐ п╡п╣я─я│я√я▐
+п©я√п╢я┌я─п╦п╪я┐я■ я┌я√п╩я▄п╨п╦ п╬п╢п╦п╫ п╪п╣я┌п╬п╢ п╨п╬п╪п©я─п╣я│я√я≈ (deflation), п╟п╩п╣ п╡ п╪п╟п╧п╠я┐я┌п╫я▄п╬п╪я┐ п╡
+п╫п╣я≈ п╪п╬п╤я┐я┌я▄ п╠я┐я┌п╦ п╢п╬п╢п╟п╫я√ я√ я√п╫я┬я√ п╪п╣я┌п╬п╢п╦ я√ п╡я│я√ п╡п╬п╫п╦ п╠я┐п╢я┐я┌я▄ п╡п╦п╨п╬я─п╦я│я┌п╬п╡я┐п╡п╟я┌п╦
+я┌п╬п╧ п╤п╣ я│п╟п╪п╦п╧ п©п╬я┌п╬п╨п╬п╡п╦п╧ я√п╫я┌п╣я─я└п╣п╧я│.
 
 %package devel
 Summary:	Header files and libraries for zlib development
-Summary(de):	Headerdateien und Libraries fЭr zlib-Entwicklung
-Summary(es):	Bibliotecas y archivos de inclusiСn para desarrollo zlib
-Summary(pl):	Pliki nagЁСwkowe i dokumentacja do zlib
-Summary(pt_BR):	Bibliotecas e arquivos de inclusЦo para desenvolvimento zlib
-Summary(ru):	Хедеры и библиотеки для программирования с zlib
-Summary(uk):	Хедери та б╕бл╕отеки для програмування з zlib
+Summary(de.UTF-8):   Headerdateien und Libraries fц╪r zlib-Entwicklung
+Summary(es.UTF-8):   Bibliotecas y archivos de inclusiцЁn para desarrollo zlib
+Summary(pl.UTF-8):   Pliki nagе┌цЁwkowe i dokumentacja do zlib
+Summary(pt_BR.UTF-8):   Bibliotecas e arquivos de inclusцёo para desenvolvimento zlib
+Summary(ru.UTF-8):   п╔п╣п╢п╣я─я▀ п╦ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╦ п╢п╩я▐ п©я─п╬пЁя─п╟п╪п╪п╦я─п╬п╡п╟п╫п╦я▐ я│ zlib
+Summary(uk.UTF-8):   п╔п╣п╢п╣я─п╦ я┌п╟ п╠я√п╠п╩я√п╬я┌п╣п╨п╦ п╢п╩я▐ п©я─п╬пЁя─п╟п╪я┐п╡п╟п╫п╫я▐ п╥ zlib
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	zlib1-devel
@@ -120,92 +120,92 @@ and will have the same stream interface.
 This package contains the header files needed to develop programs that
 use these zlib.
 
-%description devel -l de
+%description devel -l de.UTF-8
 Die zlip-Komprimierungs-Library bietet speicherinterne Komprimierungs-
-und Dekomprimierungsfunktionen, einschlieъlich IntegritДtsprЭfungen
-der dekomprimierten Daten. Diese Version der Library unterstЭtzt nur
+und Dekomprimierungsfunktionen, einschlieц÷lich Integritц╓tsprц╪fungen
+der dekomprimierten Daten. Diese Version der Library unterstц╪tzt nur
 eine Komprimierungsmethode (Deflation), doch sind weitere Algorithmen
-geplant, die dieselbe Art OberflДche besitzen werden. Dieses Paket
-enthДlt die Header-Dateien und Libraries, die zur Entwicklung von
-Programmen benЖtigt werden, die diese zlib einsetzen.
+geplant, die dieselbe Art Oberflц╓che besitzen werden. Dieses Paket
+enthц╓lt die Header-Dateien und Libraries, die zur Entwicklung von
+Programmen benц╤tigt werden, die diese zlib einsetzen.
 
-%description devel -l es
-La biblioteca de compresiСn zlib provee funciones de compresiСn y
-descompresiСn en memoria, incluye chequeos de integridad para los
-datos descomprimidos. Esta versiСn de la biblioteca soporta solamente
-un mИtodo de compresiСn (deflation) pero otros algoritmos pueden ser
-aЯadidos en el futuro y tendrАn la misma interface stream. Este
-paquete contiene los archivos de inclusiСn y bibliotecas necesarios al
+%description devel -l es.UTF-8
+La biblioteca de compresiцЁn zlib provee funciones de compresiцЁn y
+descompresiцЁn en memoria, incluye chequeos de integridad para los
+datos descomprimidos. Esta versiцЁn de la biblioteca soporta solamente
+un mц╘todo de compresiцЁn (deflation) pero otros algoritmos pueden ser
+aц╠adidos en el futuro y tendrц║n la misma interface stream. Este
+paquete contiene los archivos de inclusiцЁn y bibliotecas necesarios al
 desarrollo de programas que usan zlib.
 
-%description devel -l fr
-La bibliothХque de compression ╚ zlib ╩ offre des fonctions de
-compression et de dИcompression en mИmoire, ainsi qu'une vИrification
-de l'intИgritИ des donnИes dИcompressИes. La version de cette
-bibliothХque ne gХre qu'une mИthode de compression (deflation), mais
-d'autres algorithmes peuvent Йtre ajoutИs plus tard et auront la mЙme
+%description devel -l fr.UTF-8
+La bibliothц╗que de compression б╚ zlib б╩ offre des fonctions de
+compression et de dц╘compression en mц╘moire, ainsi qu'une vц╘rification
+de l'intц╘gritц╘ des donnц╘es dц╘compressц╘es. La version de cette
+bibliothц╗que ne gц╗re qu'une mц╘thode de compression (deflation), mais
+d'autres algorithmes peuvent ц╙tre ajoutц╘s plus tard et auront la mц╙me
 interface.
 
-Ce paquetage contient les fichiers en-tЙtes et les bibliothХques
-nИcessaires au dИveloppement des programmes qui utilisent cette zlib.
+Ce paquetage contient les fichiers en-tц╙tes et les bibliothц╗ques
+nц╘cessaires au dц╘veloppement des programmes qui utilisent cette zlib.
 
-%description devel -l pl
-Biblioteka zlib udostЙpnia podprogramy do kompresji i dekompresji w
-pamiЙci operacyjnej wЁ╠cznie ze sprawdzaniem integralno╤ci w trakcie
-dekompresjii. Ta wersja biblioteki udostЙpnia tylko jedn╠ metodЙ
-kompresjii o nazwie deflation niemniej inne algorytmy mog╠ byФ
-dodawane udostЙpniaj╠c taki sam interfejs funkcji operuj╠cych na
+%description devel -l pl.UTF-8
+Biblioteka zlib udostд≥pnia podprogramy do kompresji i dekompresji w
+pamiд≥ci operacyjnej wе┌д┘cznie ze sprawdzaniem integralnoе⌡ci w trakcie
+dekompresjii. Ta wersja biblioteki udostд≥pnia tylko jednд┘ metodд≥
+kompresjii o nazwie deflation niemniej inne algorytmy mogд┘ byд┤
+dodawane udostд≥pniajд┘c taki sam interfejs funkcji operujд┘cych na
 strumieniu danych.
 
-Pakiet ten zawiera pliki nagЁowkowe i dokumentacjЙ potrzebn╠ przy
-tworzeniu wЁasnych programСw wykorzystuj╠cych zlib.
+Pakiet ten zawiera pliki nagе┌owkowe i dokumentacjд≥ potrzebnд┘ przy
+tworzeniu wе┌asnych programцЁw wykorzystujд┘cych zlib.
 
-%description devel -l pt_BR
-A biblioteca de compressЦo zlib provЙ funГУes de compressЦo e
-descompressЦo em memСria, incluindo checagens de integridade para os
-dados descomprimidos. Esta versЦo da biblioteca suporta somente um
-mИtodo de compressЦo (deflation) mas outros algoritmos podem ser
-adicionados no futuro e terЦo a mesma interface stream.
+%description devel -l pt_BR.UTF-8
+A biblioteca de compressцёo zlib provц╙ funц╖ц╣es de compressцёo e
+descompressцёo em memцЁria, incluindo checagens de integridade para os
+dados descomprimidos. Esta versцёo da biblioteca suporta somente um
+mц╘todo de compressцёo (deflation) mas outros algoritmos podem ser
+adicionados no futuro e terцёo a mesma interface stream.
 
-Este pacote contИm os arquivos de inclusЦo e bibliotecas necessАrios
+Este pacote contц╘m os arquivos de inclusцёo e bibliotecas necessц║rios
 ao desenvolvimento de programas que usam zlib.
 
-%description devel -l ru
-Библиотека компрессии zlib содержит функции компрессии и декомпрессии
-в памяти, включаю проверку целостности декомпрессированных данных. Эта
-версия поддерживает только один метод компрессии (deflation), но
-впоследствии в нее могут быть добавлены и другие методы, и все они
-будут использовать тот же потоковый интерфейс.
+%description devel -l ru.UTF-8
+п▒п╦п╠п╩п╦п╬я┌п╣п╨п╟ п╨п╬п╪п©я─п╣я│я│п╦п╦ zlib я│п╬п╢п╣я─п╤п╦я┌ я└я┐п╫п╨я├п╦п╦ п╨п╬п╪п©я─п╣я│я│п╦п╦ п╦ п╢п╣п╨п╬п╪п©я─п╣я│я│п╦п╦
+п╡ п©п╟п╪я▐я┌п╦, п╡п╨п╩я▌я┤п╟я▌ п©я─п╬п╡п╣я─п╨я┐ я├п╣п╩п╬я│я┌п╫п╬я│я┌п╦ п╢п╣п╨п╬п╪п©я─п╣я│я│п╦я─п╬п╡п╟п╫п╫я▀я┘ п╢п╟п╫п╫я▀я┘. п╜я┌п╟
+п╡п╣я─я│п╦я▐ п©п╬п╢п╢п╣я─п╤п╦п╡п╟п╣я┌ я┌п╬п╩я▄п╨п╬ п╬п╢п╦п╫ п╪п╣я┌п╬п╢ п╨п╬п╪п©я─п╣я│я│п╦п╦ (deflation), п╫п╬
+п╡п©п╬я│п╩п╣п╢я│я┌п╡п╦п╦ п╡ п╫п╣п╣ п╪п╬пЁя┐я┌ п╠я▀я┌я▄ п╢п╬п╠п╟п╡п╩п╣п╫я▀ п╦ п╢я─я┐пЁп╦п╣ п╪п╣я┌п╬п╢я▀, п╦ п╡я│п╣ п╬п╫п╦
+п╠я┐п╢я┐я┌ п╦я│п©п╬п╩я▄п╥п╬п╡п╟я┌я▄ я┌п╬я┌ п╤п╣ п©п╬я┌п╬п╨п╬п╡я▀п╧ п╦п╫я┌п╣я─я└п╣п╧я│.
 
-Этот пакет содержит хедеры и библиотеки, необходимые для написания
-программ, использующих zlib.
+п╜я┌п╬я┌ п©п╟п╨п╣я┌ я│п╬п╢п╣я─п╤п╦я┌ я┘п╣п╢п╣я─я▀ п╦ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╦, п╫п╣п╬п╠я┘п╬п╢п╦п╪я▀п╣ п╢п╩я▐ п╫п╟п©п╦я│п╟п╫п╦я▐
+п©я─п╬пЁя─п╟п╪п╪, п╦я│п©п╬п╩я▄п╥я┐я▌я┴п╦я┘ zlib.
 
-%description devel -l tr
-zlib sЩkЩЧtЩrma kitaplЩПЩ bellekte sЩkЩЧtЩrma ve aГma fonksiyonlarЩ
-iГermektedir. Bu sЭrЭm yalnЩzca 'deflation' yЖntemini
-desteklemektedir. Ancak baЧka algoritmalarЩn aynЩ arabirimle
-eriЧilebilecek Чekilde eklenme olasЩlЩПЩ vardЩr.
+%description devel -l tr.UTF-8
+zlib sд╠kд╠е÷tд╠rma kitaplд╠д÷д╠ bellekte sд╠kд╠е÷tд╠rma ve aц╖ma fonksiyonlarд╠
+iц╖ermektedir. Bu sц╪rц╪m yalnд╠zca 'deflation' yц╤ntemini
+desteklemektedir. Ancak baе÷ka algoritmalarд╠n aynд╠ arabirimle
+eriе÷ilebilecek е÷ekilde eklenme olasд╠lд╠д÷д╠ vardд╠r.
 
-Bu paket, zlib kitaplЩПЩnЩ kullanarak program geliЧtirmek iГin gereken
-statik kitaplЩklarЩ ve baЧlЩk dosyalarЩnЩ iГerir.
+Bu paket, zlib kitaplд╠д÷д╠nд╠ kullanarak program geliе÷tirmek iц╖in gereken
+statik kitaplд╠klarд╠ ve baе÷lд╠k dosyalarд╠nд╠ iц╖erir.
 
-%description devel -l uk
-Б╕бл╕отека компрес╕╖ zlib м╕стить функц╕╖ компрес╕╖ та декомпрес╕╖ в
-пам'ят╕ з перев╕ркою ц╕лост╕ декомпресованих даних. Ця верс╕я
-п╕дтриму╓ т╕льки один метод компрес╕╖ (deflation), але в майбутньому в
-не╖ можуть бути додан╕ ╕ ╕нш╕ методи ╕ вс╕ вони будуть використовувати
-той же самий потоковий ╕нтерфейс.
+%description devel -l uk.UTF-8
+п▒я√п╠п╩я√п╬я┌п╣п╨п╟ п╨п╬п╪п©я─п╣я│я√я≈ zlib п╪я√я│я┌п╦я┌я▄ я└я┐п╫п╨я├я√я≈ п╨п╬п╪п©я─п╣я│я√я≈ я┌п╟ п╢п╣п╨п╬п╪п©я─п╣я│я√я≈ п╡
+п©п╟п╪'я▐я┌я√ п╥ п©п╣я─п╣п╡я√я─п╨п╬я▌ я├я√п╩п╬я│я┌я√ п╢п╣п╨п╬п╪п©я─п╣я│п╬п╡п╟п╫п╦я┘ п╢п╟п╫п╦я┘. п╕я▐ п╡п╣я─я│я√я▐
+п©я√п╢я┌я─п╦п╪я┐я■ я┌я√п╩я▄п╨п╦ п╬п╢п╦п╫ п╪п╣я┌п╬п╢ п╨п╬п╪п©я─п╣я│я√я≈ (deflation), п╟п╩п╣ п╡ п╪п╟п╧п╠я┐я┌п╫я▄п╬п╪я┐ п╡
+п╫п╣я≈ п╪п╬п╤я┐я┌я▄ п╠я┐я┌п╦ п╢п╬п╢п╟п╫я√ я√ я√п╫я┬я√ п╪п╣я┌п╬п╢п╦ я√ п╡я│я√ п╡п╬п╫п╦ п╠я┐п╢я┐я┌я▄ п╡п╦п╨п╬я─п╦я│я┌п╬п╡я┐п╡п╟я┌п╦
+я┌п╬п╧ п╤п╣ я│п╟п╪п╦п╧ п©п╬я┌п╬п╨п╬п╡п╦п╧ я√п╫я┌п╣я─я└п╣п╧я│.
 
-Цей пакет м╕стить хедери та б╕бл╕отеки, необх╕дн╕ для написання
-програм, що використовують zlib.
+п╕п╣п╧ п©п╟п╨п╣я┌ п╪я√я│я┌п╦я┌я▄ я┘п╣п╢п╣я─п╦ я┌п╟ п╠я√п╠п╩я√п╬я┌п╣п╨п╦, п╫п╣п╬п╠я┘я√п╢п╫я√ п╢п╩я▐ п╫п╟п©п╦я│п╟п╫п╫я▐
+п©я─п╬пЁя─п╟п╪, я┴п╬ п╡п╦п╨п╬я─п╦я│я┌п╬п╡я┐я▌я┌я▄ zlib.
 
 %package static
 Summary:	Static library for zlib development
-Summary(es):	Static libraries for zlib development
-Summary(pl):	Biblioteka statyczna do zlib
-Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com a zlib
-Summary(ru):	Статическая библиотека для программирования с zlib
-Summary(uk):	Статична б╕бл╕отека для програмування з zlib
+Summary(es.UTF-8):   Static libraries for zlib development
+Summary(pl.UTF-8):   Biblioteka statyczna do zlib
+Summary(pt_BR.UTF-8):   Bibliotecas estц║ticas para desenvolvimento com a zlib
+Summary(ru.UTF-8):   п║я┌п╟я┌п╦я┤п╣я│п╨п╟я▐ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╟ п╢п╩я▐ п©я─п╬пЁя─п╟п╪п╪п╦я─п╬п╡п╟п╫п╦я▐ я│ zlib
+Summary(uk.UTF-8):   п║я┌п╟я┌п╦я┤п╫п╟ п╠я√п╠п╩я√п╬я┌п╣п╨п╟ п╢п╩я▐ п©я─п╬пЁя─п╟п╪я┐п╡п╟п╫п╫я▐ п╥ zlib
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
@@ -219,30 +219,30 @@ and will have the same stream interface.
 This package contains the header files and libraries needed to develop
 programs that use these zlib.
 
-%description static -l pl
-Biblioteka zlib udostЙpnia podprogramy do kompresji i dekompresji w
-pamiЙci operacyjnej wЁ╠cznie ze sprawdzaniem integralno╤ci w trakcie
-dekompresjii. Ta wersja biblioteki udostЙpnia tylko jedn╠ metodЙ
-kompresjii o nazwie deflation niemniej inne algirytmy mog╠ byФ
-dodawane udostЙpniaj╠c taki sam interfejs funkcji operuj╠cych na
+%description static -l pl.UTF-8
+Biblioteka zlib udostд≥pnia podprogramy do kompresji i dekompresji w
+pamiд≥ci operacyjnej wе┌д┘cznie ze sprawdzaniem integralnoе⌡ci w trakcie
+dekompresjii. Ta wersja biblioteki udostд≥pnia tylko jednд┘ metodд≥
+kompresjii o nazwie deflation niemniej inne algirytmy mogд┘ byд┤
+dodawane udostд≥pniajд┘c taki sam interfejs funkcji operujд┘cych na
 strumieniu danych.
 
-Pakiet ten zawiera bibliotekЙ statyczn╠ potrzebn╠ przy tworzeniu
-wЁasnych programСw wykorzystuj╠cych zlib.
+Pakiet ten zawiera bibliotekд≥ statycznд┘ potrzebnд┘ przy tworzeniu
+wе┌asnych programцЁw wykorzystujд┘cych zlib.
 
-%description static -l es
+%description static -l es.UTF-8
 Static libraries for zlib development.
 
-%description static -l pt_BR
-Bibliotecas estАticas para desenvolvimento com a zlib.
+%description static -l pt_BR.UTF-8
+Bibliotecas estц║ticas para desenvolvimento com a zlib.
 
-%description static -l ru
-Этот пакет содержит статическую библиотеку, необходимую для написания
-программ, использующих zlib.
+%description static -l ru.UTF-8
+п╜я┌п╬я┌ п©п╟п╨п╣я┌ я│п╬п╢п╣я─п╤п╦я┌ я│я┌п╟я┌п╦я┤п╣я│п╨я┐я▌ п╠п╦п╠п╩п╦п╬я┌п╣п╨я┐, п╫п╣п╬п╠я┘п╬п╢п╦п╪я┐я▌ п╢п╩я▐ п╫п╟п©п╦я│п╟п╫п╦я▐
+п©я─п╬пЁя─п╟п╪п╪, п╦я│п©п╬п╩я▄п╥я┐я▌я┴п╦я┘ zlib.
 
-%description static -l uk
-Цей пакет м╕стить статичну б╕бл╕отеку, необх╕дну для написання
-програм, що використовують zlib.
+%description static -l uk.UTF-8
+п╕п╣п╧ п©п╟п╨п╣я┌ п╪я√я│я┌п╦я┌я▄ я│я┌п╟я┌п╦я┤п╫я┐ п╠я√п╠п╩я√п╬я┌п╣п╨я┐, п╫п╣п╬п╠я┘я√п╢п╫я┐ п╢п╩я▐ п╫п╟п©п╦я│п╟п╫п╫я▐
+п©я─п╬пЁя─п╟п╪, я┴п╬ п╡п╦п╨п╬я─п╦я│я┌п╬п╡я┐я▌я┌я▄ zlib.
 
 %prep
 %setup -q
