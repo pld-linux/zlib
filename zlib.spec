@@ -54,7 +54,7 @@ añadidos más tarde y tendrán la misma interface. Esta biblioteca se
 usa por varios programas de sistema.
 
 %description -l fr.UTF-8
-La bibliothèque de compression « zlib » offre des fonctions de
+La bibliothèque de compression «zlib» offre des fonctions de
 compression et de décompression en mémoire, ainsi qu'une vérification
 de l'intégrité des données décompressées. La version de cette
 bibliothèque ne gère qu'une méthode de compression (deflation), mais
