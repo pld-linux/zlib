@@ -9,6 +9,17 @@
 %if %{with pax} && %{with asmopt}
 %undefine	with_asmopt
 %endif
+
+%if "%{pld_release}" == "ac"
+# on 2.4 kernel i586 doesn't work either:
+# open("/usr/lib/libcrypto.so.0.9.7", O_RDONLY) = 3
+# ...
+# mprotect...= -1 EINVAL (Invalid argument)
+# mprotect...= -1 ENOMEM (Cannot allocate memory)
+%ifarch i586
+%undefine	with_asmopt
+%endif
+%endif
 Summary:	Library for compression and decompression
 Summary(de.UTF-8):	Library für die Komprimierung und Dekomprimierung
 Summary(es.UTF-8):	Biblioteca para compresión y descompresión
@@ -20,13 +31,14 @@ Summary(tr.UTF-8):	Sıkıştırma işlemleri için kitaplık
 Summary(uk.UTF-8):	Бібліотека для компресії та декомпресії
 Name:		zlib
 Version:	1.2.3
-Release:	6
+Release:	7
 License:	BSD
 Group:		Libraries
 Source0:	http://www.zlib.net/%{name}-%{version}.tar.gz
 # Source0-md5:	debc62758716a169df9f62e6ab2bc634
 Patch0:		%{name}-asmopt.patch
 URL:		http://www.zlib.net/
+BuildRequires:	rpm >= 4.4.9-56
 Obsoletes:	zlib1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
