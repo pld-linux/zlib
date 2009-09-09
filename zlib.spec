@@ -1,7 +1,7 @@
 #
 # Conditional build:
 %bcond_without	asmopt	# without assembler optimization for i586+
-%bcond_with	pax
+%bcond_with	pax	# synonym for the above (asm doesn't have non-exec stack attributes)
 #
 %ifnarch i586 i686 pentium3 pentium4 athlon
 %undefine	with_asmopt
@@ -30,13 +30,12 @@ Summary(ru.UTF-8):	Библиотека для компрессии и деко�
 Summary(tr.UTF-8):	Sıkıştırma işlemleri için kitaplık
 Summary(uk.UTF-8):	Бібліотека для компресії та декомпресії
 Name:		zlib
-Version:	1.2.3
-Release:	8
+Version:	1.2.3.3
+Release:	1
 License:	BSD
 Group:		Libraries
-Source0:	http://www.zlib.net/%{name}-%{version}.tar.gz
-# Source0-md5:	debc62758716a169df9f62e6ab2bc634
-Patch0:		%{name}-asmopt.patch
+Source0:	http://www.zlib.net/current/beta/%{name}-%{version}.tar.gz
+# Source0-md5:	0635a2bb04535914cd523c72181574ad
 URL:		http://www.zlib.net/
 BuildRequires:	rpm >= 4.4.9-56
 Obsoletes:	zlib1
@@ -260,8 +259,6 @@ Bibliotecas estáticas para desenvolvimento com a zlib.
 %setup -q
 
 %if %{with asmopt}
-%patch0 -p1
-
 %ifarch i686 pentium3 pentium4 athlon
 cp contrib/asm686/match.S .
 %endif
@@ -271,31 +268,26 @@ cp contrib/asm586/match.S .
 %endif
 
 %build
-CFLAGS="-D_REENTRANT -fPIC %{rpmcflags} %{?with_asmopt:-DASMV}" \
-LDSHARED="%{__cc} $CFLAGS -shared -Wl,-soname,libz.so.1" \
 CC="%{__cc}" \
+CFLAGS="-D_REENTRANT %{rpmcflags} %{?with_asmopt:-DASMV}" \
 ./configure \
 	--prefix=%{_prefix} \
-	--shared
+	--libdir=%{_libdir}
 
-%{__make}
-%{__make} libz.a
+%{__make} \
+	%{?with_asmopt:OBJA=match.o}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{/%{_lib},%{_includedir},%{_libdir},%{_mandir}/man3}
+install -d $RPM_BUILD_ROOT/%{_lib}
 
 %{__make} install \
-	prefix=$RPM_BUILD_ROOT%{_prefix}
+	DESTDIR=$RPM_BUILD_ROOT \
+	libdir=%{_libdir}
 
-%if "%{_libdir}" != "%{_prefix}/lib"
-mv $RPM_BUILD_ROOT{%{_prefix}/lib/*,%{_libdir}}
-%endif
-
-install libz.a $RPM_BUILD_ROOT%{_libdir}
 install zutil.h $RPM_BUILD_ROOT%{_includedir}
 
-mv -f $RPM_BUILD_ROOT%{_libdir}/libz.so.*.* $RPM_BUILD_ROOT/%{_lib}
+mv -f $RPM_BUILD_ROOT%{_libdir}/libz.so.* $RPM_BUILD_ROOT/%{_lib}
 ln -sf /%{_lib}/$(cd $RPM_BUILD_ROOT/%{_lib} && echo libz.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libz.so
 
 %clean
@@ -306,15 +298,20 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog FAQ README algorithm.txt
+%doc ChangeLog FAQ README doc/algorithm.txt doc/txtvsbin.txt
 %attr(755,root,root) /%{_lib}/libz.so.*.*.*
+%attr(755,root,root) %ghost /%{_lib}/libz.so.1
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libz.so
-%{_includedir}/*
-%{_mandir}/man3/*
+%{_includedir}/zconf.h
+%{_includedir}/zlib.h
+%{_includedir}/zlibdefs.h
+%{_includedir}/zutil.h
+%{_pkgconfigdir}/zlib.pc
+%{_mandir}/man3/zlib.3*
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libz.a
