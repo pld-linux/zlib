@@ -31,7 +31,8 @@ Summary(tr.UTF-8):	Sıkıştırma işlemleri için kitaplık
 Summary(uk.UTF-8):	Бібліотека для компресії та декомпресії
 Name:		zlib
 Version:	1.2.3.3
-Release:	1
+Patch0:		minizip-autotools.patch
+Release:	2
 License:	BSD
 Group:		Libraries
 Source0:	http://www.zlib.net/current/beta/%{name}-%{version}.tar.gz
@@ -255,8 +256,26 @@ Bibliotecas estáticas para desenvolvimento com a zlib.
 Цей пакет містить статичну бібліотеку, необхідну для написання
 програм, що використовують zlib.
 
+%package -n minizip
+Summary:	Minizip manipulates files from a .zip archive
+Group:		Libraries
+URL:		http://www.winimage.com/zLibDll/minizip.html
+
+%description  -n minizip
+Minizip manipulates files from a .zip archive
+
+%package -n minizip-devel
+Summary:	Development files for the minizip library
+Group:		Development/Libraries
+Requires:	minizip = %{version}-%{release}
+
+%description -n minizip-devel
+This package contains the libraries and header files needed for
+developing applications which use minizip.
+
 %prep
 %setup -q
+%patch0 -p1
 
 %if %{with asmopt}
 %ifarch i686 pentium3 pentium4 athlon
@@ -277,6 +296,18 @@ CFLAGS="-D_REENTRANT %{rpmcflags} %{?with_asmopt:-DASMV}" \
 %{__make} \
 	%{?with_asmopt:OBJA=match.o}
 
+cd contrib/minizip
+%{__aclocal}
+%{__libtoolize}
+%{__autoheader}
+%{__autoconf}
+%{__automake}
+%configure \
+	--enable-static=no
+# SMP flags are explicitly omitted due to a libtool/autoconf
+# dependency race condition
+%{__make} -j1
+
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/%{_lib}
@@ -287,6 +318,9 @@ install -d $RPM_BUILD_ROOT/%{_lib}
 
 install zutil.h $RPM_BUILD_ROOT%{_includedir}
 
+%{__make} -C contrib/minizip install \
+	DESTDIR=$RPM_BUILD_ROOT \
+
 mv -f $RPM_BUILD_ROOT%{_libdir}/libz.so.* $RPM_BUILD_ROOT/%{_lib}
 ln -sf /%{_lib}/$(cd $RPM_BUILD_ROOT/%{_lib} && echo libz.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libz.so
 
@@ -295,6 +329,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
+
+%post	-n minizip -p /sbin/ldconfig
+%postun	-n minizip -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
@@ -315,3 +352,18 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libz.a
+
+%files -n minizip
+%defattr(644,root,root,755)
+%doc contrib/minizip/ChangeLogUnzip
+%attr(755,root,root) %{_bindir}/miniunzip
+%attr(755,root,root) %{_bindir}/minizip
+%attr(755,root,root) %{_libdir}/libminizip.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libminizip.so.0
+
+%files -n minizip-devel
+%defattr(644,root,root,755)
+%{_libdir}/libminizip.la
+%{_libdir}/libminizip.so
+%{_pkgconfigdir}/minizip.pc
+%{_includedir}/minizip
