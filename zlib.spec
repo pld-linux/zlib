@@ -1,7 +1,7 @@
 #
 # Conditional build:
 %bcond_without	asmopt	# without assembler optimization for i586+
-%bcond_with	pax	# synonym for the above (asm doesn't have non-exec stack attributes)
+%bcond_with	pax
 #
 %ifnarch i586 i686 pentium3 pentium4 athlon
 %undefine	with_asmopt
@@ -30,13 +30,12 @@ Summary(ru.UTF-8):	Библиотека для компрессии и деко�
 Summary(tr.UTF-8):	Sıkıştırma işlemleri için kitaplık
 Summary(uk.UTF-8):	Бібліотека для компресії та декомпресії
 Name:		zlib
-Version:	1.2.3.3
-Patch0:		minizip-autotools.patch
-Release:	2
+Version:	1.2.3
+Release:	8
 License:	BSD
 Group:		Libraries
-Source0:	http://www.zlib.net/current/beta/%{name}-%{version}.tar.gz
-# Source0-md5:	0635a2bb04535914cd523c72181574ad
+Source0:	http://www.zlib.net/%{name}-%{version}.tar.gz
+# Source0-md5:	debc62758716a169df9f62e6ab2bc634
 URL:		http://www.zlib.net/
 BuildRequires:	rpm >= 4.4.9-56
 Obsoletes:	zlib1
@@ -256,72 +255,42 @@ Bibliotecas estáticas para desenvolvimento com a zlib.
 Цей пакет містить статичну бібліотеку, необхідну для написання
 програм, що використовують zlib.
 
-%package -n minizip
-Summary:	Minizip manipulates files from a .zip archive
-Group:		Libraries
-URL:		http://www.winimage.com/zLibDll/minizip.html
-
-%description  -n minizip
-Minizip manipulates files from a .zip archive
-
-%package -n minizip-devel
-Summary:	Development files for the minizip library
-Group:		Development/Libraries
-Requires:	minizip = %{version}-%{release}
-
-%description -n minizip-devel
-This package contains the libraries and header files needed for
-developing applications which use minizip.
-
 %prep
 %setup -q
-%patch0 -p1
 
-%if %{with asmopt}
 %ifarch i686 pentium3 pentium4 athlon
 cp contrib/asm686/match.S .
 %endif
 %ifarch i586
 cp contrib/asm586/match.S .
 %endif
-%endif
 
 %build
+CFLAGS="-D_REENTRANT -fPIC %{rpmcflags} %{?with_asmopt:-DASMV}" \
+LDSHARED="%{__cc} $CFLAGS -shared -Wl,-soname,libz.so.1" \
 CC="%{__cc}" \
-CFLAGS="-D_REENTRANT %{rpmcflags} %{?with_asmopt:-DASMV}" \
 ./configure \
 	--prefix=%{_prefix} \
-	--libdir=%{_libdir}
+	--shared
 
-%{__make} \
-	%{?with_asmopt:OBJA=match.o}
-
-cd contrib/minizip
-%{__aclocal}
-%{__libtoolize}
-%{__autoheader}
-%{__autoconf}
-%{__automake}
-%configure \
-	--enable-static=no
-# SMP flags are explicitly omitted due to a libtool/autoconf
-# dependency race condition
-%{__make} -j1
+%{__make}
+%{__make} libz.a
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/%{_lib}
+install -d $RPM_BUILD_ROOT{/%{_lib},%{_includedir},%{_libdir},%{_mandir}/man3}
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	libdir=%{_libdir}
+	prefix=$RPM_BUILD_ROOT%{_prefix}
 
+%if "%{_libdir}" != "%{_prefix}/lib"
+mv $RPM_BUILD_ROOT{%{_prefix}/lib/*,%{_libdir}}
+%endif
+
+install libz.a $RPM_BUILD_ROOT%{_libdir}
 install zutil.h $RPM_BUILD_ROOT%{_includedir}
 
-%{__make} -C contrib/minizip install \
-	DESTDIR=$RPM_BUILD_ROOT \
-
-mv -f $RPM_BUILD_ROOT%{_libdir}/libz.so.* $RPM_BUILD_ROOT/%{_lib}
+mv -f $RPM_BUILD_ROOT%{_libdir}/libz.so.*.* $RPM_BUILD_ROOT/%{_lib}
 ln -sf /%{_lib}/$(cd $RPM_BUILD_ROOT/%{_lib} && echo libz.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libz.so
 
 %clean
@@ -330,40 +299,17 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
-%post	-n minizip -p /sbin/ldconfig
-%postun	-n minizip -p /sbin/ldconfig
-
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog FAQ README doc/algorithm.txt doc/txtvsbin.txt
+%doc ChangeLog FAQ README algorithm.txt
 %attr(755,root,root) /%{_lib}/libz.so.*.*.*
-%attr(755,root,root) %ghost /%{_lib}/libz.so.1
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libz.so
-%{_includedir}/zconf.h
-%{_includedir}/zlib.h
-%{_includedir}/zlibdefs.h
-%{_includedir}/zutil.h
-%{_pkgconfigdir}/zlib.pc
-%{_mandir}/man3/zlib.3*
+%{_includedir}/*
+%{_mandir}/man3/*
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libz.a
-
-%files -n minizip
-%defattr(644,root,root,755)
-%doc contrib/minizip/ChangeLogUnzip
-%attr(755,root,root) %{_bindir}/miniunzip
-%attr(755,root,root) %{_bindir}/minizip
-%attr(755,root,root) %{_libdir}/libminizip.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libminizip.so.0
-
-%files -n minizip-devel
-%defattr(644,root,root,755)
-%{_libdir}/libminizip.la
-%{_libdir}/libminizip.so
-%{_pkgconfigdir}/minizip.pc
-%{_includedir}/minizip
+%{_libdir}/lib*.a
