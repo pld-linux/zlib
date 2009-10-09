@@ -31,8 +31,9 @@ Summary(tr.UTF-8):	Sıkıştırma işlemleri için kitaplık
 Summary(uk.UTF-8):	Бібліотека для компресії та декомпресії
 Name:		zlib
 Version:	1.2.3.3
+Release:	3
 Patch0:		minizip-autotools.patch
-Release:	2
+Patch1:		minizip-1.2.3-malloc.patch
 License:	BSD
 Group:		Libraries
 Source0:	http://www.zlib.net/current/beta/%{name}-%{version}.tar.gz
@@ -276,6 +277,7 @@ developing applications which use minizip.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %if %{with asmopt}
 %ifarch i686 pentium3 pentium4 athlon
