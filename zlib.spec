@@ -40,6 +40,9 @@ Group:		Libraries
 Source0:	http://www.zlib.net/current/beta/%{name}-%{version}.tar.gz
 # Source0-md5:	0635a2bb04535914cd523c72181574ad
 URL:		http://www.zlib.net/
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool
 BuildRequires:	rpm >= 4.4.9-56
 Obsoletes:	zlib1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
