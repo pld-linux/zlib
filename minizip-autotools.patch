@@ -83,7 +83,7 @@ diff -rN -U 5 zlib-1.2.3.orig/contrib/minizip/configure.ac zlib-1.2.3.patched/co
 diff -rN -U 5 zlib-1.2.3.orig/contrib/minizip/Makefile.am zlib-1.2.3.patched/contrib/minizip/Makefile.am
 --- zlib-1.2.3.orig/contrib/minizip/Makefile.am	1969-12-31 17:00:00.000000000 -0700
 +++ zlib-1.2.3.patched/contrib/minizip/Makefile.am	2007-06-28 15:01:34.000000000 -0600
-@@ -0,0 +1,37 @@
+@@ -0,0 +1,41 @@
 +METASOURCES = AUTO
 +
 +pkgconfigdir = $(libdir)/pkgconfig
@@ -115,12 +115,16 @@ diff -rN -U 5 zlib-1.2.3.orig/contrib/minizip/Makefile.am zlib-1.2.3.patched/con
 +bin_PROGRAMS = miniunzip minizip
 +
 +miniunzip_SOURCES = miniunz.c
-+miniunzip_LDADD = -L$(top_builddir) -lminizip -lz
++miniunzip_LDADD = -lminizip
++miniunzip_CPPFLAGS = -I../../
 +
 +minizip_SOURCES = minizip.c
-+minizip_LDADD = -L$(top_builddir) -lminizip -lz
++minizip_LDADD = -lminizip
++minizip_CPPFLAGS = -I../../
 +
-+
++libminizip_la_CPPFLAGS = -I../../
++libminizip_la_LIBADD = -lz
++libminizip_la_LDFLAGS = -L../../
 diff -rN -U 5 zlib-1.2.3.orig/contrib/minizip/minizip.pc.in zlib-1.2.3.patched/contrib/minizip/minizip.pc.in
 --- zlib-1.2.3.orig/contrib/minizip/minizip.pc.in	1969-12-31 17:00:00.000000000 -0700
 +++ zlib-1.2.3.patched/contrib/minizip/minizip.pc.in	2007-06-28 14:55:38.000000000 -0600
