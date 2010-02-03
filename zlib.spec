@@ -31,9 +31,10 @@ Summary(tr.UTF-8):	Sıkıştırma işlemleri için kitaplık
 Summary(uk.UTF-8):	Бібліотека для компресії та декомпресії
 Name:		zlib
 Version:	1.2.3.7
-Release:	2
+Release:	3
 Patch0:		minizip-autotools.patch
 Patch1:		define-off64_t
+Patch2:		%{name}-gzflush.patch
 License:	BSD
 Group:		Libraries
 Source0:	http://www.zlib.net/current/beta/%{name}-%{version}.tar.gz
@@ -281,6 +282,7 @@ developing applications which use minizip.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p0
 
 %if %{with asmopt}
 %ifarch i686 pentium3 pentium4 athlon
