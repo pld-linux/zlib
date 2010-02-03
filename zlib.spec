@@ -2,6 +2,7 @@
 # Conditional build:
 %bcond_without	asmopt	# without assembler optimization for i586+
 %bcond_with	pax	# synonym for the above (asm doesn't have non-exec stack attributes)
+%bcond_without	tests
 #
 %ifnarch i586 i686 pentium3 pentium4 athlon
 %undefine	with_asmopt
@@ -295,7 +296,7 @@ cp contrib/asm586/match.S .
 
 %build
 CC="%{__cc}" \
-CFLAGS="-D_REENTRANT %{rpmcflags} %{?with_asmopt:-DASMV}" \
+CFLAGS="-D_REENTRANT %{rpmcppflags} %{rpmcflags} %{?with_asmopt:-DASMV}" \
 ./configure \
 	--prefix=%{_prefix} \
 	--libdir=%{_libdir}
@@ -314,6 +315,8 @@ cd contrib/minizip
 # SMP flags are explicitly omitted due to a libtool/autoconf
 # dependency race condition
 %{__make} -j1
+
+%{?with_tests:%{__make} check}
 
 %install
 rm -rf $RPM_BUILD_ROOT
