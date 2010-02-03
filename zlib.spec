@@ -32,7 +32,7 @@ Summary(tr.UTF-8):	Sıkıştırma işlemleri için kitaplık
 Summary(uk.UTF-8):	Бібліотека для компресії та декомпресії
 Name:		zlib
 Version:	1.2.3.7
-Release:	3
+Release:	4
 Patch0:		minizip-autotools.patch
 Patch1:		define-off64_t
 Patch2:		%{name}-gzflush.patch
