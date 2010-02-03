@@ -30,15 +30,14 @@ Summary(ru.UTF-8):	Библиотека для компрессии и деко�
 Summary(tr.UTF-8):	Sıkıştırma işlemleri için kitaplık
 Summary(uk.UTF-8):	Бібліотека для компресії та декомпресії
 Name:		zlib
-Version:	1.2.3.3
-Release:	4
+Version:	1.2.3.7
+Release:	1
 Patch0:		minizip-autotools.patch
-Patch1:		minizip-1.2.3-malloc.patch
-Patch2:		define-off64_t
+Patch1:		define-off64_t
 License:	BSD
 Group:		Libraries
 Source0:	http://www.zlib.net/current/beta/%{name}-%{version}.tar.gz
-# Source0-md5:	0635a2bb04535914cd523c72181574ad
+# Source0-md5:	323e45f54f321116a34950e8fbf5b6e7
 URL:		http://www.zlib.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -282,7 +281,6 @@ developing applications which use minizip.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %if %{with asmopt}
 %ifarch i686 pentium3 pentium4 athlon
@@ -351,7 +349,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libz.so
 %{_includedir}/zconf.h
 %{_includedir}/zlib.h
-%{_includedir}/zlibdefs.h
 %{_includedir}/zutil.h
 %{_pkgconfigdir}/zlib.pc
 %{_mandir}/man3/zlib.3*
@@ -362,7 +359,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n minizip
 %defattr(644,root,root,755)
-%doc contrib/minizip/ChangeLogUnzip
+%doc contrib/minizip/MiniZip64_Changes.txt
+%doc contrib/minizip/MiniZip64_info.txt
 %attr(755,root,root) %{_bindir}/miniunzip
 %attr(755,root,root) %{_bindir}/minizip
 %attr(755,root,root) %{_libdir}/libminizip.so.*.*.*
