@@ -264,20 +264,30 @@ Bibliotecas estáticas para desenvolvimento com a zlib.
 
 %package -n minizip
 Summary:	Minizip manipulates files from a .zip archive
+Summary(pl.UTF-8):	Minizip - biblioteka i narzędzia obrabiające pliki w archiwum .zip
 Group:		Libraries
 URL:		http://www.winimage.com/zLibDll/minizip.html
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description  -n minizip
-Minizip manipulates files from a .zip archive
+Minizip manipulates files from a .zip archive.
+
+%description  -n minizip -l pl.UTF-8
+Minizip - biblioteka i narzędzia obrabiające pliki w archiwum .zip
 
 %package -n minizip-devel
 Summary:	Development files for the minizip library
+Summary(pl.UTF-8):	Pliki programistyczne biblioteki minizip
 Group:		Development/Libraries
-Requires:	minizip = %{version}-%{release}
+Requires:	minizip = %{epoch}:%{version}-%{release}
 
 %description -n minizip-devel
-This package contains the libraries and header files needed for
-developing applications which use minizip.
+This package contains the header files needed for developing
+applications which use minizip.
+
+%description -n minizip-devel
+Ten pakiet zawiera pliki nagłówkowe potrzebne do tworzenia aplikacji
+wykorzystujących bibliotekę minizip.
 
 %prep
 %setup -q
@@ -373,7 +383,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n minizip-devel
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libminizip.so
 %{_libdir}/libminizip.la
-%{_libdir}/libminizip.so
-%{_pkgconfigdir}/minizip.pc
 %{_includedir}/minizip
+%{_pkgconfigdir}/minizip.pc
