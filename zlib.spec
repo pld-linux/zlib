@@ -285,7 +285,7 @@ Requires:	minizip = %{epoch}:%{version}-%{release}
 This package contains the header files needed for developing
 applications which use minizip.
 
-%description -n minizip-devel
+%description -n minizip-devel -l pl.UTF-8
 Ten pakiet zawiera pliki nagłówkowe potrzebne do tworzenia aplikacji
 wykorzystujących bibliotekę minizip.
 
