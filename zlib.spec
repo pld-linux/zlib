@@ -325,8 +325,9 @@ cd contrib/minizip
 # SMP flags are explicitly omitted due to a libtool/autoconf
 # dependency race condition
 %{__make} -j1
+cd ../..
 
-%{?with_tests:%{__make} check}
+%{?with_tests:%{__make} -j1 check}
 
 %install
 rm -rf $RPM_BUILD_ROOT
