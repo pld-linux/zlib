@@ -45,6 +45,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	rpm >= 4.4.9-56
+BuildRequires:	POLDEK-BREAK-WITH-THIS-VERSION
 Obsoletes:	zlib1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
