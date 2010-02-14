@@ -31,21 +31,19 @@ Summary(ru.UTF-8):	Библиотека для компрессии и деко�
 Summary(tr.UTF-8):	Sıkıştırma işlemleri için kitaplık
 Summary(uk.UTF-8):	Бібліотека для компресії та декомпресії
 Name:		zlib
-Version:	1.2.3.7
-Release:	4
+Version:	1.2.3.8
+Release:	0.1
 Patch0:		minizip-autotools.patch
 Patch1:		define-off64_t
-Patch2:		%{name}-gzflush.patch
 License:	BSD
 Group:		Libraries
 Source0:	http://www.zlib.net/current/beta/%{name}-%{version}.tar.gz
-# Source0-md5:	323e45f54f321116a34950e8fbf5b6e7
+# Source0-md5:	ab5fa664b51eaa0788fd057c41a09dbd
 URL:		http://www.zlib.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	rpm >= 4.4.9-56
-BuildRequires:	POLDEK-BREAK-WITH-THIS-VERSION
 Obsoletes:	zlib1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -294,7 +292,6 @@ wykorzystujących bibliotekę minizip.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p0
 
 %if %{with asmopt}
 %ifarch i686 pentium3 pentium4 athlon
