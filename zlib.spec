@@ -310,7 +310,7 @@ CFLAGS="-D_REENTRANT %{rpmcppflags} %{rpmcflags} %{?with_asmopt:-DASMV}" \
 	--libdir=%{_libdir}
 
 %{__make} \
-	%{?with_asmopt:OBJA=match.o}
+	%{?with_asmopt:OBJA=match.o PIC_OBJA=match.lo}
 
 cd contrib/minizip
 %{__aclocal}
@@ -319,7 +319,7 @@ cd contrib/minizip
 %{__autoconf}
 %{__automake}
 %configure \
-	--enable-static=no
+	--disable-static
 # SMP flags are explicitly omitted due to a libtool/autoconf
 # dependency race condition
 %{__make} -j1
@@ -341,7 +341,7 @@ install zutil.h $RPM_BUILD_ROOT%{_includedir}
 	DESTDIR=$RPM_BUILD_ROOT \
 
 mv -f $RPM_BUILD_ROOT%{_libdir}/libz.so.* $RPM_BUILD_ROOT/%{_lib}
-ln -sf /%{_lib}/$(cd $RPM_BUILD_ROOT/%{_lib} && echo libz.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libz.so
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libz.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libz.so
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -373,8 +373,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n minizip
 %defattr(644,root,root,755)
-%doc contrib/minizip/MiniZip64_Changes.txt
-%doc contrib/minizip/MiniZip64_info.txt
+%doc contrib/minizip/MiniZip64_{Changes,info}.txt
 %attr(755,root,root) %{_bindir}/miniunzip
 %attr(755,root,root) %{_bindir}/minizip
 %attr(755,root,root) %{_libdir}/libminizip.so.*.*.*
