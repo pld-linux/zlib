@@ -31,14 +31,14 @@ Summary(ru.UTF-8):	Библиотека для компрессии и деко�
 Summary(tr.UTF-8):	Sıkıştırma işlemleri için kitaplık
 Summary(uk.UTF-8):	Бібліотека для компресії та декомпресії
 Name:		zlib
-Version:	1.2.3.8
-Release:	0.1
+Version:	1.2.3.9
+Release:	1
 Patch0:		minizip-autotools.patch
 Patch1:		define-off64_t
 License:	BSD
 Group:		Libraries
 Source0:	http://www.zlib.net/current/beta/%{name}-%{version}.tar.gz
-# Source0-md5:	ab5fa664b51eaa0788fd057c41a09dbd
+# Source0-md5:	e63390cc6cbd0722f70729307d4dd01d
 URL:		http://www.zlib.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
