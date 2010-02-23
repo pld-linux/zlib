@@ -32,7 +32,7 @@ Summary(tr.UTF-8):	Sıkıştırma işlemleri için kitaplık
 Summary(uk.UTF-8):	Бібліотека для компресії та декомпресії
 Name:		zlib
 Version:	1.2.3.9
-Release:	2
+Release:	3
 Patch0:		minizip-autotools.patch
 Patch1:		define-off64_t
 License:	BSD
@@ -45,7 +45,7 @@ BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	rpm >= 4.4.9-56
 Obsoletes:	zlib1
-Conflicts:	poldek-libs < 0.30-0.20080820.23.37
+Conflicts:	poldek-libs < 0.30-0.20080820.23.38
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
