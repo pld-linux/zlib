@@ -4,6 +4,7 @@
 %bcond_with	pax	# synonym for the above (asm doesn't have non-exec stack attributes)
 %bcond_without	tests
 #
+# no x8664 at this moment, broken, doesn't pass test suite, should be fixed in 1.2.3.10
 %ifnarch i586 i686 pentium3 pentium4 athlon
 %undefine	with_asmopt
 %endif
@@ -32,7 +33,7 @@ Summary(tr.UTF-8):	Sıkıştırma işlemleri için kitaplık
 Summary(uk.UTF-8):	Бібліотека для компресії та декомпресії
 Name:		zlib
 Version:	1.2.3.9
-Release:	3
+Release:	4
 Patch0:		minizip-autotools.patch
 Patch1:		define-off64_t
 License:	BSD
@@ -45,7 +46,7 @@ BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	rpm >= 4.4.9-56
 Obsoletes:	zlib1
-Conflicts:	poldek-libs < 0.30-0.20080820.23.38
+Conflicts:	poldek-libs < 0.30-0.20080820.23.40
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -300,6 +301,9 @@ cp contrib/asm686/match.S .
 %endif
 %ifarch i586
 cp contrib/asm586/match.S .
+%endif
+%ifarch %{x8664}
+cp contrib/amd64/amd64-match.S match.S
 %endif
 %endif
 
