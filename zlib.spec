@@ -34,7 +34,6 @@ Name:		zlib
 Version:	1.2.4
 Release:	1
 Patch0:		minizip-autotools.patch
-Patch1:		define-off64_t
 License:	BSD
 Group:		Libraries
 Source0:	http://www.zlib.net/current/%{name}-%{version}.tar.gz
@@ -292,7 +291,6 @@ wykorzystujących bibliotekę minizip.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %if %{with asmopt}
 %ifarch i686 pentium3 pentium4 athlon
