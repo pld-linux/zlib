@@ -4,8 +4,7 @@
 %bcond_with	pax	# synonym for the above (asm doesn't have non-exec stack attributes)
 %bcond_without	tests
 #
-# no x8664 at this moment, broken, doesn't pass test suite, should be fixed in 1.2.3.10
-%ifnarch i586 i686 pentium3 pentium4 athlon
+%ifnarch i586 i686 pentium3 pentium4 athlon %{x8664}
 %undefine	with_asmopt
 %endif
 %if %{with pax} && %{with asmopt}
@@ -32,14 +31,14 @@ Summary(ru.UTF-8):	Библиотека для компрессии и деко�
 Summary(tr.UTF-8):	Sıkıştırma işlemleri için kitaplık
 Summary(uk.UTF-8):	Бібліотека для компресії та декомпресії
 Name:		zlib
-Version:	1.2.3.9
-Release:	4
+Version:	1.2.4
+Release:	1
 Patch0:		minizip-autotools.patch
 Patch1:		define-off64_t
 License:	BSD
 Group:		Libraries
-Source0:	http://www.zlib.net/current/beta/%{name}-%{version}.tar.gz
-# Source0-md5:	e63390cc6cbd0722f70729307d4dd01d
+Source0:	http://www.zlib.net/current/%{name}-%{version}.tar.gz
+# Source0-md5:	47f6ed51b3c83a8534f9228531effa18
 URL:		http://www.zlib.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
