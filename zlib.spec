@@ -1,25 +1,10 @@
 #
 # Conditional build:
-%bcond_without	asmopt	# without assembler optimization for i586+
-%bcond_with	pax	# synonym for the above (asm doesn't have non-exec stack attributes)
+%bcond_without	asmopt	# without assembler optimization for i686+
 %bcond_without	tests
 #
-%ifnarch i586 i686 pentium3 pentium4 athlon %{x8664}
+%ifnarch i686 pentium3 pentium4 athlon %{x8664}
 %undefine	with_asmopt
-%endif
-%if %{with pax} && %{with asmopt}
-%undefine	with_asmopt
-%endif
-
-%if "%{pld_release}" == "ac"
-# on 2.4 kernel i586 doesn't work either:
-# open("/usr/lib/libcrypto.so.0.9.7", O_RDONLY) = 3
-# ...
-# mprotect...= -1 EINVAL (Invalid argument)
-# mprotect...= -1 ENOMEM (Cannot allocate memory)
-%ifarch i586
-%undefine	with_asmopt
-%endif
 %endif
 Summary:	Library for compression and decompression
 Summary(de.UTF-8):	Library für die Komprimierung und Dekomprimierung
@@ -32,12 +17,13 @@ Summary(tr.UTF-8):	Sıkıştırma işlemleri için kitaplık
 Summary(uk.UTF-8):	Бібліотека для компресії та декомпресії
 Name:		zlib
 Version:	1.2.4
-Release:	1
-Patch0:		minizip-autotools.patch
+Release:	2
 License:	BSD
 Group:		Libraries
 Source0:	http://www.zlib.net/current/%{name}-%{version}.tar.gz
 # Source0-md5:	47f6ed51b3c83a8534f9228531effa18
+Patch0:		minizip-autotools.patch
+Patch1:		%{name}-asm.patch
 URL:		http://www.zlib.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -291,13 +277,11 @@ wykorzystujących bibliotekę minizip.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %if %{with asmopt}
 %ifarch i686 pentium3 pentium4 athlon
 cp contrib/asm686/match.S .
-%endif
-%ifarch i586
-cp contrib/asm586/match.S .
 %endif
 %ifarch %{x8664}
 cp contrib/amd64/amd64-match.S match.S
