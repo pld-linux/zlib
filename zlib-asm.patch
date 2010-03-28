@@ -1,0 +1,26 @@
+--- zlib-1.2.4/Makefile.in.orig	2010-03-14 03:10:27.000000000 +0100
++++ zlib-1.2.4/Makefile.in	2010-03-20 10:58:30.238704379 +0100
+@@ -23,6 +23,7 @@
+ #CFLAGS=-g -DDEBUG
+ #CFLAGS=-O3 -Wall -Wwrite-strings -Wpointer-arith -Wconversion \
+ #           -Wstrict-prototypes -Wmissing-prototypes
++CCASFLAGS=-Wa,--noexecstack
+ 
+ SFLAGS=-O
+ 
+@@ -110,13 +111,13 @@
+ 
+ match.o: match.S
+ 	$(CPP) match.S > _match.s
+-	$(CC) -c _match.s
++	$(CC) $(CCASFLAGS) -c _match.s
+ 	mv _match.o match.o
+ 	rm -f _match.s
+ 
+ match.lo: match.S
+ 	$(CPP) match.S > _match.s
+-	$(CC) -c -fPIC _match.s
++	$(CC) $(CCASFLAGS) -c -fPIC _match.s
+ 	mv _match.o match.lo
+ 	rm -f _match.s
+ 
