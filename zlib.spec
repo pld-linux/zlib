@@ -16,12 +16,12 @@ Summary(ru.UTF-8):	Библиотека для компрессии и деко�
 Summary(tr.UTF-8):	Sıkıştırma işlemleri için kitaplık
 Summary(uk.UTF-8):	Бібліотека для компресії та декомпресії
 Name:		zlib
-Version:	1.2.4
-Release:	2
+Version:	1.2.4.5
+Release:	1
 License:	BSD
 Group:		Libraries
-Source0:	http://www.zlib.net/current/%{name}-%{version}.tar.gz
-# Source0-md5:	47f6ed51b3c83a8534f9228531effa18
+Source0:	http://www.zlib.net/current/beta/%{name}-%{version}.tar.gz
+# Source0-md5:	8bb8b19e73733706f57fd5e3351ab2b6
 Patch0:		minizip-autotools.patch
 Patch1:		%{name}-asm.patch
 URL:		http://www.zlib.net/
@@ -293,7 +293,8 @@ CC="%{__cc}" \
 CFLAGS="-D_REENTRANT %{rpmcppflags} %{rpmcflags} %{?with_asmopt:-DASMV}" \
 ./configure \
 	--prefix=%{_prefix} \
-	--libdir=%{_libdir}
+	--libdir=%{_libdir} \
+	--sharedlibdir=%{_libdir}
 
 %{__make} \
 	%{?with_asmopt:OBJA=match.o PIC_OBJA=match.lo}
