@@ -21,7 +21,7 @@ Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://www.zlib.net/current/beta/%{name}-%{version}.tar.gz
-# Source0-md5:	8bb8b19e73733706f57fd5e3351ab2b6
+# Source0-md5:	aa47da7df06b7c3a7ea9bc25eba24487
 Patch0:		minizip-autotools.patch
 Patch1:		%{name}-asm.patch
 URL:		http://www.zlib.net/
