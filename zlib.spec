@@ -16,12 +16,12 @@ Summary(ru.UTF-8):	Библиотека для компрессии и деко�
 Summary(tr.UTF-8):	Sıkıştırma işlemleri için kitaplık
 Summary(uk.UTF-8):	Бібліотека для компресії та декомпресії
 Name:		zlib
-Version:	1.2.4.5
+Version:	1.2.5
 Release:	1
 License:	BSD
 Group:		Libraries
-Source0:	http://www.zlib.net/current/beta/%{name}-%{version}.tar.gz
-# Source0-md5:	aa47da7df06b7c3a7ea9bc25eba24487
+Source0:	http://www.zlib.net/current/%{name}-%{version}.tar.gz
+# Source0-md5:	c735eab2d659a96e5a594c9e8541ad63
 Patch0:		minizip-autotools.patch
 Patch1:		%{name}-asm.patch
 URL:		http://www.zlib.net/
@@ -319,8 +319,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/%{_lib}
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	libdir=%{_libdir}
+	DESTDIR=$RPM_BUILD_ROOT
 
 install zutil.h $RPM_BUILD_ROOT%{_includedir}
 
