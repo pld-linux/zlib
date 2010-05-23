@@ -17,13 +17,14 @@ Summary(tr.UTF-8):	Sıkıştırma işlemleri için kitaplık
 Summary(uk.UTF-8):	Бібліотека для компресії та декомпресії
 Name:		zlib
 Version:	1.2.5
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries
 Source0:	http://www.zlib.net/current/%{name}-%{version}.tar.gz
 # Source0-md5:	c735eab2d659a96e5a594c9e8541ad63
 Patch0:		minizip-autotools.patch
 Patch1:		%{name}-asm.patch
+Patch2:		%{name}-lfs.patch
 URL:		http://www.zlib.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -278,6 +279,7 @@ wykorzystujących bibliotekę minizip.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %if %{with asmopt}
 %ifarch i686 pentium3 pentium4 athlon
