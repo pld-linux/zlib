@@ -31,6 +31,7 @@ BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	rpm >= 4.4.9-56
 Obsoletes:	zlib1
+Conflicts:	elinks < 1:0.12
 Conflicts:	libxml2 < 1:2.7.6-6
 Conflicts:	poldek-libs < 0.30-0.20080820.23.40
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
