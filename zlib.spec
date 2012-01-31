@@ -265,6 +265,7 @@ Minizip - biblioteka i narzędzia obrabiające pliki w archiwum .zip
 Summary:	Development files for the minizip library
 Summary(pl.UTF-8):	Pliki programistyczne biblioteki minizip
 Group:		Development/Libraries
+Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 Requires:	minizip = %{epoch}:%{version}-%{release}
 
 %description -n minizip-devel
