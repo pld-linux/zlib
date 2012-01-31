@@ -1,7 +1,7 @@
 #
 # Conditional build:
 %bcond_without	asmopt	# without assembler optimization for i686+
-%bcond_without	tests
+%bcond_without	tests	# do not perform "make check"
 #
 %ifnarch i686 pentium3 pentium4 athlon %{x8664}
 %undefine	with_asmopt
@@ -16,19 +16,17 @@ Summary(ru.UTF-8):	Библиотека для компрессии и деко�
 Summary(tr.UTF-8):	Sıkıştırma işlemleri için kitaplık
 Summary(uk.UTF-8):	Бібліотека для компресії та декомпресії
 Name:		zlib
-Version:	1.2.5
-Release:	5
+Version:	1.2.6
+Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://www.zlib.net/current/%{name}-%{version}.tar.gz
-# Source0-md5:	c735eab2d659a96e5a594c9e8541ad63
-Patch0:		minizip-autotools.patch
-Patch1:		%{name}-asm.patch
-Patch2:		%{name}-lfs.patch
+# Source0-md5:	618e944d7c7cd6521551e30b32322f4a
+Patch0:		%{name}-asm.patch
 URL:		http://www.zlib.net/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	libtool
+BuildRequires:	libtool >= 2:2.0
 BuildRequires:	rpm >= 4.4.9-56
 Obsoletes:	zlib1
 Conflicts:	elinks < 1:0.12
@@ -277,11 +275,21 @@ applications which use minizip.
 Ten pakiet zawiera pliki nagłówkowe potrzebne do tworzenia aplikacji
 wykorzystujących bibliotekę minizip.
 
+%package -n minizip-static
+Summary:	Static minizip library
+Summary(pl.UTF-8):	Statyczna biblioteka minizip
+Group:		Development/Libraries
+Requires:	minizip-devel = %{epoch}:%{version}-%{release}
+
+%description -n minizip-static
+This package contains the static version of minizip library.
+
+%description -n minizip-static -l pl.UTF-8
+Ten pakiet zawiera statyczną wersję biblioteki minizip.
+
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %if %{with asmopt}
 %ifarch i686 pentium3 pentium4 athlon
@@ -304,13 +312,12 @@ CFLAGS="-D_REENTRANT %{rpmcppflags} %{rpmcflags} %{?with_asmopt:-DASMV}" \
 	%{?with_asmopt:OBJA=match.o PIC_OBJA=match.lo}
 
 cd contrib/minizip
-%{__aclocal}
 %{__libtoolize}
-%{__autoheader}
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 %configure \
-	--disable-static
+	--enable-demos
 # SMP flags are explicitly omitted due to a libtool/autoconf
 # dependency race condition
 %{__make} -j1
@@ -367,7 +374,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/miniunzip
 %attr(755,root,root) %{_bindir}/minizip
 %attr(755,root,root) %{_libdir}/libminizip.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libminizip.so.0
+%attr(755,root,root) %ghost %{_libdir}/libminizip.so.1
 
 %files -n minizip-devel
 %defattr(644,root,root,755)
@@ -375,3 +382,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libminizip.la
 %{_includedir}/minizip
 %{_pkgconfigdir}/minizip.pc
+
+%files -n minizip-static
+%defattr(644,root,root,755)
+%{_libdir}/libminizip.a
