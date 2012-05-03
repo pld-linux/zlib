@@ -16,12 +16,12 @@ Summary(ru.UTF-8):	Библиотека для компрессии и деко�
 Summary(tr.UTF-8):	Sıkıştırma işlemleri için kitaplık
 Summary(uk.UTF-8):	Бібліотека для компресії та декомпресії
 Name:		zlib
-Version:	1.2.6
+Version:	1.2.7
 Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://www.zlib.net/current/%{name}-%{version}.tar.gz
-# Source0-md5:	618e944d7c7cd6521551e30b32322f4a
+# Source0-md5:	60df6a37c56e7c1366cca812414f7b85
 Patch0:		%{name}-asm.patch
 URL:		http://www.zlib.net/
 BuildRequires:	autoconf >= 2.50
