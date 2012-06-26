@@ -26,6 +26,7 @@ Patch0:		%{name}-asm.patch
 URL:		http://www.zlib.net/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
+BuildRequires:	binutils >= 3:2.19.91
 BuildRequires:	libtool >= 2:2.0
 BuildRequires:	rpm >= 4.4.9-56
 Obsoletes:	zlib1
