@@ -1,6 +1,7 @@
 #
 # Conditional build:
 %bcond_with	asmopt	# without assembler optimization for i686+
+			# (asm is unsupported by upstream and unmaintained)
 %bcond_without	tests	# do not perform "make check"
 #
 %ifnarch i686 pentium3 pentium4 athlon %{x8664}
