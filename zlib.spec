@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	asmopt	# without assembler optimization for i686+
+%bcond_with	asmopt	# without assembler optimization for i686+
 %bcond_without	tests	# do not perform "make check"
 #
 %ifnarch i686 pentium3 pentium4 athlon %{x8664}
@@ -17,7 +17,7 @@ Summary(tr.UTF-8):	Sıkıştırma işlemleri için kitaplık
 Summary(uk.UTF-8):	Бібліотека для компресії та декомпресії
 Name:		zlib
 Version:	1.2.9
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries
 Source0:	http://www.zlib.net/current/%{name}-%{version}.tar.gz
