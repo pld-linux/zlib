@@ -292,9 +292,9 @@ Ten pakiet zawiera statyczną wersję biblioteki minizip.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %if %{with asmopt}
+%patch0 -p1
 %ifarch i686 pentium3 pentium4 athlon
 cp contrib/asm686/match.S .
 %endif
@@ -326,7 +326,10 @@ cd contrib/minizip
 %{__make} -j1
 cd ../..
 
-%{?with_tests:%{__make} -j1 check}
+%if %{with tests}
+%{__make} -j1 check 2>&1 | tee test-log
+grep -q FAILED test-log && exit 1
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
