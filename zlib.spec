@@ -18,7 +18,7 @@ Summary(tr.UTF-8):	Sıkıştırma işlemleri için kitaplık
 Summary(uk.UTF-8):	Бібліотека для компресії та декомпресії
 Name:		zlib
 Version:	1.2.11
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries
 Source0:	http://www.zlib.net/current/%{name}-%{version}.tar.gz
@@ -342,6 +342,8 @@ install zutil.h $RPM_BUILD_ROOT%{_includedir}
 
 %{__make} -C contrib/minizip install \
 	DESTDIR=$RPM_BUILD_ROOT \
+# https://github.com/madler/zlib/pull/229
+rm $RPM_BUILD_ROOT%_includedir/minizip/crypt.h
 
 mv -f $RPM_BUILD_ROOT%{_libdir}/libz.so.* $RPM_BUILD_ROOT/%{_lib}
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libz.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libz.so
