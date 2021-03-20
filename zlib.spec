@@ -329,6 +329,7 @@ cd ../..
 %if %{with tests}
 %{__make} -j1 check 2>&1 | tee test-log
 grep -q FAILED test-log && exit 1
+echo "Tests OK"
 %endif
 
 %install
