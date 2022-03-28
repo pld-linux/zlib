@@ -24,6 +24,7 @@ Group:		Libraries
 Source0:	http://www.zlib.net/current/%{name}-%{version}.tar.gz
 # Source0-md5:	5fc414a9726be31427b440b434d05f78
 Patch0:		%{name}-asm.patch
+Patch1:		cc.patch
 URL:		http://www.zlib.net/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -302,6 +303,7 @@ cp contrib/asm686/match.S .
 cp contrib/amd64/amd64-match.S match.S
 %endif
 %endif
+%patch1 -p1
 
 %build
 CC="%{__cc}" \
