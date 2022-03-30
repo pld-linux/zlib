@@ -18,13 +18,14 @@ Summary(tr.UTF-8):	Sıkıştırma işlemleri için kitaplık
 Summary(uk.UTF-8):	Бібліотека для компресії та декомпресії
 Name:		zlib
 Version:	1.2.12
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries
 Source0:	http://www.zlib.net/current/%{name}-%{version}.tar.gz
 # Source0-md5:	5fc414a9726be31427b440b434d05f78
 Patch0:		%{name}-asm.patch
 Patch1:		cc.patch
+Patch2:		java-regr-workaround.patch
 URL:		http://www.zlib.net/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -304,6 +305,7 @@ cp contrib/amd64/amd64-match.S match.S
 %endif
 %endif
 %patch1 -p1
+%patch2 -p1
 
 %build
 CC="%{__cc}" \

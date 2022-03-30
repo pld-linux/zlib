@@ -1,0 +1,25 @@
+diff --git a/crc32.c b/crc32.c
+index a1bdce5..748b7ba 100644
+--- a/crc32.c
++++ b/crc32.c
+@@ -19,6 +19,7 @@
+   MAKECRCH can be #defined to write out crc32.h. A main() routine is also
+   produced, so that this one source file can be compiled to an executable.
+  */
++#include <limits.h>
+ 
+ #ifdef MAKECRCH
+ #  include <stdio.h>
+@@ -1065,7 +1066,12 @@ unsigned long ZEXPORT crc32(crc, buf, len)
+     const unsigned char FAR *buf;
+     uInt len;
+ {
++/* if sizeof(unsigned long) > 4 */
++#if ULONG_MAX > 0xffffffffUL
++    return crc32_z(crc & 0xffffffffUL, buf, len);
++#else
+     return crc32_z(crc, buf, len);
++#endif
+ }
+ 
+ /* ========================================================================= */
