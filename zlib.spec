@@ -345,14 +345,15 @@ install -d $RPM_BUILD_ROOT/%{_lib}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install zutil.h $RPM_BUILD_ROOT%{_includedir}
+cp -p zutil.h $RPM_BUILD_ROOT%{_includedir}
 
 %{__make} -C contrib/minizip install \
 	DESTDIR=$RPM_BUILD_ROOT \
-# https://github.com/madler/zlib/pull/229
-rm $RPM_BUILD_ROOT%_includedir/minizip/crypt.h
 
-mv -f $RPM_BUILD_ROOT%{_libdir}/libz.so.* $RPM_BUILD_ROOT/%{_lib}
+# https://github.com/madler/zlib/pull/229
+%{__rm} $RPM_BUILD_ROOT%{_includedir}/minizip/crypt.h
+
+%{__mv} $RPM_BUILD_ROOT%{_libdir}/libz.so.* $RPM_BUILD_ROOT/%{_lib}
 ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libz.so.*.*) $RPM_BUILD_ROOT%{_libdir}/libz.so
 
 %clean
