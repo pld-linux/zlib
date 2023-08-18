@@ -17,12 +17,12 @@ Summary(ru.UTF-8):	Библиотека для компрессии и деко�
 Summary(tr.UTF-8):	Sıkıştırma işlemleri için kitaplık
 Summary(uk.UTF-8):	Бібліотека для компресії та декомпресії
 Name:		zlib
-Version:	1.2.13
+Version:	1.3
 Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://www.zlib.net/current/%{name}-%{version}.tar.gz
-# Source0-md5:	9b8aa094c4e5765dabf4da391f00d15c
+# Source0-md5:	60373b133d630f74f4a1f94c1185a53f
 Patch0:		%{name}-asm.patch
 URL:		http://www.zlib.net/
 BuildRequires:	autoconf >= 2.50
@@ -362,7 +362,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog FAQ README doc/algorithm.txt doc/txtvsbin.txt
-%attr(755,root,root) /%{_lib}/libz.so.*.*.*
+%attr(755,root,root) /%{_lib}/libz.so.*.*
 %attr(755,root,root) %ghost /%{_lib}/libz.so.1
 
 %files devel
