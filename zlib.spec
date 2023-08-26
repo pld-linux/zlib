@@ -113,7 +113,7 @@ Summary(pt_BR.UTF-8):	Bibliotecas e arquivos de inclusão para desenvolvimento z
 Summary(ru.UTF-8):	Хедеры и библиотеки для программирования с zlib
 Summary(uk.UTF-8):	Хедери та бібліотеки для програмування з zlib
 Group:		Development/Libraries
-Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	%{name}%{?_isa} = %{epoch}:%{version}-%{release}
 Obsoletes:	zlib1-devel
 
 %description devel
