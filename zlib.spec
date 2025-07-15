@@ -294,7 +294,7 @@ Ten pakiet zawiera statyczną wersję biblioteki minizip.
 %setup -q
 
 %if %{with asmopt}
-%patch0 -p1
+%patch -P0 -p1
 %ifarch i686 pentium3 pentium4 athlon
 cp contrib/asm686/match.S .
 %endif
