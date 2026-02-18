@@ -18,12 +18,13 @@ Summary(tr.UTF-8):	Sıkıştırma işlemleri için kitaplık
 Summary(uk.UTF-8):	Бібліотека для компресії та декомпресії
 Name:		zlib
 Version:	1.3.2
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries
 Source0:	https://www.zlib.net/%{name}-%{version}.tar.gz
 # Source0-md5:	a1e6c958597af3c67d162995a342138a
 Patch0:		%{name}-asm.patch
+Patch1:		header.patch
 URL:		https://www.zlib.net/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -293,6 +294,7 @@ Ten pakiet zawiera statyczną wersję biblioteki minizip.
 %prep
 %setup -q
 
+%patch -P1 -p1
 %if %{with asmopt}
 %patch -P0 -p1
 %ifarch i686 pentium3 pentium4 athlon
